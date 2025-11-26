@@ -1,0 +1,12 @@
+@import '../../../shared/styles/mixins';
+
+.container {
+  @include flex($align: center, $justify: flex-start);
+  width: 100%;
+  border: 1px solid var(--blue-600);
+  border-radius: 14px;
+  padding: 4.5px;
+  background: var(--overlay-dark-a50);
+  gap: 12.5px;
+  max-width: 653px;
+}

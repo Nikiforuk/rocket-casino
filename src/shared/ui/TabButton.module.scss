@@ -1,0 +1,14 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+@import '../styles/extends';
+
+.button {
+  @include flex($align: center, $justify: center);
+  @extend %i-medium-14-lg;
+  width: 92px;
+  height: 29px;
+  background: $gradient-blue-to-purple;
+  border: none;
+  border-radius: 14px;
+  color: inherit;
+}
