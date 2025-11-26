@@ -28,6 +28,7 @@
   --green-300: #009966;
   --green-400: #00A63E;
   --green-500: #004F3B;
+  --green-600: #05DF72;
   
   --green-a10: rgba(0, 188, 125, 0.1);
   --green-a20: rgba(0, 188, 125, 0.2);
@@ -57,6 +58,7 @@
   --overlay-gray-a80: rgba(15, 23, 43, 0.8);
 
   --twilight-veil: rgba(15, 23, 43, 0.5);
+  --emerald-mist: rgba(0, 188, 125, 0.3);
 }
 
 * {

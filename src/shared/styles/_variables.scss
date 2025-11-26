@@ -25,6 +25,13 @@ $gradient-screen-overlay: linear-gradient(
   var(--purple-a20) 100%
 );
 
+$gradient-green-mint: linear-gradient(
+  90deg,
+  var(--green-200) 0%,
+  var(--green-600) 100%
+);
+
+
 $gradient-blue-to-purple: linear-gradient(
   90deg,
   var(--blue-500) 0%,

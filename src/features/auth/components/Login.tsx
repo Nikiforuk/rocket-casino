@@ -33,6 +33,12 @@ export default function Login() {
       <Button
         icon={true}
         text="Login"
+        textStyle={{
+          fontWeight: 500,
+          fontSize: '14px',
+          lineHeight: '20px',
+          letterSpacing: '-0.15px',
+        }}
         border="none"
         borderRadius="8px"
         height="36px"
