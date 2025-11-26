@@ -1,5 +1,14 @@
-function App() {
-  return <div>Home</div>;
-}
+import { Routes, Route } from 'react-router-dom';
 
-export default App;
+import Auth from './pages/Auth';
+import Home from './pages/Home';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/auth" element={<Home />} />
+      <Route path="/" element={<Auth />} />
+      {/* <Route path="*" element={<div>not found</div>} /> */}
+    </Routes>
+  );
+}
