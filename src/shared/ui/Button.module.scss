@@ -1,0 +1,13 @@
+@import '../styles/extends';
+
+.button {
+  @extend %i-medium-14-lg;
+  gap: 16px;
+  width: 100%;
+  color: inherit;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+}

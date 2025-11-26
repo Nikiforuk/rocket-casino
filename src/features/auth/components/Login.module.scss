@@ -1,0 +1,65 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/extends';
+
+.container {
+  background: var(--gray-800);
+  border-radius: 14px;
+  padding: 32px;
+}
+
+.gradientBlock {
+   @include flex($align: center, $justify: center);
+   background: $gradient-green-blue-purple;
+   width: 64px;
+   height: 64px;
+   border-radius: 10px;
+   margin: 0 auto;
+   margin-bottom: 16px;
+
+  &_logo {
+    width: 40px;
+    height: 40px;
+  } 
+}
+
+.top {
+  margin-bottom: 56.5px;
+
+  &_title {
+    @extend %i-regular-30;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &_text {
+    @extend %i-regular-16;
+    text-align: center;
+    color: var(--gray-200);
+  }
+}
+
+
+.fields {
+  &_box {
+    @include flex($align: flex-start, $justify: center, $direction: column);
+    margin-bottom: 12.5px;
+  }
+}
+
+.lower {
+  @include flex($align: center, $justify: center, $direction: column);
+  margin-top: 19px;
+  gap: 18px;
+
+  &_link {
+    @extend %i-medium-14-lg;
+    color: var(--blue-200);
+  }
+
+  &_line {
+    border: 0.5px solid var(--gray-500);
+    width: 100%;
+  }
+}
