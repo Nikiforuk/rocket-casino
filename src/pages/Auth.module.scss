@@ -1,7 +1,7 @@
+@import '../shared/styles/mixins';
+
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex($align: center, $justify: center, $direction: column);
   height: 100vh;
+  padding: 24px;
 }

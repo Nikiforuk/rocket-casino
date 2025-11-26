@@ -3,6 +3,8 @@
 @import '../../../shared/styles/extends';
 
 .container {
+  max-width: 448px;
+  width: 100%;
   background: var(--gray-800);
   border-radius: 14px;
   padding: 32px;
@@ -61,5 +63,10 @@
   &_line {
     border: 0.5px solid var(--gray-500);
     width: 100%;
+  }
+
+  &_text {
+    @extend %i-regular-12;
+    color: var(--gray-400);    
   }
 }

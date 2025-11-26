@@ -1,0 +1,6 @@
+@import '../styles/mixins';
+
+.button {
+  @include flex($align: center, $justify: center);
+  gap: 10px;
+}
