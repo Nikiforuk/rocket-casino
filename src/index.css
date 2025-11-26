@@ -1,5 +1,6 @@
 :root {
   --white: #FFFFFF;
+  --midnight-navy: #1A1D28;
 
   --gray-50:  rgba(200, 207, 203, 1);
   --gray-100: #CAD5E2;
@@ -52,7 +53,10 @@
 
   --overlay-green-a50: rgba(0, 122, 85, 0.5);
   --overlay-dark-a50: rgba(29, 41, 61, 0.5);
+  --overlay-gray-a60: rgba(49, 65, 88, 1);
   --overlay-gray-a80: rgba(15, 23, 43, 0.8);
+
+  --twilight-veil: rgba(15, 23, 43, 0.5);
 }
 
 * {

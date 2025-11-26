@@ -1,10 +1,11 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, CSSProperties } from 'react';
 
 import styles from './Button.module.scss';
 import loginIcon from '../../assets/icons/login-white.svg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
+  textStyle?: CSSProperties; // додаємо можливість стилізувати текст
   icon?: boolean;
   background?: string;
   border?: string;
@@ -14,6 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({
   text,
+  textStyle,
   icon,
   background,
   border,
@@ -32,7 +34,7 @@ export default function Button({
       {...props}
     >
       {icon && <img src={loginIcon} className={styles.icon} alt="auth-icon" />}
-      {text && <span>{text}</span>}
+      {text && <p style={textStyle}>{text}</p>}
     </button>
   );
 }
