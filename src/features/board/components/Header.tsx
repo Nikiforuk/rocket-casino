@@ -2,8 +2,10 @@ import styles from './Header.module.scss';
 import gobletIcon from '../../../assets/icons/goblet-white.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import SmallButton from '../../../shared/ui/SmallButton';
+import { useSignOut } from '../../auth/hooks/useSignOut';
 
 export default function Header() {
+  const handleSignOut = useSignOut();
   return (
     <header className={styles.container}>
       <div className={styles.content}>
@@ -58,6 +60,7 @@ export default function Header() {
             height="32px"
             widthIcon="16px"
             heightIcon="16px"
+            onClick={handleSignOut}
           />
         </div>
       </div>

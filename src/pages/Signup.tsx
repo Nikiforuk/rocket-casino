@@ -1,10 +1,10 @@
 import styles from './Auth.module.scss';
-import SignupForm from '../features/auth/components/SignupForm';
+import SignUpForm from '../features/auth/components/SignupForm';
 
-export default function Signup() {
+export default function SignUp() {
   return (
     <div className={styles.container}>
-      <SignupForm />
+      <SignUpForm />
     </div>
   );
 }

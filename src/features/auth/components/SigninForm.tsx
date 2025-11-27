@@ -1,12 +1,29 @@
+import { useState, type FormEvent } from 'react';
+
 import styles from './Auth.module.scss';
+import { ROUTES } from '../../../app/routes';
 import rocketIcon from '../../../assets/icons/rocket.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
+import { useAuthSession } from '../hooks/useAuthSession';
+import { useSignIn } from '../hooks/useSignin';
 
-export default function SigninForm() {
+export default function SignInForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { loading, errorMessage, handleSignIn } = useSignIn();
+
+  useAuthSession();
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    handleSignIn(email, password);
+  };
+
   return (
-    <form className={styles.container}>
+    <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.gradientBlock}>
         <img className={styles.gradientBlock_logo} src={rocketIcon} alt="logo-image" />
       </div>
@@ -31,6 +48,7 @@ export default function SigninForm() {
               letterSpacing: '-0.15px',
               fontWeight: '400',
             }}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className={styles.fields_box}>
@@ -49,12 +67,18 @@ export default function SigninForm() {
               letterSpacing: '-0.15px',
               fontWeight: '400',
             }}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
+      {errorMessage ? (
+        <div className={styles.errorBlock}>
+          <p className={styles.errorBlock_text}>{errorMessage}</p>
+        </div>
+      ) : null}
       <Button
         icon={true}
-        text="Login"
+        text={loading ? 'Loading...' : 'Login'}
         textStyle={{
           fontWeight: 500,
           fontSize: '14px',
@@ -66,10 +90,10 @@ export default function SigninForm() {
         height="36px"
         background={GRADIENTS.greenToBlue}
         type="submit"
-        onClick={() => null}
+        onClick={handleSubmit}
       />
       <div className={styles.lower}>
-        <a href="#" className={styles.lower_link}>
+        <a href={ROUTES.SIGNUP} className={styles.lower_link}>
           Don&apos;t have an account? Register
         </a>
         <div className={styles.lower_line} />

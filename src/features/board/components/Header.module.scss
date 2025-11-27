@@ -42,4 +42,5 @@
 
 .rightBlock {
   @include flex($align: center, $justify: center);
+  gap: 12px;
 }
