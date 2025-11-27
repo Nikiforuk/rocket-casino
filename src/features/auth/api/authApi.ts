@@ -26,12 +26,12 @@ export const loginUser = async (email: string, password: string) => {
     console.error('Signin Error', error);
     return { success: false, error };
   }
-
   return { success: true, data };
 };
 
 export const signOut = async () => {
   const { error } = await supabase.auth.signOut();
+
   if (error) {
     console.error(error);
   }

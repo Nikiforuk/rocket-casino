@@ -4,7 +4,6 @@ import Header from '../features/board/components/Header';
 import Leaderboard from '../features/board/components/Leaderboard';
 import RocketGame from '../features/board/components/RocketGame';
 import TabList from '../features/board/components/TabList';
-// import Modal from '../features/modal/components/Modal';
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
           <BonusSystem />
           <Leaderboard />
         </div>
-        {/* <Modal />  */}
       </main>
     </>
   );

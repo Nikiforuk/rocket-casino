@@ -1,29 +1,38 @@
-import { useState, type FormEvent } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
 
 import styles from './Auth.module.scss';
 import { ROUTES } from '../../../app/routes';
 import rocketIcon from '../../../assets/icons/rocket.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
+import type { SignInFormData } from '../../../shared/types/auth';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
 import { useAuthSession } from '../hooks/useAuthSession';
-import { useSignIn } from '../hooks/useSignin';
+import { useSignIn } from '../hooks/useSignIn';
+import { signInSchema } from '../schemas/signInSchema';
 
 export default function SignInForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const { loading, errorMessage, handleSignIn } = useSignIn();
-
   useAuthSession();
+  const { loading, errorMessage, handleSignIn } = useSignIn();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInFormData>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    handleSignIn(email, password);
+  const onSubmit = (data: SignInFormData) => {
+    handleSignIn(data.email, data.password);
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
       <div className={styles.gradientBlock}>
         <img className={styles.gradientBlock_logo} src={rocketIcon} alt="logo-image" />
       </div>
@@ -33,42 +42,56 @@ export default function SignInForm() {
       </div>
       <div className={styles.fields}>
         <div className={styles.fields_box}>
-          <Input
-            labelText="Email"
-            placeholder="Enter email"
-            type="email"
+          <Controller
             name="email"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-            onChange={(e) => setEmail(e.target.value)}
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                labelText="Email"
+                placeholder="Enter email"
+                type="email"
+                name="email"
+                background="#0F172B"
+                border="1px solid #314158"
+                padding="9.5px 12px"
+                borderRadius="8px"
+                textStyle={{
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.15px',
+                  fontWeight: '400',
+                }}
+              />
+            )}
           />
+          {errors.email && <p className={styles.errorBlock_text}>{errors.email.message}</p>}
         </div>
         <div className={styles.fields_box}>
-          <Input
-            labelText="Password"
-            placeholder="Enter password"
-            type="password"
+          <Controller
             name="password"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-            onChange={(e) => setPassword(e.target.value)}
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                labelText="Password"
+                placeholder="Enter password"
+                type="password"
+                name="password"
+                background="#0F172B"
+                border="1px solid #314158"
+                padding="9.5px 12px"
+                borderRadius="8px"
+                textStyle={{
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.15px',
+                  fontWeight: '400',
+                }}
+              />
+            )}
           />
+          {errors.password && <p className={styles.errorBlock_text}>{errors.password.message}</p>}
         </div>
       </div>
       {errorMessage ? (
@@ -90,7 +113,7 @@ export default function SignInForm() {
         height="36px"
         background={GRADIENTS.greenToBlue}
         type="submit"
-        onClick={handleSubmit}
+        onClick={handleSubmit(onSubmit)}
       />
       <div className={styles.lower}>
         <a href={ROUTES.SIGNUP} className={styles.lower_link}>

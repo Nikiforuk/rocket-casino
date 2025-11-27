@@ -18,7 +18,6 @@ export const useSignIn = () => {
 
     try {
       const result = await loginUser(email, password);
-
       if (result.success && result.data) {
         setUser({
           email,
@@ -34,6 +33,5 @@ export const useSignIn = () => {
       setLoading(false);
     }
   };
-
   return { errorMessage, loading, handleSignIn };
 };

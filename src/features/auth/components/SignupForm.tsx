@@ -1,30 +1,39 @@
-import { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm, Controller } from 'react-hook-form';
 
 import styles from './Auth.module.scss';
 import { ROUTES } from '../../../app/routes';
 import rocketIcon from '../../../assets/icons/rocket.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
+import type { SignUpFormData } from '../../../shared/types/auth';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
 import { useAuthSession } from '../hooks/useAuthSession';
-import { useSignUp } from '../hooks/useSignup';
+import { useSignUp } from '../hooks/useSignUp';
+import { signUpSchema } from '../schemas/signUpSchema';
 
 export default function SignUpForm() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   useAuthSession();
-
   const { loading, errorMessage, handleSignUp } = useSignUp();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSignUp(username, email, password);
+  const onSubmit = (data: SignUpFormData) => {
+    handleSignUp(data.username, data.email, data.password);
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
       <div className={styles.gradientBlock}>
         <img className={styles.gradientBlock_logo} src={rocketIcon} alt="logo-image" />
       </div>
@@ -34,70 +43,88 @@ export default function SignUpForm() {
       </div>
       <div className={styles.fields}>
         <div className={styles.fields_box}>
-          <Input
-            labelText="Username"
-            placeholder="Enter username"
-            type="text"
+          <Controller
             name="username"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-            onChange={(e) => setUsername(e.target.value)}
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                labelText="Username"
+                placeholder="Enter username"
+                type="text"
+                background="#0F172B"
+                border="1px solid #314158"
+                padding="9.5px 12px"
+                borderRadius="8px"
+                textStyle={{
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.15px',
+                  fontWeight: '400',
+                }}
+              />
+            )}
           />
+          {errors.username && <p className={styles.errorBlock_text}>{errors.username.message}</p>}
         </div>
         <div className={styles.fields_box}>
-          <Input
-            labelText="Email"
-            placeholder="Enter email"
-            type="email"
+          <Controller
             name="email"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-            onChange={(e) => setEmail(e.target.value)}
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                labelText="Email"
+                placeholder="Enter email"
+                type="email"
+                background="#0F172B"
+                border="1px solid #314158"
+                padding="9.5px 12px"
+                borderRadius="8px"
+                textStyle={{
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.15px',
+                  fontWeight: '400',
+                }}
+              />
+            )}
           />
+          {errors.email && <p className={styles.errorBlock_text}>{errors.email.message}</p>}
         </div>
         <div className={styles.fields_box}>
-          <Input
-            labelText="Password"
-            placeholder="Enter password"
-            type="password"
+          <Controller
             name="password"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-            onChange={(e) => setPassword(e.target.value)}
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                labelText="Password"
+                placeholder="Enter password"
+                type="password"
+                background="#0F172B"
+                border="1px solid #314158"
+                padding="9.5px 12px"
+                borderRadius="8px"
+                textStyle={{
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.15px',
+                  fontWeight: '400',
+                }}
+              />
+            )}
           />
+          {errors.password && <p className={styles.errorBlock_text}>{errors.password.message}</p>}
         </div>
       </div>
-      {errorMessage ? (
+      {errorMessage && (
         <div className={styles.errorBlock}>
           <p className={styles.errorBlock_text}>{errorMessage}</p>
         </div>
-      ) : null}
+      )}
       <Button
-        icon={true}
+        icon
         text={loading ? 'Loading...' : 'Sign Up'}
         textStyle={{
           fontWeight: 500,
@@ -110,8 +137,8 @@ export default function SignUpForm() {
         height="36px"
         background={GRADIENTS.greenToBlue}
         type="submit"
-        onClick={handleSubmit}
       />
+
       <div className={styles.lower}>
         <a href={ROUTES.SIGNIN} className={styles.lower_link}>
           Already have an account? Login
