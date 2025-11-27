@@ -1,10 +1,10 @@
-import styles from './Login.module.scss';
+import styles from './Auth.module.scss';
 import rocketIcon from '../../../assets/icons/rocket.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
 
-export default function Login() {
+export default function SigninForm() {
   return (
     <form className={styles.container}>
       <div className={styles.gradientBlock}>
@@ -15,24 +15,6 @@ export default function Login() {
         <p className={styles.top_text}>Welcome back!</p>
       </div>
       <div className={styles.fields}>
-        <div className={styles.fields_box}>
-          <Input
-            labelText="Username"
-            placeholder="Enter username"
-            type="text"
-            name="username"
-            background="#0F172B"
-            border="1px solid #314158"
-            padding="9.5px 12px"
-            borderRadius="8px"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '100%',
-              letterSpacing: '-0.15px',
-              fontWeight: '400',
-            }}
-          />
-        </div>
         <div className={styles.fields_box}>
           <Input
             labelText="Email"
