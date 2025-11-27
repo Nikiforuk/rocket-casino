@@ -59,6 +59,7 @@
 
   --twilight-veil: rgba(15, 23, 43, 0.5);
   --emerald-mist: rgba(0, 188, 125, 0.3);
+  --overlay-modal: rgba(0, 0, 0, 0.5);
 }
 
 * {

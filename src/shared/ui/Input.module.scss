@@ -1,0 +1,25 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/extends';
+
+.elements {
+  @include flex($align: center, $justify: flex-start);
+  margin-bottom: 4px;
+  gap: 8px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.input {
+  width: 100%;
+  
+  &::placeholder {
+    color: var(--placeholder-color, var(--gray-300));
+  }
+}
+
+.label {
+  @extend %i-medium-14-sm;
+}

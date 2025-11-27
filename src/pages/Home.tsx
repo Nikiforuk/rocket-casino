@@ -3,6 +3,7 @@ import BonusSystem from '../features/board/components/BonusSystem';
 import Header from '../features/board/components/Header';
 import RocketGame from '../features/board/components/RocketGame';
 import TabList from '../features/board/components/TabList';
+// import Modal from '../features/modal/components/Modal';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <div className={styles.content}>
           <BonusSystem />
         </div>
+        {/* <Modal />  */}
       </main>
     </>
   );
