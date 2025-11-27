@@ -1,0 +1,56 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/extends';
+
+.container {
+  @include flex($align: center, $justify: space-between);
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--twilight-veil);
+}
+
+.sumGames {
+  @include flex($align: center);
+  gap: 12px;
+
+  &_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_title {
+    @extend %i-regular-16-lg;
+    font-weight: 700;
+  }
+
+  &_sum {
+    @extend %i-medium-12;
+    color: var(--gray-100);
+  }
+
+  &_position {
+    @extend %i-regular-16-lg;
+    color: var(--gray-400);
+  }
+}
+
+.sumWin {
+  display: grid;
+  justify-items: flex-end;
+
+  &_currency {
+    @extend %i-regular-16-lg;
+    font-weight: 700;
+    background: $gradient-blue-to-pink;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &_percents {
+    @extend %i-medium-12;
+    color: var(--gray-200);
+  }
+}

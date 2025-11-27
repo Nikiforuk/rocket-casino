@@ -43,6 +43,7 @@
   --purple-100: #C27AFF;
   --purple-200: #9810FA;
   --purple-300: #59168B;
+  --purple-a10: rgba(173, 70, 255, 0.2);
   --purple-a20: rgba(89, 22, 139, 0.2);
   --purple-a30: rgba(89, 22, 139, 0.3);
 
@@ -70,7 +71,7 @@ html, body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   margin: 0;
   color: var(--white);
 }

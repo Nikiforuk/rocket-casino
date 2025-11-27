@@ -68,3 +68,14 @@ $gradient-overlay-mix: linear-gradient(
   var(--blue-700) 50%,
   var(--purple-a30) 100%
 );
+
+$gradient-purple-to-mint: linear-gradient(
+  var(--overlay-blue-a20),
+  var(--purple-a10)
+);
+
+$gradient-blue-to-pink: linear-gradient(
+  90deg,
+  var(--blue-200) 0%,
+  var(--purple-100) 100%
+);
