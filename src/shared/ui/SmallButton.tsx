@@ -16,6 +16,8 @@ interface SmallButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   border?: string;
   height?: string;
   borderRadius?: string;
+
+  onClick?: () => void;
 }
 
 const iconMap = {

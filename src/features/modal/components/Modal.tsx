@@ -1,12 +1,18 @@
 import styles from './Modal.module.scss';
+import crossIcon from '../../../assets/icons/cross.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
+import { useBoardStore } from '../../board/boardStore';
 
 export default function Modal() {
+  const { setIsModal } = useBoardStore();
   return (
-    <div className={styles.overlay}>
-      <div className={styles.container}>
+    <div onClick={() => setIsModal(false)} className={styles.overlay}>
+      <div onClick={(e) => e.stopPropagation()} className={styles.container}>
+        <button onClick={() => setIsModal(false)} className={styles.closeBtn}>
+          <img src={crossIcon} className={styles.closeBtn_icon} alt="cross-icon" />
+        </button>
         <div className={styles.top}>
           <h6 className={styles.top_title}>Profile Settings</h6>
           <p className={styles.top_subtitle}>Customize your profile and manage your account</p>

@@ -4,11 +4,13 @@ import { GRADIENTS } from '../../../shared/styles/gradients';
 import SmallButton from '../../../shared/ui/SmallButton';
 import { useAuthStore } from '../../auth/authStore';
 import { useSignOut } from '../../auth/hooks/useSignOut';
+import { useBoardStore } from '../boardStore';
 
 export default function Header() {
   const handleSignOut = useSignOut();
-  const { session } = useAuthStore();
-  const username = session?.user?.user_metadata?.username;
+  const username = useAuthStore((state) => state.getUsername());
+  const { setIsModal } = useBoardStore();
+
   return (
     <header className={styles.container}>
       <div className={styles.content}>
@@ -45,6 +47,7 @@ export default function Header() {
             height="36px"
             widthIcon="16px"
             heightIcon="16px"
+            onClick={() => setIsModal(true)}
           />
           <SmallButton
             text="Logout"

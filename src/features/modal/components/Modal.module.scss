@@ -89,3 +89,19 @@
   @include flex($align: center, $justify: center);
   gap: 12px;
 }
+
+.closeBtn {
+  border: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  
+  
+  &_icon {
+    width: 20px;
+    height: 20px;
+  }
+}

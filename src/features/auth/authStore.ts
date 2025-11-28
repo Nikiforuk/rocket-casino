@@ -12,16 +12,18 @@ interface AuthState {
   session: Session | null;
   setUser: (user: User | null) => void;
   setSession: (session: Session | null) => void;
+  getUsername: () => string | null;
   clearUser: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: null,
       session: null,
       setUser: (user) => set({ user }),
       setSession: (session) => set({ session }),
+      getUsername: () => get().session?.user?.user_metadata?.username ?? null,
       clearUser: () => set({ user: null, session: null }),
     }),
     {
