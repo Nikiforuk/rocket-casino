@@ -24,6 +24,7 @@ export const useSignUp = () => {
           username,
           email,
         });
+
         navigate(ROUTES.HOME);
       } else if (result.error) {
         setErrorMessage(result.error.message);

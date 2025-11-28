@@ -2,10 +2,13 @@ import styles from './Header.module.scss';
 import gobletIcon from '../../../assets/icons/goblet-white.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import SmallButton from '../../../shared/ui/SmallButton';
+import { useAuthStore } from '../../auth/authStore';
 import { useSignOut } from '../../auth/hooks/useSignOut';
 
 export default function Header() {
   const handleSignOut = useSignOut();
+  const { session } = useAuthStore();
+  const username = session?.user?.user_metadata?.username;
   return (
     <header className={styles.container}>
       <div className={styles.content}>
@@ -13,7 +16,7 @@ export default function Header() {
           <div className={styles.gradientBlock}>
             <img src={gobletIcon} className={styles.gradientBlock_icon} alt="goblet-white" />
           </div>
-          <p className={styles.leftBlock_text}>Rocket Casino</p>
+          <p className={styles.leftBlock_text}>{username}</p>
         </div>
         <div className={styles.rightBlock}>
           <SmallButton

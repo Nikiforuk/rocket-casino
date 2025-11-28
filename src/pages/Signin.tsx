@@ -1,7 +1,7 @@
 import styles from './Auth.module.scss';
-import SignInForm from '../features/auth/components/SigninForm';
+import SignInForm from '../features/auth/components/SignInForm';
 
-export default function Signin() {
+export default function SignIn() {
   return (
     <div className={styles.container}>
       <SignInForm />

@@ -2,8 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import { PrivateRoute } from './features/auth/components/PrivateRoute';
 import Home from './pages/Home';
-import Signin from './pages/Signin';
-import SignUp from './pages/Signup';
+import Signin from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 export default function App() {
   return (
