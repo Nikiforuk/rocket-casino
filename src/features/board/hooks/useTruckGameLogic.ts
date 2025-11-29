@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useToast } from '../../../features/toast/useToast';
 import { useBet } from './useBet';
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
 import { generateCrashAt } from '../utils/generateCrashAt';
@@ -8,6 +9,7 @@ type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
 
 export const useTruckGameLogic = () => {
   const { startBet, cashOut, loading: isBetting } = useBet();
+  const { showError } = useToast();
   const [gameState, setGameState] = useState<GameState>('idle');
   const [currentMultiplier, setCurrentMultiplier] = useState(1.0);
   const [intervalId, setIntervalId] = useState<number | null>(null);
@@ -18,7 +20,7 @@ export const useTruckGameLogic = () => {
   const handleStartBet = async (amount: number) => {
     const result = await startBet(amount);
     if (!result.success) {
-      alert(result.error ?? 'Something went wrong');
+      showError(result.error ?? 'Something went wrong');
       return false;
     }
 
@@ -56,7 +58,7 @@ export const useTruckGameLogic = () => {
     const profit = totalPayout - betAmount;
     const result = await cashOut(profit);
     if (!result.success) {
-      alert(result.error ?? 'Something went wrong');
+      showError(result.error ?? 'Something went wrong');
       return false;
     }
     setGameState('escaped');

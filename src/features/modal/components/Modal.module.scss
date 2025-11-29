@@ -21,20 +21,42 @@
   padding: 24px;
   max-width: 500px;
   width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    width: 95%;
+    max-height: 85vh;
+  }
 }
 
 .top {
   margin-bottom: 32px;
 
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
+
   &_title {
     @extend %i-semi-bold-18;
     margin-bottom: 8px;
     font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &_subtitle {
     @extend %i-regular-14-lg;
     color: var(--gray-200);
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      line-height: 18px;
+    }
   }
 }
 
@@ -45,9 +67,18 @@
 .infoBlock {
   margin-bottom: 24px;
 
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
+
   &_text {
     @extend %i-regular-10;
     color: var(--gray-200);
+
+    @media (max-width: 768px) {
+      font-size: 9px;
+      line-height: 12px;
+    }
   }
 }
 
@@ -59,16 +90,32 @@
   padding: 16px;
   gap: 16.5px;
 
+  @media (max-width: 768px) {
+    padding: 12px;
+    gap: 12px;
+  }
+
   &_title {
     @extend %i-regular-16;
     color: var(--gray-100);
     margin-bottom: 8.5px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
   }
 }
 
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 
   &_column {
     display: grid;
@@ -77,10 +124,20 @@
     &_firstText {
       @extend %i-regular-16;
       color: var(--gray-200);
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
 
     &_secondText {
       @extend %i-regular-16;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
 }
@@ -88,6 +145,11 @@
 .groupButtons {
   @include flex($align: center, $justify: center);
   gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    flex-direction: column;
+  }
 }
 
 .closeBtn {
@@ -98,10 +160,22 @@
   width: 30px;
   height: 30px;
   background: transparent;
-  
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+  }
   
   &_icon {
     width: 20px;
     height: 20px;
+
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

@@ -5,11 +5,21 @@
   @include flex($align: center, $justify: flex-start);
   margin-bottom: 4px;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    gap: 6px;
+    margin-bottom: 3px;
+  }
 }
 
 .icon {
   width: 16px;
   height: 16px;
+
+  @media (max-width: 768px) {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .input {
@@ -22,4 +32,9 @@
 
 .label {
   @extend %i-medium-14-sm;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }

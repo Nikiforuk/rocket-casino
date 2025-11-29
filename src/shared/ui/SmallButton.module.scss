@@ -3,4 +3,8 @@
 .button {
   @include flex($align: center, $justify: center);
   gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 }

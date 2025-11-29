@@ -10,4 +10,12 @@
   gap: 12.5px;
   max-width: 653px;
   margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    padding: 4px;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    flex-wrap: wrap;
+  }
 }

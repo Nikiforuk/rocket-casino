@@ -33,7 +33,7 @@ export default function Header() {
             background={GRADIENTS.overlayMix}
             border="1px solid rgba(0, 122, 85, 0.5)"
             borderRadius="10px"
-            width="135px"
+            width="140px"
             height="42px"
             widthIcon="16px"
             heightIcon="16px"

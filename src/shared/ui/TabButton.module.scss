@@ -11,6 +11,14 @@
   border: none;
   border-radius: 14px;
   color: inherit;
+
+  @media (max-width: 768px) {
+    height: 26px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 14px;
+    padding: 0 8px;
+  }
 }
 
 .icon {

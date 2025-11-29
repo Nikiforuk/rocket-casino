@@ -5,4 +5,23 @@
   gap: 24px;
   max-width: 1000px;
   width: 100%;
+  padding: 0px 16px 16px 0px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 653px;
+    gap: 24px;
+  }
+}
+
+.content {
+  flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 653px;
+    align-items: center;
+  }
 }

@@ -8,36 +8,70 @@
   padding: 12px;
   border-radius: 10px;
   background: var(--twilight-veil);
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 }
 
 .sumGames {
   @include flex($align: center);
   gap: 12px;
 
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+
   &_icon {
     width: 20px;
     height: 20px;
+
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &_title {
     @extend %i-regular-16-lg;
     font-weight: 700;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 
   &_sum {
     @extend %i-medium-12;
     color: var(--gray-100);
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 14px;
+    }
   }
 
   &_position {
     @extend %i-regular-16-lg;
     color: var(--gray-400);
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 }
 
 .sumWin {
   display: grid;
   justify-items: flex-end;
+
+  @media (max-width: 768px) {
+    justify-items: flex-start;
+  }
 
   &_currency {
     @extend %i-regular-16-lg;
@@ -47,10 +81,20 @@
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 
   &_percents {
     @extend %i-medium-12;
     color: var(--gray-200);
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 14px;
+    }
   }
 }
