@@ -1,13 +1,17 @@
 import styles from './TabButton.module.scss';
 
 interface TabButtonProps {
+  icon?: string;
   text?: string;
 }
 
-export default function TabButton({ text }: TabButtonProps) {
+export default function TabButton({ icon, text }: TabButtonProps) {
   return (
     <>
-      <button className={styles.button}>{text}</button>
+      <button className={styles.button}>
+        {icon && <img className={styles.icon} src={icon} alt="tab-icon" />}
+        {text}
+      </button>
     </>
   );
 }

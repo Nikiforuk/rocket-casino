@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { PrivateRoute } from './features/auth/components/PrivateRoute';
-import Home from './pages/Home';
+import Board from './pages/Board';
 import Signin from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
@@ -14,7 +14,7 @@ export default function App() {
         path="/"
         element={
           <PrivateRoute>
-            <Home />
+            <Board />
           </PrivateRoute>
         }
       />

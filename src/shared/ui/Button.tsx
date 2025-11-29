@@ -5,7 +5,7 @@ import loginIcon from '../../assets/icons/login-white.svg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
-  textStyle?: CSSProperties; // додаємо можливість стилізувати текст
+  textStyle?: CSSProperties;
   icon?: boolean;
   background?: string;
   border?: string;

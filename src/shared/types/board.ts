@@ -1,3 +1,3 @@
-export interface RocketGameData {
+export interface TruckGameData {
   amount: string;
 }

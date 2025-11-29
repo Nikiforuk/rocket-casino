@@ -1,20 +1,16 @@
-import { useEffect } from 'react';
-
-import styles from './Home.module.scss';
+import styles from './Board.module.scss';
 import { useBoardStore } from '../features/board/boardStore';
 import BonusSystem from '../features/board/components/BonusSystem';
 import Header from '../features/board/components/Header';
 import Leaderboard from '../features/board/components/Leaderboard';
 import TabList from '../features/board/components/TabList';
 import TruckGame from '../features/board/components/TruckGame';
+import { useRefreshBalance } from '../features/board/hooks/useRefreshBalance';
 import Modal from '../features/modal/components/Modal';
 
-export default function Home() {
+export default function Board() {
   const { isModal } = useBoardStore();
-  useEffect(() => {
-    useBoardStore.getState().refreshBalance();
-    console.log('Updated');
-  }, []);
+  useRefreshBalance();
   return (
     <>
       <Header />
