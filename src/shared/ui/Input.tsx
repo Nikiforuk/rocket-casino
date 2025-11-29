@@ -9,9 +9,10 @@ interface InputProps {
   labelText?: string;
   name?: string;
   type?: string;
-  placeholder?: string;
-  value?: string;
+  placeholder?: string | null;
+  value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 
   textStyle?: React.CSSProperties;
   background?: string;
@@ -34,6 +35,7 @@ export default function Input({
   placeholder,
   value,
   onChange,
+  disabled,
   textStyle,
   background,
   padding,
@@ -58,9 +60,10 @@ export default function Input({
         className={`${styles.input} ${className || ''}`}
         name={name}
         type={type}
-        placeholder={placeholder}
+        placeholder={placeholder ? placeholder : ''}
         value={value}
         onChange={onChange}
+        disabled={disabled}
         style={{
           background,
           padding,

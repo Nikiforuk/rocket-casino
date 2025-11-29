@@ -9,8 +9,7 @@ import { useBoardStore } from '../boardStore';
 export default function Header() {
   const handleSignOut = useSignOut();
   const username = useAuthStore((state) => state.getUsername());
-  const { setIsModal } = useBoardStore();
-
+  const { balance, setIsModal } = useBoardStore();
   return (
     <header className={styles.container}>
       <div className={styles.content}>
@@ -22,7 +21,7 @@ export default function Header() {
         </div>
         <div className={styles.rightBlock}>
           <SmallButton
-            text="$1007.34"
+            text={`$${balance.toFixed(2)}`}
             textStyle={{
               color: 'white',
               fontWeight: 700,

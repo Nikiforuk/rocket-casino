@@ -22,14 +22,13 @@ export const useSignIn = () => {
         setUser({
           email,
         });
-
         navigate(ROUTES.HOME);
       } else if (result.error) {
         setErrorMessage(result.error.message);
       }
     } catch (err) {
-      console.log(err);
       setErrorMessage('Unexpected error occurred');
+      throw err;
     } finally {
       setLoading(false);
     }

@@ -3,10 +3,12 @@ import crossIcon from '../../../assets/icons/cross.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
+import { useAuthStore } from '../../auth/authStore';
 import { useBoardStore } from '../../board/boardStore';
 
 export default function Modal() {
-  const { setIsModal } = useBoardStore();
+  const username = useAuthStore((state) => state.getUsername());
+  const { balance, setIsModal } = useBoardStore();
   return (
     <div onClick={() => setIsModal(false)} className={styles.overlay}>
       <div onClick={(e) => e.stopPropagation()} className={styles.container}>
@@ -21,9 +23,9 @@ export default function Modal() {
           <Input
             icon={true}
             labelText="Username"
-            placeholder="test"
+            placeholder={`Your name: ${username}`}
             type="text"
-            name="test"
+            name="username"
             background="#1D293D"
             border="1px solid #314158"
             padding="9.5px 12px"
@@ -44,7 +46,7 @@ export default function Modal() {
             <div className={styles.row}>
               <div className={styles.row_column}>
                 <p className={styles.row_column_firstText}>Balance</p>
-                <p className={styles.row_column_secondText}>$1025.54</p>
+                <p className={styles.row_column_secondText}>${balance.toFixed(2)}</p>
               </div>
               <div className={styles.row_column}>
                 <p className={styles.row_column_firstText}>Games Played</p>

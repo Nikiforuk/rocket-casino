@@ -18,24 +18,21 @@ export const useSignUp = () => {
 
     try {
       const result = await signupUser(username, email, password);
-
       if (result.success && result.data) {
         setUser({
           username,
           email,
         });
-
         navigate(ROUTES.HOME);
       } else if (result.error) {
         setErrorMessage(result.error.message);
       }
     } catch (err) {
-      console.log(err);
       setErrorMessage('Unexpected error occurred');
+      throw err;
     } finally {
       setLoading(false);
     }
   };
-
   return { loading, errorMessage, handleSignUp };
 };

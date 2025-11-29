@@ -14,7 +14,7 @@ export const useSignOut = () => {
       setSession(null);
       navigate(ROUTES.SIGNIN);
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   };
 
