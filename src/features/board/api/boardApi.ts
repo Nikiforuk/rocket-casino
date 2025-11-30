@@ -58,3 +58,20 @@ export const resetProfile = async () => {
   const { error } = await supabase.rpc('reset_profile');
   if (error) throw error;
 };
+
+export const getLeaderboard = async () => {
+  const { data, error } = await supabase.rpc('get_leaderboard');
+
+  if (error) {
+    console.error('Leaderboard query error:', error);
+    throw error;
+  }
+
+  return (data || []) as Array<{
+    id: string;
+    username: string | null;
+    games_played: number;
+    total_won: number;
+    total_wagered: number;
+  }>;
+};

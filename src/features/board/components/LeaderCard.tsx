@@ -1,27 +1,36 @@
 import styles from './LeaderCard.module.scss';
 
 interface LeaderCardProps {
-  icon?: string;
-  title?: string;
-  sum?: string;
-  currency?: string;
-  persents?: string;
+  rank: number;
+  username: string;
+  gamesPlayed: number;
+  totalWon: number;
+  winPercentage: number;
+  isCurrentUser: boolean;
+  isTopPlayer: boolean;
+  isWinner: boolean;
 }
 
-export default function LeaderCard({ icon, title, sum, currency, persents }: LeaderCardProps) {
+export default function LeaderCard({
+  rank,
+  username,
+  gamesPlayed,
+  totalWon,
+  winPercentage,
+  isCurrentUser,
+}: LeaderCardProps) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isCurrentUser ? styles.container_highlighted : ''}`}>
       <div className={styles.sumGames}>
-        <img src={icon} className={styles.sumGames_icon} alt="position-icon" />
-        {/* <p className={styles.sumGames_position}>#4</p> */}
+        <p className={styles.sumGames_position}>#{rank}</p>
         <div>
-          <h3 className={styles.sumGames_title}>{title}</h3>
-          <p className={styles.sumGames_sum}>{sum}</p>
+          <h3 className={styles.sumGames_title}>{username}</h3>
+          <p className={styles.sumGames_sum}>{gamesPlayed} games</p>
         </div>
       </div>
       <div className={styles.sumWin}>
-        <b className={styles.sumWin_currency}>{currency}</b>
-        <p className={styles.sumWin_percents}>{persents} win</p>
+        <b className={styles.sumWin_currency}>${totalWon.toFixed(2)}</b>
+        <p className={styles.sumWin_percents}>{winPercentage}% win</p>
       </div>
     </div>
   );

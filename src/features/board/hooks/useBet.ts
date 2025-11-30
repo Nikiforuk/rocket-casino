@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 import { spendBalance, addWager, addWin, getProfile } from '../api/boardApi';
 import { useBoardStore } from '../boardStore';
+import { useLeaderboardStore } from '../leaderboardStore';
 
 export const useBet = () => {
   const [loading, setLoading] = useState(false);
   const { setBalance, setGamesPlayed, setTotalWon, setTotalWagered } = useBoardStore();
+  const fetchLeaderboard = useLeaderboardStore((state) => state.fetchLeaderboard);
 
   const startBet = async (amount: number) => {
     const balance = useBoardStore.getState().balance;
@@ -33,6 +35,8 @@ export const useBet = () => {
       setBalance((prev) => prev - amount);
       await addWager(amount);
 
+      await fetchLeaderboard();
+
       return { success: true };
     } catch (e) {
       await useBoardStore.getState().refreshProfile();
@@ -45,7 +49,13 @@ export const useBet = () => {
   const cashOut = async (profit: number) => {
     try {
       await addWin(profit);
+      const profile = await getProfile();
+      setGamesPlayed(profile.games_played);
+      setTotalWagered(profile.total_wagered);
+      setTotalWon(profile.total_won);
       setBalance((prev) => prev + profit);
+
+      await fetchLeaderboard();
 
       return { success: true };
     } catch (e) {

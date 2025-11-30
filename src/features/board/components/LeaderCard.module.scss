@@ -8,11 +8,17 @@
   padding: 12px;
   border-radius: 10px;
   background: var(--twilight-veil);
+  border: 1px solid transparent;
 
   @media (max-width: 768px) {
     padding: 10px;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  &_highlighted {
+    background:$gradient-screen-overlay;
+    border: 1px solid var(--blue-300);
   }
 }
 

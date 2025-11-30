@@ -1,10 +1,11 @@
 import styles from './Leaderboard.module.scss';
 import LeaderCard from './LeaderCard';
 import gobletIcon from '../../../assets/icons/goblet-gradient.svg';
-import medalIcon from '../../../assets/icons/medal.svg';
+import { useLeaderboard } from '../hooks/useLeaderboard';
 
 export default function Leaderboard() {
-  const players = [1, 2, 3];
+  const { players, currentUserRank } = useLeaderboard();
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -17,20 +18,29 @@ export default function Leaderboard() {
         </div>
       </div>
       <div className={styles.players}>
-        {players.map((_, i) => (
-          <LeaderCard
-            key={i}
-            icon={medalIcon}
-            title="RocketKing"
-            sum="250 games"
-            currency="$5000"
-            persents="53%"
-          />
-        ))}
+        {players.length > 0 ? (
+          players.map((player) => (
+            <LeaderCard
+              key={player.id}
+              rank={player.rank}
+              username={player.username}
+              gamesPlayed={player.gamesPlayed}
+              totalWon={player.totalWon}
+              winPercentage={player.winPercentage}
+              isCurrentUser={player.isCurrentUser}
+              isTopPlayer={player.rank <= 3}
+              isWinner={player.isWinner}
+            />
+          ))
+        ) : (
+          <p style={{ color: 'var(--gray-200)', textAlign: 'center' }}>No players yet</p>
+        )}
       </div>
       <div className={styles.line} />
       <div className={styles.rank}>
-        <p className={styles.rank_text}>Your rank: #1</p>
+        <p className={styles.rank_text}>
+          Your rank: {currentUserRank ? `#${currentUserRank}` : 'N/A'}
+        </p>
       </div>
     </div>
   );
