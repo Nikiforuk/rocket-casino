@@ -4,7 +4,7 @@
   @include flex($align: center, $justify: flex-start);
   width: 100%;
   border: 1px solid var(--blue-600);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 4.5px;
   background: var(--overlay-dark-a50);
   gap: 12.5px;
@@ -15,7 +15,6 @@
     padding: 4px;
     gap: 8px;
     margin-bottom: 16px;
-    border-radius: 14px;
     flex-wrap: wrap;
   }
 }

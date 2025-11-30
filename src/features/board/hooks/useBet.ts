@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { spendBalance, addWager, addWin } from '../api/boardApi';
+import { spendBalance, addWager, addWin, getProfile } from '../api/boardApi';
 import { useBoardStore } from '../boardStore';
 
 export const useBet = () => {
   const [loading, setLoading] = useState(false);
-  const { setBalance } = useBoardStore();
+  const { setBalance, setGamesPlayed, setTotalWon, setTotalWagered } = useBoardStore();
 
   const startBet = async (amount: number) => {
     const balance = useBoardStore.getState().balance;
@@ -26,12 +26,16 @@ export const useBet = () => {
         return { success: false, error: 'Not enough balance' };
       }
 
+      const profile = await getProfile();
+      setGamesPlayed(profile.games_played);
+      setTotalWagered(profile.total_wagered);
+      setTotalWon(profile.total_won);
       setBalance((prev) => prev - amount);
       await addWager(amount);
 
       return { success: true };
     } catch (e) {
-      await useBoardStore.getState().refreshBalance();
+      await useBoardStore.getState().refreshProfile();
       return { success: false, error: e instanceof Error ? e.message : 'Unknown error' };
     } finally {
       setLoading(false);
@@ -45,7 +49,7 @@ export const useBet = () => {
 
       return { success: true };
     } catch (e) {
-      await useBoardStore.getState().refreshBalance();
+      await useBoardStore.getState().refreshProfile();
       return { success: false, error: e instanceof Error ? e.message : 'Unknown error' };
     }
   };

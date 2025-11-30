@@ -3,8 +3,11 @@ import presentIcon from '../../../assets/icons/present.svg';
 import timeIcon from '../../../assets/icons/time.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
+import { useBonusSystem } from '../hooks/useBonusSystem';
 
 export default function BonusSystem() {
+  const { formattedTime, canClaim, claimBonus, isClaiming } = useBonusSystem();
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -21,7 +24,7 @@ export default function BonusSystem() {
           <p className={styles.rows_name}>Next claim:</p>
           <div className={styles.rows_box}>
             <img className={styles.rows_box_icon} src={timeIcon} alt="time-icon" />
-            <p className={styles.rows_box_time}>0:53</p>
+            <p className={styles.rows_box_time}>{formattedTime}</p>
           </div>
         </div>
         <div className={styles.rows}>
@@ -34,7 +37,7 @@ export default function BonusSystem() {
         type="button"
         height="36px"
         background={GRADIENTS.greenToGreen}
-        text="Claim Now!"
+        text={isClaiming ? 'Claiming...' : canClaim ? 'Claim Now!' : 'Wait...'}
         borderRadius="8px"
         textStyle={{
           fontSize: '14px',
@@ -43,6 +46,8 @@ export default function BonusSystem() {
           fontWeight: 500,
           color: 'white',
         }}
+        onClick={claimBonus}
+        disabled={!canClaim || isClaiming}
       />
     </div>
   );

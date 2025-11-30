@@ -5,6 +5,7 @@ import { GRADIENTS } from '../../../shared/styles/gradients';
 import type { TruckGameData } from '../../../shared/types/board';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
+import { useAuthStore } from '../../auth/authStore';
 import { useBoardStore } from '../boardStore';
 
 type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
@@ -26,6 +27,7 @@ export default function BetForm({
   onSubmit,
   onReset,
 }: BetFormProps) {
+  const { session } = useAuthStore();
   const { balance } = useBoardStore();
   const { control, handleSubmit, setValue } = useForm<TruckGameData>({
     defaultValues: { amount: '' },
@@ -49,6 +51,7 @@ export default function BetForm({
   const handleFormSubmitWrapper = async (e: React.FormEvent) => {
     e.preventDefault();
     await handleSubmit(handleFormSubmit)();
+    console.log(session);
   };
 
   return (

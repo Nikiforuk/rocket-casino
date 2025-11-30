@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 import { useBoardStore } from '../boardStore';
 
-export const useRefreshBalance = () => {
+export const useRefreshProfile = () => {
   useEffect(() => {
-    useBoardStore.getState().refreshBalance();
+    useBoardStore.getState().refreshProfile();
   }, []);
 };

@@ -64,7 +64,23 @@
   margin-bottom: 8px;
 }
 
+.errorBlock {
+  @include flex($align: center, $justify: flex-start);
+  border-radius: 10px;
+  border: 1px solid var(--red-a50);
+  background: var(--red-a20);
+  padding: 12.5px;
+  margin-bottom: 16px;
+
+  &_text {
+    @extend %i-regular-14-lg;
+    color: var(--red-100);
+    margin-top: 4px;
+  }
+}
+
 .infoBlock {
+  margin-top: 9px;
   margin-bottom: 24px;
 
   @media (max-width: 768px) {

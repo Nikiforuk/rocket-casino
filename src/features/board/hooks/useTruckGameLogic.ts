@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { useToast } from '../../../features/toast/useToast';
 import { useBet } from './useBet';
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
+import { useToast } from '../../../features/toast/useToast';
 import { generateCrashAt } from '../utils/generateCrashAt';
 
 type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';

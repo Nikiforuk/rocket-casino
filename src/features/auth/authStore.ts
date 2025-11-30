@@ -13,6 +13,7 @@ interface AuthState {
   setUser: (user: User | null) => void;
   setSession: (session: Session | null) => void;
   getUsername: () => string | null;
+  updateUsername: (username: string) => void;
   clearUser: () => void;
 }
 
@@ -23,7 +24,35 @@ export const useAuthStore = create<AuthState>()(
       session: null,
       setUser: (user) => set({ user }),
       setSession: (session) => set({ session }),
-      getUsername: () => get().session?.user?.user_metadata?.username ?? null,
+      getUsername: () => {
+        const session = get().session;
+        if (session?.user?.user_metadata?.username) {
+          return session.user.user_metadata.username;
+        }
+        return get().user?.username ?? null;
+      },
+      updateUsername: (username: string) => {
+        const currentSession = get().session;
+        const currentUser = get().user;
+
+        if (currentSession) {
+          const updatedSession = {
+            ...currentSession,
+            user: {
+              ...currentSession.user,
+              user_metadata: {
+                ...currentSession.user.user_metadata,
+                username,
+              },
+            },
+          };
+          set({ session: updatedSession });
+        }
+
+        if (currentUser) {
+          set({ user: { ...currentUser, username } });
+        }
+      },
       clearUser: () => set({ user: null, session: null }),
     }),
     {
