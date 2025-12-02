@@ -1,6 +1,6 @@
 import BetForm from './BetForm';
-import GameScreen from './GameScreen';
 import styles from './TruckGame.module.scss';
+import TruckScreen from './TruckScreen';
 import { useTruckGameLogic } from '../hooks/useTruckGameLogic';
 
 export default function TruckGame() {
@@ -25,7 +25,11 @@ export default function TruckGame() {
 
   return (
     <div className={styles.container}>
-      <GameScreen gameState={gameState} currentMultiplier={currentMultiplier} isActive={isActive} />
+      <TruckScreen
+        gameState={gameState}
+        currentMultiplier={currentMultiplier}
+        isActive={isActive}
+      />
       <BetForm
         gameState={gameState}
         isBetting={isBetting}

@@ -10,7 +10,7 @@ export default function TabButton({ icon, text }: TabButtonProps) {
     <>
       <button className={styles.button}>
         {icon && <img className={styles.icon} src={icon} alt="tab-icon" />}
-        {text}
+        <p className={styles.text}>{text}</p>
       </button>
     </>
   );

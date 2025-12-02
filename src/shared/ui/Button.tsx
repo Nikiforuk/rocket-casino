@@ -1,12 +1,13 @@
 import type { ButtonHTMLAttributes, CSSProperties } from 'react';
 
 import styles from './Button.module.scss';
+import boxIcon from '../../assets/icons/box.svg';
 import loginIcon from '../../assets/icons/login-white.svg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
   textStyle?: CSSProperties;
-  icon?: boolean;
+  icon?: 'login' | 'case';
   background?: string;
   border?: string;
   height?: string;
@@ -33,7 +34,8 @@ export default function Button({
       style={{ background, border, borderRadius, height }}
       {...props}
     >
-      {icon && <img src={loginIcon} className={styles.icon} alt="auth-icon" />}
+      {icon === 'login' && <img src={loginIcon} className={styles.icon} alt="auth-icon" />}
+      {icon === 'case' && <img src={boxIcon} className={styles.icon} alt="auth-icon" />}
       {text && <p style={textStyle}>{text}</p>}
     </button>
   );

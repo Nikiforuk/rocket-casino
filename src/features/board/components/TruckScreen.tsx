@@ -8,13 +8,13 @@ import winImg from '../../../assets/images/win.png';
 
 type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
 
-interface GameScreenProps {
+interface TruckScreenProps {
   gameState: GameState;
   currentMultiplier: number;
   isActive: boolean;
 }
 
-export default function GameScreen({ gameState, currentMultiplier, isActive }: GameScreenProps) {
+export default function TruckScreen({ gameState, currentMultiplier, isActive }: TruckScreenProps) {
   return (
     <>
       {(gameState === 'escaped' || gameState === 'crashed') && (

@@ -1,5 +1,6 @@
 @import '../../../shared/styles/mixins';
 @import '../../../shared/styles/extends';
+@import '../../../shared/styles/variables';
 
 .container {
   width: 100%;
@@ -37,7 +38,7 @@
   overflow: hidden;
 
   &_idle {
-    background: linear-gradient(135deg, rgba(15, 23, 43, 0.6) 0%, rgba(28, 57, 142, 0.3) 100%);
+    background: $gradient-darkBlueDeepPurple;
   }
 
   &_crashed {

@@ -1,0 +1,114 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/extends';
+@import '../../../shared/styles/variables';
+
+.container {
+  width: 100%;
+  border: 1px solid var(--blue-600);
+  border-radius: 14px;
+  padding: 24px;
+  background: var(--overlay-dark-a50);
+  max-width: 653px;
+}
+
+.title {
+  @extend %i-regular-16-lg;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.groupButtons {
+  @include flex($align: center, $justify: space-between);
+  margin-bottom: 24px;
+}
+
+.screen {
+  @include flex($align: center, $justify: center, $direction: column);
+  border: 2px solid var(--purple-450);
+  border-radius: 14px;
+  background: $gradient-darkBlueDeepPurple;
+  background-clip: padding-box;
+  height: 248px;
+  margin-bottom: 26px;
+  
+  &_img {
+    width: 64px;
+    width: 64px;
+    margin-bottom: 16px;
+  }
+
+  &_text {
+    @extend %i-medium-16;
+    font-weight: 400;
+    color: var(--gray-400);
+  }
+}
+
+.openBlock {
+  margin-bottom: 24px;
+}
+
+.emojis {
+  margin-bottom: 24px;
+  gap: 8px;
+
+  &_items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    flex-wrap: wrap
+  }
+
+  &_title {
+    @extend %i-bold-16;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+}
+
+.rarityGuide {
+  @extend %i-medium-16;
+  font-weight: 700;
+  border: 1px solid var(--overlay-gray-a60);
+  border-radius: 10px;
+  padding: 17px;
+  background: var(--twilight-veil);
+  margin-bottom: 12px;
+
+  &_net {
+    display: grid;
+    justify-items: flex-start;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr;
+  }
+
+  &_title {
+    @extend %i-bold-16;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  &_column {
+    @include flex($align: center, $justify: flex-start);
+    width: 100%;
+    max-width: 184px;
+    gap: 8px;
+
+    &_circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 20px;
+    }
+
+    &_text {
+      @extend %i-regular-14-lg;
+      color: var(--gray-100);
+    }
+
+    &_percents {
+      @extend %i-regular-14-lg;
+      color: var(--gray-400)
+    }
+  }
+}
+

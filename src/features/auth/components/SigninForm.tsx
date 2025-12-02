@@ -100,7 +100,7 @@ export default function SignInForm() {
         </div>
       ) : null}
       <Button
-        icon={true}
+        icon={'login'}
         text={loading ? 'Loading...' : 'Login'}
         textStyle={{
           fontWeight: 500,

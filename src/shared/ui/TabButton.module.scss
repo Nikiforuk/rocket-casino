@@ -5,7 +5,7 @@
 .button {
   @include flex($align: center, $justify: center);
   @extend %i-medium-14-lg;
-  max-width: 100%;
+  width: 100px;
   height: 29px;
   background: $gradient-blue-to-purple;
   border: none;
@@ -19,6 +19,10 @@
     border-radius: 14px;
     padding: 0 8px;
   }
+}
+
+.text {
+  @extend %i-regular-14-lg;
 }
 
 .icon {
