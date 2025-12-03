@@ -7,47 +7,96 @@ import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import CaseButton from '../../../shared/ui/CaseButton';
 import styles from '../components/CasesGame.module.scss';
+import { useCasesReel } from '../hooks/useCasesReel';
 
 export default function CasesGame() {
-  const handleClick = () => {};
+  const {
+    reelRef,
+    trackRef,
+    activeCase,
+    iCase,
+    isSpinning,
+    trackOffset,
+    winningItem,
+    showSplash,
+    reelItems,
+    handleSelectCase,
+    handleOpen,
+  } = useCasesReel();
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Select a Case</h3>
       <div className={styles.groupButtons}>
-        {cases.map((item) => (
+        {cases.map((item, idx) => (
           <CaseButton
-            onClick={handleClick}
+            onClick={() => handleSelectCase(idx)}
             key={item.id}
             icon={item.icon}
             text={item.name}
             price={item.price}
+            active={idx === iCase}
+            disabled={isSpinning}
           />
         ))}
       </div>
-      <CasesScreen />
+      <CasesScreen
+        showSplash={showSplash}
+        items={reelItems}
+        offset={trackOffset}
+        reelRef={reelRef}
+        trackRef={trackRef}
+      />
+      {winningItem && (
+        <div className={styles.result}>
+          <div className={`${styles.itemBox} ${styles[`rarity_${winningItem.rarity}`]}`}>
+            <span className={styles.itemEmoji}>{winningItem.emoji}</span>
+            <span className={styles.itemLabel}>{winningItem.name}</span>
+            <span className={styles.itemLabel}>{winningItem.price}</span>
+          </div>
+        </div>
+      )}
       <div className={styles.openBlock}>
         <Button
-          border="none"
-          background={GRADIENTS.greenToDarkGreen}
-          height="48px"
-          borderRadius="8px"
           icon={'case'}
-          text="Open Animal Case - $50"
+          border="none"
+          background={isSpinning ? GRADIENTS.casesCommon : GRADIENTS.greenToGreen}
+          height="36px"
+          borderRadius="8px"
+          text={isSpinning ? 'Opening...' : `Open ${activeCase.name} - ${activeCase.price}`}
+          textStyle={{
+            fontSize: '14px',
+            lineHeight: '20px',
+            letterSpacing: '-0.15px',
+          }}
+          onClick={handleOpen}
+          disabled={isSpinning}
         />
       </div>
       <div className={styles.emojis}>
         <h3 className={styles.emojis_title}>Case Contents</h3>
         <div className={styles.emojis_items}>
-          {emojis.map((item) => (
-            <CaseItem
-              key={item.id}
-              id={item.id}
-              emoji={item.emoji}
-              rarity={item.rarity}
-              caseType={item.caseType}
-            />
-          ))}
+          {emojis
+            .filter(
+              (item) =>
+                item.caseType ===
+                (activeCase.name.startsWith('Animal')
+                  ? 'animal'
+                  : activeCase.name.startsWith('Space')
+                    ? 'space'
+                    : activeCase.name.startsWith('Food')
+                      ? 'food'
+                      : 'sports'),
+            )
+            .map((item) => (
+              <CaseItem
+                key={item.id}
+                id={item.id}
+                emoji={item.emoji}
+                rarity={item.rarity}
+                caseType={item.caseType}
+              />
+            ))}
         </div>
       </div>
       <div className={styles.rarityGuide}>

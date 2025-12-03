@@ -8,13 +8,13 @@
   border-radius: 14px;
   padding: 24px;
   background: var(--overlay-dark-a50);
-  max-width: 653px;
+  width: 653px;
 }
 
 .title {
   @extend %i-regular-16-lg;
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .groupButtons {
@@ -28,13 +28,17 @@
   border-radius: 14px;
   background: $gradient-darkBlueDeepPurple;
   background-clip: padding-box;
+  max-width: 603px;
+  width: 100%;
   height: 248px;
   margin-bottom: 26px;
+  position: relative;
   
   &_img {
     width: 64px;
     width: 64px;
     margin-bottom: 16px;
+    animation: caseLogoFloat 3s ease-in-out infinite;
   }
 
   &_text {
@@ -44,48 +48,152 @@
   }
 }
 
+@keyframes caseLogoFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+
+.reel {
+  @include flex($align: center, $justify: center);
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.track {
+  display: flex;
+  will-change: transform;
+  gap: 16px;
+}
+
+.itemBox {
+  @include flex($align: center, $justify: center, $direction: column);
+  width: 130px;
+  flex: 0 0 130px;
+  height: 180px;
+  border-radius: 6px;
+  border: 1px solid var(--gray-450);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.18));
+  transform: translateZ(0);
+}
+
+.itemEmoji {
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.itemLabel {
+  @extend %i-regular-12;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.rarity_common {
+  background: $gradient-cases-common;
+  color: var(--gray-200);
+  box-shadow:
+    0px 4px 6px -4px var(--gray-400),
+    0px 10px 15px -3px var(--gray-400);
+}
+
+.rarity_uncommon {
+  background: $gradient-cases-uncommon;
+  color: var(--green-600);
+  box-shadow:
+    0px 4px 6px -4px var(--green-a30),
+    0px 10px 15px -3px var(--green-a30);
+}
+
+.rarity_rare {
+  background: $gradient-cases-rare;
+  color: var(--blue-200);
+  box-shadow:
+    0px 4px 6px -4px var(--blue-800),
+    0px 10px 15px -3px var(--blue-800);
+}
+
+.rarity_epic {
+  background: $gradient-cases-epic;
+  color: var(--purple-100);
+  box-shadow:
+    0px 4px 6px -4px var(--purple-a20),
+    0px 10px 15px -3px var(--purple-a20);
+}
+
+.rarity_legendary {
+  background: $gradient-cases-legendary;
+  color: var(--red-50);
+  box-shadow:
+    0px 4px 6px -4px var(--purple-a20),
+    0px 10px 15px -3px var(--purple-a20);
+}
+
+.rarity_gold {
+  background: $gradient-cases-gold;
+  color: var(--gold-200);
+  box-shadow:
+    0px 4px 6px -4px var(--gold-300),
+    0px 10px 15px -3px var(--gold-300);
+}
+
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: $gradient-cases-gold;
+  pointer-events: none;
+}
+
 .openBlock {
-  margin-bottom: 24px;
+  margin: 12px 0 24px 0;
+}
+
+.result {
+  @include flex($align: center, $justify: center);
+  margin: 12px 0 24px 0;
+  width: 100%;
 }
 
 .emojis {
   margin-bottom: 24px;
   gap: 8px;
 
-  &_items {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 8px;
-    flex-wrap: wrap
+  &_title {
+    @extend %i-regular-16-lg;
+    font-weight: 500;
+    margin-bottom: 12px;
   }
 
-  &_title {
-    @extend %i-bold-16;
-    margin-bottom: 12px;
-    font-weight: 600;
+  &_items {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
   }
 }
 
 .rarityGuide {
-  @extend %i-medium-16;
-  font-weight: 700;
-  border: 1px solid var(--overlay-gray-a60);
   border-radius: 10px;
-  padding: 17px;
-  background: var(--twilight-veil);
-  margin-bottom: 12px;
+  background: var(--overlay-dark-a50);
+  padding: 16px;
+
+  &_title {
+    @extend %i-regular-16-lg;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
 
   &_net {
     display: grid;
-    justify-items: flex-start;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 2fr;
-  }
-
-  &_title {
-    @extend %i-bold-16;
-    margin-bottom: 12px;
-    font-weight: 600;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
 
   &_column {
@@ -97,18 +205,15 @@
     &_circle {
       width: 12px;
       height: 12px;
-      border-radius: 20px;
+      border-radius: 50%;
     }
-
     &_text {
       @extend %i-regular-14-lg;
       color: var(--gray-100);
     }
-
     &_percents {
       @extend %i-regular-14-lg;
-      color: var(--gray-400)
+      color: var(--gray-400);
     }
   }
 }
-

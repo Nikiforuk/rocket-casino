@@ -7,10 +7,12 @@
   @extend %i-medium-14-lg;
   width: 100px;
   height: 29px;
-  background: $gradient-blue-to-purple;
-  border: none;
+  background: $gradient-darkBlueDeepPurple;
+  background-clip: padding-box;
+  border: 1px solid transparent;
   border-radius: 14px;
   color: inherit;
+  transition: all .3s;
 
   @media (max-width: 768px) {
     height: 26px;
@@ -19,6 +21,10 @@
     border-radius: 14px;
     padding: 0 8px;
   }
+}
+
+.button_active {
+  border: 1px solid var(--gray-100);
 }
 
 .text {

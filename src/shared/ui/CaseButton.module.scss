@@ -1,8 +1,9 @@
 @import '../../shared/styles/mixins';
 @import '../../shared/styles/extends';
-@import '../styles/mixins';
+@import '../../shared/styles/variables';
 
-.button {
+.button,
+.disabled {
   @include flex($align: center, $justify: center, $direction: column);
   @extend %i-regular-16-lg;
   font-weight: 700;
@@ -25,4 +26,13 @@
     font-weight: 700;
     color: var(--green-600);
   }
+}
+
+.disabled {
+  opacity: 50%;
+}
+
+.button_active {
+  background: $gradient-screen-overlay;
+  border: 1px solid var(--blue-300);
 }

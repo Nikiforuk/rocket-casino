@@ -6,6 +6,7 @@ import { getProfile } from './api/boardApi';
 interface BoardState {
   isModal: boolean;
   balance: number;
+  uiLocked: boolean;
   newUsername: string;
   gamesPlayed: number;
   totalWagered: number;
@@ -13,6 +14,7 @@ interface BoardState {
 
   setIsModal: (value: boolean) => void;
   setBalance: (value: number | ((prev: number) => number)) => void;
+  setUiLocked: (value: boolean) => void;
   setGamesPlayed: (value: number) => void;
   setTotalWon: (value: number) => void;
   setNewUsername: (value: string) => void;
@@ -26,6 +28,7 @@ export const useBoardStore = create<BoardState>()(
     (set) => ({
       isModal: false,
       balance: 0,
+      uiLocked: false,
       newUsername: '',
       gamesPlayed: 0,
       totalWagered: 0,
@@ -37,6 +40,8 @@ export const useBoardStore = create<BoardState>()(
         set((state) => ({
           balance: typeof value === 'function' ? value(state.balance) : value,
         })),
+
+      setUiLocked: (value) => set({ uiLocked: value }),
 
       setTotalWon: (value) => set({ gamesPlayed: value }),
 
@@ -64,6 +69,7 @@ export const useBoardStore = create<BoardState>()(
         set({
           balance: 0,
           gamesPlayed: 0,
+          uiLocked: false,
           newUsername: '',
           totalWon: 0,
           totalWagered: 0,
@@ -76,6 +82,7 @@ export const useBoardStore = create<BoardState>()(
         gamesPlayed: state.gamesPlayed,
         totalWagered: state.totalWagered,
         totalWon: state.totalWon,
+        uiLocked: state.uiLocked,
       }),
     },
   ),

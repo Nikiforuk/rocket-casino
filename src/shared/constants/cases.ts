@@ -5,27 +5,31 @@ import sportsCaseImg from '../../assets/images/sports-case.png';
 
 export const cases = [
   {
-    id: 1,
+    id: 0,
     icon: animalCaseImg,
     name: 'Animal Case',
+    casesType: 'animal',
     price: '$50',
   },
   {
-    id: 2,
+    id: 1,
     icon: spaceCaseImg,
     name: 'Space Case',
+    casesType: 'space',
     price: '$75',
   },
   {
-    id: 3,
+    id: 2,
     icon: foodCaseImg,
     name: 'Food Case',
+    casesType: 'food',
     price: '$40',
   },
   {
-    id: 4,
+    id: 3,
     icon: sportsCaseImg,
     name: 'Sports Case',
+    casesType: 'sports',
     price: '$60',
   },
 ];

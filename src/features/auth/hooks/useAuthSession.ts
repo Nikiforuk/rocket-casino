@@ -18,5 +18,5 @@ export const useAuthSession = () => {
     return () => {
       subscription?.unsubscribe();
     };
-  }, []);
+  }, [setSession]);
 };

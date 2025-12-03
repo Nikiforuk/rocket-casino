@@ -14,19 +14,19 @@ export const rarityGuide = [
     percents: '(25%)',
   },
   {
-    id: 4,
+    id: 3,
     circleColor: GRADIENTS.casesRare,
     text: 'Rare',
     percents: '(12%)',
   },
   {
-    id: 5,
+    id: 4,
     circleColor: GRADIENTS.casesEpic,
     text: 'Epic',
     percents: '(5%)',
   },
   {
-    id: 4,
+    id: 5,
     circleColor: GRADIENTS.casesLegendary,
     text: 'Legendary',
     percents: '(2.5%)',

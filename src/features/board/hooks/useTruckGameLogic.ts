@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useBet } from './useBet';
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
 import { useToast } from '../../../features/toast/useToast';
+import { useBoardStore } from '../boardStore';
 import { generateCrashAt } from '../utils/generateCrashAt';
 
 type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
@@ -10,6 +11,7 @@ type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
 export const useTruckGameLogic = () => {
   const { startBet, cashOut, loading: isBetting } = useBet();
   const { showError } = useToast();
+  const setUiLocked = useBoardStore((s) => s.setUiLocked);
   const [gameState, setGameState] = useState<GameState>('idle');
   const [currentMultiplier, setCurrentMultiplier] = useState(1.0);
   const [intervalId, setIntervalId] = useState<number | null>(null);
@@ -28,6 +30,7 @@ export const useTruckGameLogic = () => {
     const crashMultiplier = generateCrashAt();
     setCurrentMultiplier(1.0);
     setGameState('accelerating');
+    setUiLocked(true);
 
     setTimeout(() => {
       setGameState('moving');
@@ -38,6 +41,7 @@ export const useTruckGameLogic = () => {
             clearInterval(id);
             setIntervalId(null);
             setGameState('crashed');
+            setUiLocked(false);
             return prev;
           }
           return next;
@@ -62,6 +66,7 @@ export const useTruckGameLogic = () => {
       return false;
     }
     setGameState('escaped');
+    setUiLocked(false);
     return true;
   };
 
@@ -72,6 +77,7 @@ export const useTruckGameLogic = () => {
     }
     setGameState('idle');
     setCurrentMultiplier(1.0);
+    setUiLocked(false);
   };
 
   const getButtonText = () => {
