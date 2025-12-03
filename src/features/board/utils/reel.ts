@@ -80,7 +80,7 @@ export const selectTargetLocalIndex = <T extends { rarity: string }>(
   weights: Record<string, number>,
   order: ReadonlyArray<string>,
 ) => {
-  const desired = pickRarity(weights, order);
+  const desired = pickRarity(weights, [...order]);
   const pool: number[] = [];
   items.forEach((it, idx) => {
     if (it.rarity === desired) pool.push(idx);

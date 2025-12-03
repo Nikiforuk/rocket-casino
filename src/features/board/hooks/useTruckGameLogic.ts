@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { useBet } from './useBet';
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
+import truckEngineMp3 from '../../../assets/audio/truck-engine.mp3';
 import { useToast } from '../../../features/toast/useToast';
 import { useBoardStore } from '../boardStore';
 import { generateCrashAt } from '../utils/generateCrashAt';
@@ -12,14 +13,21 @@ export const useTruckGameLogic = () => {
   const { startBet, cashOut, loading: isBetting } = useBet();
   const { showError } = useToast();
   const setUiLocked = useBoardStore((s) => s.setUiLocked);
+  const setTruckActive = useBoardStore((s) => s.setTruckActive);
+  const balance = useBoardStore((s) => s.balance);
   const [gameState, setGameState] = useState<GameState>('idle');
   const [currentMultiplier, setCurrentMultiplier] = useState(1.0);
   const [intervalId, setIntervalId] = useState<number | null>(null);
   const [betAmount, setBetAmount] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useClearIntervalOnUnmount(intervalId);
 
   const handleStartBet = async (amount: number) => {
+    if (balance < amount) {
+      showError('Insufficient balance');
+      return false;
+    }
     const result = await startBet(amount);
     if (!result.success) {
       showError(result.error ?? 'Something went wrong');
@@ -31,6 +39,14 @@ export const useTruckGameLogic = () => {
     setCurrentMultiplier(1.0);
     setGameState('accelerating');
     setUiLocked(true);
+    setTruckActive(true);
+    const audio = audioRef.current || new Audio(truckEngineMp3);
+    audioRef.current = audio;
+    try {
+      audio.currentTime = 0;
+      audio.volume = 0.6;
+      audio.play().catch(() => {});
+    } catch {}
 
     setTimeout(() => {
       setGameState('moving');
@@ -42,6 +58,13 @@ export const useTruckGameLogic = () => {
             setIntervalId(null);
             setGameState('crashed');
             setUiLocked(false);
+            setTruckActive(false);
+            if (audioRef.current) {
+              try {
+                audioRef.current.pause();
+              } catch {}
+              audioRef.current = null;
+            }
             return prev;
           }
           return next;
@@ -67,6 +90,13 @@ export const useTruckGameLogic = () => {
     }
     setGameState('escaped');
     setUiLocked(false);
+    setTruckActive(false);
+    if (audioRef.current) {
+      try {
+        audioRef.current.pause();
+      } catch {}
+      audioRef.current = null;
+    }
     return true;
   };
 
@@ -78,6 +108,13 @@ export const useTruckGameLogic = () => {
     setGameState('idle');
     setCurrentMultiplier(1.0);
     setUiLocked(false);
+    setTruckActive(false);
+    if (audioRef.current) {
+      try {
+        audioRef.current.pause();
+      } catch {}
+      audioRef.current = null;
+    }
   };
 
   const getButtonText = () => {

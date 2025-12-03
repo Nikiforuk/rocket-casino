@@ -26,6 +26,11 @@
     font-weight: 700;
     color: var(--green-600);
   }
+
+  @media (max-width: 768px) {
+    padding: 12px 12px 5px 12px;
+    max-width: 100%;
+  }
 }
 
 .disabled {

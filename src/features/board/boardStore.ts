@@ -7,6 +7,7 @@ interface BoardState {
   isModal: boolean;
   balance: number;
   uiLocked: boolean;
+  truckActive: boolean;
   newUsername: string;
   gamesPlayed: number;
   totalWagered: number;
@@ -15,6 +16,7 @@ interface BoardState {
   setIsModal: (value: boolean) => void;
   setBalance: (value: number | ((prev: number) => number)) => void;
   setUiLocked: (value: boolean) => void;
+  setTruckActive: (value: boolean) => void;
   setGamesPlayed: (value: number) => void;
   setTotalWon: (value: number) => void;
   setNewUsername: (value: string) => void;
@@ -29,6 +31,7 @@ export const useBoardStore = create<BoardState>()(
       isModal: false,
       balance: 0,
       uiLocked: false,
+      truckActive: false,
       newUsername: '',
       gamesPlayed: 0,
       totalWagered: 0,
@@ -42,6 +45,7 @@ export const useBoardStore = create<BoardState>()(
         })),
 
       setUiLocked: (value) => set({ uiLocked: value }),
+      setTruckActive: (value) => set({ truckActive: value }),
 
       setTotalWon: (value) => set({ gamesPlayed: value }),
 
@@ -70,6 +74,7 @@ export const useBoardStore = create<BoardState>()(
           balance: 0,
           gamesPlayed: 0,
           uiLocked: false,
+          truckActive: false,
           newUsername: '',
           totalWon: 0,
           totalWagered: 0,
@@ -83,6 +88,7 @@ export const useBoardStore = create<BoardState>()(
         totalWagered: state.totalWagered,
         totalWon: state.totalWon,
         uiLocked: state.uiLocked,
+        truckActive: state.truckActive,
       }),
     },
   ),

@@ -32,6 +32,7 @@ export const useCasesReel = () => {
   const activeCase = cases[iCase];
   const setBalance = useBoardStore((s) => s.setBalance);
   const setUiLocked = useBoardStore((s) => s.setUiLocked);
+  const balance = useBoardStore((s) => s.balance);
   const refreshProfile = useBoardStore.getState().refreshProfile;
   const refreshLeaderboard = useLeaderboardStore.getState().fetchLeaderboard;
   const { showError } = useToast();
@@ -57,6 +58,11 @@ export const useCasesReel = () => {
   };
   const handleOpen = () => {
     if (spin) return;
+    const casePrice = Number((activeCase.price || '$0').replace(/[^\d.]/g, ''));
+    if (balance < casePrice) {
+      showError('Insufficient balance');
+      return;
+    }
     setSpin(true);
     setShowSplash(false);
     setUiLocked(true);
@@ -69,7 +75,6 @@ export const useCasesReel = () => {
     const targetLocal = selectTargetLocalIndex(items, DEFAULT_RARITY_WEIGHTS, DEFAULT_RARITY_ORDER);
     const target = items.length * 8 + targetLocal;
     const targetOffset = align(cw, strideNow, sw, target);
-    const casePrice = Number((activeCase.price || '$0').replace(/[^\d.]/g, ''));
     setBalance((prev) => prev - casePrice);
     spendBalance(casePrice)
       .then(async (ok) => {

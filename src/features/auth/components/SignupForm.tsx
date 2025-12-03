@@ -124,7 +124,6 @@ export default function SignUpForm() {
         </div>
       )}
       <Button
-        icon
         text={loading ? 'Loading...' : 'Sign Up'}
         textStyle={{
           fontWeight: 500,

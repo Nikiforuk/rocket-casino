@@ -9,6 +9,10 @@
   padding: 24px;
   background: var(--overlay-dark-a50);
   width: 653px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .title {
@@ -20,6 +24,14 @@
 .groupButtons {
   @include flex($align: center, $justify: space-between);
   margin-bottom: 24px;
+  
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 24px;
+  }
 }
 
 .screen {
@@ -33,6 +45,10 @@
   height: 248px;
   margin-bottom: 26px;
   position: relative;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
   
   &_img {
     width: 64px;

@@ -8,7 +8,7 @@ import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/rocket-casino">
       <App />
     </BrowserRouter>
   </StrictMode>,
