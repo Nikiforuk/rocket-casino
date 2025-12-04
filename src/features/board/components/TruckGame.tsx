@@ -1,6 +1,7 @@
 import BetForm from './BetForm';
 import styles from './TruckGame.module.scss';
 import TruckScreen from './TruckScreen';
+import { EGameState } from '../../../shared/types/board';
 import { useTruckGameLogic } from '../hooks/useTruckGameLogic';
 
 export default function TruckGame() {
@@ -16,11 +17,13 @@ export default function TruckGame() {
     getButtonText,
   } = useTruckGameLogic();
 
-  const handleFormSubmit = async (amount: number) => {
-    if (gameState === 'moving' || gameState === 'accelerating') {
-      return await handleCashOut();
+  const handleFormSubmit = async (amount: number): Promise<boolean> => {
+    if (gameState === EGameState.Moving || gameState === EGameState.Accelerating) {
+      await handleCashOut();
+      return true;
     }
-    return await handleStartBet(amount);
+    await handleStartBet(amount);
+    return true;
   };
 
   return (

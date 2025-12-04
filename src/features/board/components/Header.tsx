@@ -5,6 +5,7 @@ import SmallButton from '../../../shared/ui/SmallButton';
 import { useAuthStore } from '../../auth/authStore';
 import { useSignOut } from '../../auth/hooks/useSignOut';
 import { useBoardStore } from '../boardStore';
+import { formatNumber } from '../utils/numberHelpers';
 
 export default function Header() {
   const handleSignOut = useSignOut();
@@ -21,7 +22,7 @@ export default function Header() {
         </div>
         <div className={styles.rightBlock}>
           <SmallButton
-            text={`$${balance.toFixed(2)}`}
+            text={`$${formatNumber(balance)}`}
             textStyle={{
               color: 'white',
               fontWeight: 700,

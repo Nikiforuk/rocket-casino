@@ -1,13 +1,13 @@
 import CaseItem from './CaseItem';
 import CasesScreen from './CasesScreen';
-import { cases } from '../../../shared/constants/cases';
-import { emojis } from '../../../shared/constants/emojis';
-import { rarityGuide } from '../../../shared/constants/rarityGuide';
+import caseIcon from '../../../assets/images/case-tab.png';
+import { cases, emojis, rarityGuide } from '../../../shared/constants/cases';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import CaseButton from '../../../shared/ui/CaseButton';
 import styles from '../components/CasesGame.module.scss';
-import { useCasesReel } from '../hooks/useCasesReel';
+import { useCaseReel } from '../hooks/useCaseReel';
+import { getCaseTypeByName } from '../utils/caseHelpers';
 
 export default function CasesGame() {
   const {
@@ -22,7 +22,7 @@ export default function CasesGame() {
     reelItems,
     handleSelectCase,
     handleOpen,
-  } = useCasesReel();
+  } = useCaseReel();
 
   return (
     <div className={styles.container}>
@@ -58,17 +58,12 @@ export default function CasesGame() {
       )}
       <div className={styles.openBlock}>
         <Button
-          icon={'case'}
+          icon={caseIcon}
           border="none"
           background={isSpinning ? GRADIENTS.casesCommon : GRADIENTS.greenToGreen}
           height="36px"
           borderRadius="8px"
           text={isSpinning ? 'Opening...' : `Open ${activeCase.name} - ${activeCase.price}`}
-          textStyle={{
-            fontSize: '14px',
-            lineHeight: '20px',
-            letterSpacing: '-0.15px',
-          }}
           onClick={handleOpen}
           disabled={isSpinning}
         />
@@ -76,27 +71,19 @@ export default function CasesGame() {
       <div className={styles.emojis}>
         <h3 className={styles.emojis_title}>Case Contents</h3>
         <div className={styles.emojis_items}>
-          {emojis
-            .filter(
-              (item) =>
-                item.caseType ===
-                (activeCase.name.startsWith('Animal')
-                  ? 'animal'
-                  : activeCase.name.startsWith('Space')
-                    ? 'space'
-                    : activeCase.name.startsWith('Food')
-                      ? 'food'
-                      : 'sports'),
-            )
-            .map((item) => (
-              <CaseItem
-                key={item.id}
-                id={item.id}
-                emoji={item.emoji}
-                rarity={item.rarity}
-                caseType={item.caseType}
-              />
-            ))}
+          <div className={styles.emojis_items}>
+            {emojis
+              .filter((item) => item.caseType === getCaseTypeByName(activeCase.name))
+              .map((item) => (
+                <CaseItem
+                  key={item.id}
+                  id={item.id}
+                  emoji={item.emoji}
+                  rarity={item.rarity}
+                  caseType={item.caseType}
+                />
+              ))}
+          </div>
         </div>
       </div>
       <div className={styles.rarityGuide}>

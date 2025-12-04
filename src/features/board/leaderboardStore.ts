@@ -18,7 +18,7 @@ export interface LeaderboardPlayer {
 
 interface LeaderboardState {
   players: LeaderboardPlayer[];
-  loading: boolean;
+  isLoading: boolean;
 
   fetchLeaderboard: () => Promise<void>;
   getTopPlayers: () => LeaderboardPlayer[];
@@ -34,10 +34,10 @@ export const useLeaderboardStore = create<LeaderboardState>()(
   persist(
     (set, get) => ({
       players: [],
-      loading: false,
+      isLoading: false,
 
       fetchLeaderboard: async () => {
-        set({ loading: true });
+        set({ isLoading: true });
         try {
           const data = await getLeaderboard();
           const session = useAuthStore.getState().session;
@@ -64,10 +64,10 @@ export const useLeaderboardStore = create<LeaderboardState>()(
 
           const top10 = processedPlayers.slice(0, 10);
 
-          set({ players: top10, loading: false });
+          set({ players: top10, isLoading: false });
         } catch (error) {
           console.error('Failed to fetch leaderboard:', error);
-          set({ loading: false });
+          set({ isLoading: false });
         }
       },
 

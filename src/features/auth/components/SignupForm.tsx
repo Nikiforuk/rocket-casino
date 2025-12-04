@@ -14,7 +14,7 @@ import { signUpSchema } from '../schemas/signUpSchema';
 
 export default function SignUpForm() {
   useAuthSession();
-  const { loading, errorMessage, handleSignUp } = useSignUp();
+  const { isLoading, errorMessage, handleSignUp } = useSignUp();
   const {
     control,
     handleSubmit,
@@ -124,13 +124,7 @@ export default function SignUpForm() {
         </div>
       )}
       <Button
-        text={loading ? 'Loading...' : 'Sign Up'}
-        textStyle={{
-          fontWeight: 500,
-          fontSize: '14px',
-          lineHeight: '20px',
-          letterSpacing: '-0.15px',
-        }}
+        text={isLoading ? 'Loading...' : 'Sign Up'}
         border="none"
         borderRadius="8px"
         height="36px"

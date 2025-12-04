@@ -11,13 +11,14 @@ import { useAuthStore } from '../../auth/authStore';
 import { useBoardStore } from '../../board/boardStore';
 import { useNewUsername } from '../../board/hooks/useNewUsername';
 import { useRefreshProfile } from '../../board/hooks/useRefreshProfile';
+import { formatNumber } from '../../board/utils/numberHelpers';
 import { useResetProfile } from '../hooks/useResetProfile';
 import { modalSchema } from '../schemas/modalSchema';
 
 export default function Modal() {
   const { handleReset } = useResetProfile();
   const username = useAuthStore((state) => state.getUsername());
-  const { handleNewUsername, loading, errorMessage } = useNewUsername();
+  const { handleNewUsername, isLoading, errorMessage } = useNewUsername();
   const { balance, gamesPlayed, totalWagered, totalWon, setIsModal } = useBoardStore();
   const {
     control,
@@ -37,6 +38,13 @@ export default function Modal() {
   };
 
   useRefreshProfile();
+
+  const userStats = [
+    { firstText: 'Balance', secondText: formatNumber(balance) },
+    { firstText: 'Games Played', secondText: gamesPlayed },
+    { firstText: 'Total Wagered', secondText: formatNumber(totalWagered) },
+    { firstText: 'Total Won', secondText: formatNumber(totalWon) },
+  ];
 
   return (
     <div onClick={() => setIsModal(false)} className={styles.overlay}>
@@ -80,51 +88,27 @@ export default function Modal() {
             <div className={styles.stats}>
               <h4 className={styles.stats_title}>Account Stats</h4>
               <div className={styles.row}>
-                <div className={styles.row_column}>
-                  <p className={styles.row_column_firstText}>Balance</p>
-                  <p className={styles.row_column_secondText}>${balance.toFixed(2)}</p>
-                </div>
-                <div className={styles.row_column}>
-                  <p className={styles.row_column_firstText}>Games Played</p>
-                  <p className={styles.row_column_secondText}>{gamesPlayed}</p>
-                </div>
-              </div>
-              <div className={styles.row}>
-                <div className={styles.row_column}>
-                  <p className={styles.row_column_firstText}>Total Wagered</p>
-                  <p className={styles.row_column_secondText}>${totalWagered.toFixed(2)}</p>
-                </div>
-                <div className={styles.row_column}>
-                  <p className={styles.row_column_firstText}>Total Won</p>
-                  <p className={styles.row_column_secondText}>${totalWon.toFixed(2)}</p>
-                </div>
+                {userStats.map((item) => (
+                  <div key={item.firstText} className={styles.row_column}>
+                    <p className={styles.row_column_firstText}>{item.firstText}</p>
+                    <p className={styles.row_column_secondText}>{item.secondText}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <div className={styles.groupButtons}>
             <Button
               text="Save Changes"
-              textStyle={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '20px',
-                letterSpacing: '-0.15px',
-              }}
               border="none"
               borderRadius="8px"
               height="36px"
               background={GRADIENTS.blueToPurple}
               type="submit"
-              disabled={loading}
+              disabled={isLoading}
             />
             <Button
               text="Reset Account"
-              textStyle={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '20px',
-                letterSpacing: '-0.15px',
-              }}
               border="none"
               borderRadius="8px"
               height="36px"

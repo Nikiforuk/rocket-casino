@@ -1,4 +1,8 @@
-.button {
+@import '../styles/extends';
+
+.button,
+.selected {
+  @extend %i-medium-14-lg;
   gap: 16px;
   width: 100%;
   color: inherit;

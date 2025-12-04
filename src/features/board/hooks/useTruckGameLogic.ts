@@ -1,25 +1,26 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useBet } from './useBet';
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
 import truckEngineMp3 from '../../../assets/audio/truck-engine.mp3';
 import { useToast } from '../../../features/toast/useToast';
+import { EGameState } from '../../../shared/types/board';
 import { useBoardStore } from '../boardStore';
 import { generateCrashAt } from '../utils/generateCrashAt';
 
-type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
-
 export const useTruckGameLogic = () => {
-  const { startBet, cashOut, loading: isBetting } = useBet();
+  const { startBet, cashOut, isLoading: isBetting } = useBet();
   const { showError } = useToast();
   const setUiLocked = useBoardStore((s) => s.setUiLocked);
   const setTruckActive = useBoardStore((s) => s.setTruckActive);
   const balance = useBoardStore((s) => s.balance);
-  const [gameState, setGameState] = useState<GameState>('idle');
+  const [gameState, setGameState] = useState<EGameState>(EGameState.Idle);
   const [currentMultiplier, setCurrentMultiplier] = useState(1.0);
   const [intervalId, setIntervalId] = useState<number | null>(null);
   const [betAmount, setBetAmount] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [lockUI, setLockUI] = useState(false);
+  const [truckActiveFlag, setTruckActiveFlag] = useState(false);
 
   useClearIntervalOnUnmount(intervalId);
 
@@ -37,28 +38,27 @@ export const useTruckGameLogic = () => {
     setBetAmount(amount);
     const crashMultiplier = generateCrashAt();
     setCurrentMultiplier(1.0);
-    setGameState('accelerating');
-    setUiLocked(true);
-    setTruckActive(true);
+    setGameState(EGameState.Accelerating);
+    setLockUI(true);
+    setTruckActiveFlag(true);
     const audio = audioRef.current || new Audio(truckEngineMp3);
-    audioRef.current = audio;
-    try {
-      audio.currentTime = 0;
-      audio.volume = 0.6;
-      audio.play().catch(() => {});
-    } catch {}
 
-    setTimeout(() => {
-      setGameState('moving');
+    audioRef.current = audio;
+    audio.currentTime = 0;
+    audio.volume = 0.6;
+    audio.play();
+
+    const moving = setTimeout(() => {
+      setGameState(EGameState.Moving);
       const id = setInterval(() => {
         setCurrentMultiplier((prev) => {
           const next = Number((prev + 0.01).toFixed(2));
           if (next >= crashMultiplier) {
             clearInterval(id);
             setIntervalId(null);
-            setGameState('crashed');
-            setUiLocked(false);
-            setTruckActive(false);
+            setGameState(EGameState.Crashed);
+            setLockUI(false);
+            setTruckActiveFlag(false);
             if (audioRef.current) {
               try {
                 audioRef.current.pause();
@@ -73,7 +73,7 @@ export const useTruckGameLogic = () => {
       setIntervalId(id);
     }, 1200);
 
-    return true;
+    return () => clearTimeout(moving);
   };
 
   const handleCashOut = async () => {
@@ -88,9 +88,9 @@ export const useTruckGameLogic = () => {
       showError(result.error ?? 'Something went wrong');
       return false;
     }
-    setGameState('escaped');
-    setUiLocked(false);
-    setTruckActive(false);
+    setGameState(EGameState.Escaped);
+    setLockUI(false);
+    setTruckActiveFlag(false);
     if (audioRef.current) {
       try {
         audioRef.current.pause();
@@ -105,27 +105,33 @@ export const useTruckGameLogic = () => {
       clearInterval(intervalId);
       setIntervalId(null);
     }
-    setGameState('idle');
+    setGameState(EGameState.Idle);
     setCurrentMultiplier(1.0);
-    setUiLocked(false);
-    setTruckActive(false);
+    setLockUI(false);
+    setTruckActiveFlag(false);
     if (audioRef.current) {
-      try {
-        audioRef.current.pause();
-      } catch {}
+      audioRef.current.pause();
       audioRef.current = null;
     }
   };
 
   const getButtonText = () => {
     if (isBetting) return 'Starting...';
-    if (gameState === 'accelerating' || gameState === 'moving') return 'Cash Out';
-    if (gameState === 'crashed' || gameState === 'escaped') return 'Play Again';
+    if (gameState === EGameState.Accelerating || gameState === EGameState.Moving) return 'Cash Out';
+    if (gameState === EGameState.Crashed || gameState === EGameState.Escaped) return 'Play Again';
     return 'Start';
   };
 
-  const isActive = gameState === 'accelerating' || gameState === 'moving';
-  const isCashOutActive = gameState === 'moving' || gameState === 'accelerating';
+  const isActive = gameState === EGameState.Accelerating || gameState === EGameState.Moving;
+  const isCashOutActive = gameState === EGameState.Moving || gameState === EGameState.Accelerating;
+
+  useEffect(() => {
+    setUiLocked(lockUI);
+  }, [lockUI, setUiLocked]);
+
+  useEffect(() => {
+    setTruckActive(truckActiveFlag);
+  }, [setTruckActive, truckActiveFlag]);
 
   return {
     gameState,

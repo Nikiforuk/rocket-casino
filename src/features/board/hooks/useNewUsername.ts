@@ -10,7 +10,7 @@ export const useNewUsername = () => {
   const setSession = useAuthStore((state) => state.setSession);
   const { showSuccess, showError } = useToast();
   const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleNewUsername = async (newUsername: string) => {
     if (!session?.user?.id) {
@@ -18,7 +18,7 @@ export const useNewUsername = () => {
       return;
     }
 
-    setLoading(true);
+    setIsLoading(true);
     setErrorMessage('');
 
     const result = await updateUsername(newUsername, session.user.id);
@@ -36,8 +36,8 @@ export const useNewUsername = () => {
       showError(errorMsg);
     }
 
-    setLoading(false);
+    setIsLoading(false);
   };
 
-  return { errorMessage, loading, handleNewUsername };
+  return { errorMessage, isLoading, handleNewUsername };
 };

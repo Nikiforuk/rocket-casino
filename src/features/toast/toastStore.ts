@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
 
 export type ToastType = 'error' | 'success' | 'info';
 
@@ -8,29 +9,33 @@ export interface Toast {
   type: ToastType;
 }
 
-interface ToastState {
+interface ToastStore {
   toasts: Toast[];
   showToast: (message: string, type?: ToastType) => void;
   removeToast: (id: string) => void;
 }
 
-export const useToastStore = create<ToastState>((set) => ({
-  toasts: [],
-  showToast: (message: string, type: ToastType = 'error') => {
-    const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
-    set((state) => ({
-      toasts: [...state.toasts, { id, message, type }],
-    }));
+export const useToastStore = create<ToastStore>()(
+  immer((set) => ({
+    toasts: [],
+    showToast: (message: string, type: ToastType = 'error') => {
+      const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+      set((state) => {
+        state.toasts.push({ id, message, type });
+      });
 
-    setTimeout(() => {
-      set((state) => ({
-        toasts: state.toasts.filter((toast) => toast.id !== id),
-      }));
-    }, 5000);
-  },
-  removeToast: (id: string) => {
-    set((state) => ({
-      toasts: state.toasts.filter((toast) => toast.id !== id),
-    }));
-  },
-}));
+      setTimeout(() => {
+        set((state) => {
+          const index = state.toasts.findIndex((toast: { id: string }) => toast.id === id);
+          if (index !== -1) state.toasts.splice(index, 1);
+        });
+      }, 5000);
+    },
+    removeToast: (id: string) => {
+      set((state) => {
+        const index = state.toasts.findIndex((toast: { id: string }) => toast.id === id);
+        if (index !== -1) state.toasts.splice(index, 1);
+      });
+    },
+  })),
+);

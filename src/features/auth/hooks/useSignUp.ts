@@ -9,11 +9,11 @@ import { useAuthStore } from '../authStore';
 export const useSignUp = () => {
   const navigate = useNavigate();
   const setUser = useAuthStore((state) => state.setUser);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSignUp = async (username: string, email: string, password: string) => {
-    setLoading(true);
+    setIsLoading(true);
     setErrorMessage('');
 
     try {
@@ -31,8 +31,8 @@ export const useSignUp = () => {
       setErrorMessage('Unexpected error occurred');
       throw err;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
-  return { loading, errorMessage, handleSignUp };
+  return { isLoading, errorMessage, handleSignUp };
 };

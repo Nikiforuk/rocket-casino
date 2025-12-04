@@ -3,6 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import styles from './Auth.module.scss';
 import { ROUTES } from '../../../app/routes';
+import loginIcon from '../../../assets/icons/login-white.svg';
 import rocketIcon from '../../../assets/icons/rocket.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import type { SignInFormData } from '../../../shared/types/auth';
@@ -14,7 +15,7 @@ import { signInSchema } from '../schemas/signInSchema';
 
 export default function SignInForm() {
   useAuthSession();
-  const { loading, errorMessage, handleSignIn } = useSignIn();
+  const { isLoading, errorMessage, handleSignIn } = useSignIn();
   const {
     control,
     handleSubmit,
@@ -100,14 +101,8 @@ export default function SignInForm() {
         </div>
       ) : null}
       <Button
-        icon={'login'}
-        text={loading ? 'Loading...' : 'Login'}
-        textStyle={{
-          fontWeight: 500,
-          fontSize: '14px',
-          lineHeight: '20px',
-          letterSpacing: '-0.15px',
-        }}
+        icon={loginIcon}
+        text={isLoading ? 'Loading...' : 'Login'}
         border="none"
         borderRadius="8px"
         height="36px"

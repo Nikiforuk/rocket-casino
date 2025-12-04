@@ -6,7 +6,7 @@ export const useLeaderboard = () => {
   const fetchLeaderboard = useLeaderboardStore((state) => state.fetchLeaderboard);
   const getTopPlayers = useLeaderboardStore((state) => state.getTopPlayers);
   const getCurrentUserRank = useLeaderboardStore((state) => state.getCurrentUserRank);
-  const loading = useLeaderboardStore((state) => state.loading);
+  const isLoading = useLeaderboardStore((state) => state.isLoading);
 
   useEffect(() => {
     fetchLeaderboard();
@@ -15,5 +15,5 @@ export const useLeaderboard = () => {
   const players = getTopPlayers();
   const currentUserRank = getCurrentUserRank();
 
-  return { players, currentUserRank, loading };
+  return { players, currentUserRank, isLoading };
 };

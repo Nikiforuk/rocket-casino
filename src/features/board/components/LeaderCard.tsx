@@ -1,4 +1,5 @@
 import styles from './LeaderCard.module.scss';
+import { formatNumber } from '../utils/numberHelpers';
 
 interface LeaderCardProps {
   rank: number;
@@ -29,7 +30,7 @@ export default function LeaderCard({
         </div>
       </div>
       <div className={styles.sumWin}>
-        <b className={styles.sumWin_currency}>${totalWon.toFixed(2)}</b>
+        <b className={styles.sumWin_currency}>${formatNumber(totalWon)}</b>
         <p className={styles.sumWin_percents}>{winPercentage}% win</p>
       </div>
     </div>

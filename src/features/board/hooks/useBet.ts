@@ -5,7 +5,7 @@ import { useBoardStore } from '../boardStore';
 import { useLeaderboardStore } from '../leaderboardStore';
 
 export const useBet = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { setBalance, setGamesPlayed, setTotalWon, setTotalWagered } = useBoardStore();
   const fetchLeaderboard = useLeaderboardStore((state) => state.fetchLeaderboard);
 
@@ -20,7 +20,7 @@ export const useBet = () => {
       return { success: false, error: 'Not enough balance' };
     }
 
-    setLoading(true);
+    setIsLoading(true);
 
     try {
       const ok = await spendBalance(amount);
@@ -42,7 +42,7 @@ export const useBet = () => {
       await useBoardStore.getState().refreshProfile();
       return { success: false, error: e instanceof Error ? e.message : 'Unknown error' };
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -64,5 +64,5 @@ export const useBet = () => {
     }
   };
 
-  return { startBet, cashOut, loading };
+  return { startBet, cashOut, isLoading };
 };

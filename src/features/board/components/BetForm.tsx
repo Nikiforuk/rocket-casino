@@ -1,17 +1,17 @@
-import { Controller, useForm } from 'react-hook-form';
+import type { ChangeEvent } from 'react';
+
+import { Controller, useForm, type ControllerRenderProps } from 'react-hook-form';
 
 import styles from './TruckGame.module.scss';
+import { quickBtns } from '../../../shared/constants/truck';
 import { GRADIENTS } from '../../../shared/styles/gradients';
-import type { TruckGameData } from '../../../shared/types/board';
+import { EGameState, type TruckGameData } from '../../../shared/types/board';
 import Button from '../../../shared/ui/Button';
 import Input from '../../../shared/ui/Input';
-import { useAuthStore } from '../../auth/authStore';
 import { useBoardStore } from '../boardStore';
 
-type GameState = 'idle' | 'accelerating' | 'moving' | 'crashed' | 'escaped';
-
 interface BetFormProps {
-  gameState: GameState;
+  gameState: EGameState;
   isBetting: boolean;
   isCashOutActive: boolean;
   buttonText: string;
@@ -27,31 +27,47 @@ export default function BetForm({
   onSubmit,
   onReset,
 }: BetFormProps) {
-  const { session } = useAuthStore();
   const { balance } = useBoardStore();
   const { control, handleSubmit, setValue } = useForm<TruckGameData>({
     defaultValues: { amount: '' },
   });
 
   const handleFormSubmit = async (data: TruckGameData) => {
-    if (gameState === 'crashed' || gameState === 'escaped') {
+    if (gameState === EGameState.Crashed || gameState === EGameState.Escaped) {
       onReset();
       return;
     }
 
-    if (gameState === 'moving' || gameState === 'accelerating') {
+    if (gameState === EGameState.Moving || gameState === EGameState.Accelerating) {
       await onSubmit(0);
       return;
     }
 
-    const amount = Number(data.amount);
-    await onSubmit(amount);
+    await onSubmit(Number(data.amount));
   };
 
   const handleFormSubmitWrapper = async (e: React.FormEvent) => {
     e.preventDefault();
     await handleSubmit(handleFormSubmit)();
-    console.log(session);
+  };
+
+  const handleReplaceSymbols = (
+    e: ChangeEvent<HTMLInputElement>,
+    field: ControllerRenderProps<TruckGameData, 'amount'>,
+  ) => {
+    let val = e.target.value.replace(/\D+/g, '');
+
+    val = val.replace(/^0+(?=\d)/, '');
+
+    field.onChange(val);
+  };
+
+  const handleQuickButton = (value: number | 'max') => {
+    if (value === 'max') {
+      setValue('amount', String(Math.floor(balance)));
+    } else {
+      setValue('amount', String(value));
+    }
   };
 
   return (
@@ -67,10 +83,7 @@ export default function BetForm({
               placeholder="Your bet"
               type="text"
               value={field.value}
-              onChange={(e) => {
-                let val = e.target.value.replace(/^0+(?=\d)/, '');
-                field.onChange(val);
-              }}
+              onChange={(e) => handleReplaceSymbols(e, field)}
               background="rgba(15, 23, 43, 0.3)"
               border="1px solid rgba(15, 23, 43, 0.1)"
               padding="8px 12px"
@@ -81,7 +94,7 @@ export default function BetForm({
                 letterSpacing: '-0.15px',
                 fontWeight: '400',
               }}
-              disabled={gameState !== 'idle'}
+              disabled={gameState !== EGameState.Idle}
             />
           )}
         />
@@ -93,55 +106,25 @@ export default function BetForm({
             background={isCashOutActive ? GRADIENTS.greenToGreen : 'rgba(193, 193, 193, 1)'}
             text={buttonText}
             borderRadius="8px"
-            disabled={isBetting && gameState === 'idle'}
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '20px',
-              letterSpacing: '-0.15px',
-              fontWeight: 500,
-              color: isCashOutActive ? 'white' : undefined,
-            }}
+            disabled={isBetting && gameState === EGameState.Idle}
           />
         </div>
       </div>
       <div className={styles.form_groupButtons}>
-        {[10, 50, 100, 500].map((v) => (
+        {quickBtns.map((btn) => (
           <Button
-            key={v}
+            key={btn.label}
             type="button"
-            text={`$${v}`}
+            text={`${btn.label}`}
             height="36px"
             background="rgba(15, 23, 43, 0.2)"
             borderRadius="4px"
             border="1px solid rgba(49, 65, 88, 0.1)"
-            textStyle={{
-              fontSize: '14px',
-              lineHeight: '20px',
-              letterSpacing: '-0.15px',
-              fontWeight: 500,
-              color: '#90A1B9',
-            }}
-            onClick={() => setValue('amount', String(v))}
-            disabled={gameState !== 'idle'}
+            colorText="#90A1B9"
+            disabled={gameState !== EGameState.Idle}
+            onClick={() => handleQuickButton(btn.value)}
           />
         ))}
-        <Button
-          type="button"
-          text="Max"
-          height="36px"
-          background="rgba(15, 23, 43, 0.2)"
-          borderRadius="4px"
-          border="1px solid rgba(49, 65, 88, 0.1)"
-          textStyle={{
-            fontSize: '14px',
-            lineHeight: '20px',
-            letterSpacing: '-0.15px',
-            fontWeight: 500,
-            color: '#90A1B9',
-          }}
-          onClick={() => setValue('amount', String(Math.floor(balance)))}
-          disabled={gameState !== 'idle'}
-        />
       </div>
     </form>
   );
