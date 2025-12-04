@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 import { useAuthStore } from '../auth/authStore';
 import { getLeaderboard } from './api/boardApi';
+import { getPercentageWin } from './utils/leaderboardHelpers';
 
 export interface LeaderboardPlayer {
   id: string;
@@ -25,11 +26,6 @@ interface LeaderboardState {
   getCurrentUserRank: () => number | null;
 }
 
-const calculateWinPercentage = (totalWon: number, totalWagered: number): number => {
-  if (totalWagered === 0) return 0;
-  return Math.round((totalWon / totalWagered) * 100);
-};
-
 export const useLeaderboardStore = create<LeaderboardState>()(
   persist(
     (set, get) => ({
@@ -46,7 +42,7 @@ export const useLeaderboardStore = create<LeaderboardState>()(
           const processedPlayers: LeaderboardPlayer[] = data.map((player, index) => {
             const username = player.username || 'Anonymous';
             const isCurrentUser = player.id === currentUserId;
-            const winPercentage = calculateWinPercentage(player.total_won, player.total_wagered);
+            const winPercentage = getPercentageWin(player.total_won, player.total_wagered);
             const isWinner = player.total_won > 0;
 
             return {

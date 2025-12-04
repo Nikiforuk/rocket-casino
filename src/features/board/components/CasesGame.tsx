@@ -1,6 +1,6 @@
 import CaseItem from './CaseItem';
 import CasesScreen from './CasesScreen';
-import caseIcon from '../../../assets/images/case-tab.png';
+import caseIcon from '../../../assets/icons/box.svg';
 import { cases, emojis, rarityGuide } from '../../../shared/constants/cases';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
