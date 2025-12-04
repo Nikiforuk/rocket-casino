@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -16,6 +18,7 @@ import { useResetProfile } from '../hooks/useResetProfile';
 import { modalSchema } from '../schemas/modalSchema';
 
 export default function Modal() {
+  const [isClosing, setIsClosing] = useState(false);
   const { handleReset } = useResetProfile();
   const username = useAuthStore((state) => state.getUsername());
   const { handleNewUsername, isLoading, errorMessage } = useNewUsername();
@@ -46,10 +49,21 @@ export default function Modal() {
     { firstText: 'Total Won', secondText: formatNumber(totalWon) },
   ];
 
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => setIsModal(false), 240);
+  };
+
   return (
-    <div onClick={() => setIsModal(false)} className={styles.overlay}>
-      <div onClick={(e) => e.stopPropagation()} className={styles.container}>
-        <button onClick={() => setIsModal(false)} className={styles.closeBtn}>
+    <div
+      onClick={handleClose}
+      className={`${styles.overlay} ${isClosing ? styles.overlay_closing : ''}`}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`${styles.container} ${isClosing ? styles.container_closing : ''}`}
+      >
+        <button onClick={handleClose} className={styles.closeBtn}>
           <img src={crossIcon} className={styles.closeBtn_icon} alt="cross-icon" />
         </button>
         <div className={styles.top}>

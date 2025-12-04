@@ -1,8 +1,21 @@
+@import '../styles/extends';
+@import '../styles/variables';
 @import '../styles/mixins';
 
 .button {
+  @extend %i-medium-14-lg;
   @include flex($align: center, $justify: center);
   gap: 10px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   @media (max-width: 768px) {
     gap: 8px;

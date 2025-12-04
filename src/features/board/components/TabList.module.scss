@@ -1,3 +1,4 @@
+@import '../../../shared/styles/variables';
 @import '../../../shared/styles/mixins';
 
 .container {
@@ -10,6 +11,15 @@
   gap: 12.5px;
   max-width: 653px;
   margin-bottom: 24px;
+
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   @media (max-width: 768px) {
     padding: 4px;

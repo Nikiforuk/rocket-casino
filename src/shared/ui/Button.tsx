@@ -10,7 +10,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   border?: string;
   height?: string;
   borderRadius?: string;
-  colorText?: string;
 }
 
 export default function Button({
@@ -23,7 +22,6 @@ export default function Button({
   borderRadius,
   type = 'button',
   onClick,
-  colorText,
   ...props
 }: ButtonProps) {
   return (
@@ -31,7 +29,7 @@ export default function Button({
       type={type}
       className={styles.button}
       onClick={onClick}
-      style={{ background, border, borderRadius, height, color: colorText }}
+      style={{ background, border, borderRadius, height }}
       {...props}
     >
       {icon && <img src={icon} className={styles.icon} alt="button-icon" />}

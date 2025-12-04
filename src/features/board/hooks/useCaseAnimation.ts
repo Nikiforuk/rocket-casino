@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import type CasesItem from '../../../shared/types/cases';
 import { align, findCenterItem } from '../utils/reel';
-import { createAudio, startTick, stopTick, playChime } from '../utils/reelAudio';
+import { createAudio, playChime, startTick, stopTick } from '../utils/reelAudio';
 
 export const useCaseAnimation = () => {
   const reelRef = useRef<HTMLDivElement | null>(null);

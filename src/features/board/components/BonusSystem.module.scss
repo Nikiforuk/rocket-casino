@@ -9,6 +9,14 @@
   border: 1px solid var(--emerald-mist);
   background: $gradient-transparent-green-to-blue;
   margin-bottom: 24px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 }
 
 .top {
@@ -33,10 +41,13 @@
 
 .gradientBlock {
   @include flex($align: center, $justify: center);
-  background: var(--green-a20);
+  background: var(--overlay-dark-a50);
   width: 40px;
   height: 40px;
   border-radius: 10px;
+  transition: $transition-fast;
+  box-shadow: none;
+  &:hover { box-shadow: $shadow-soft; filter: brightness(1.08); }
 
   &_icon {
     width: 20px;

@@ -9,6 +9,14 @@
   padding: 24px;
   background: var(--overlay-dark-a50);
   width: 653px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -45,6 +53,14 @@
   height: 248px;
   margin-bottom: 26px;
   position: relative;
+
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+  }
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -107,8 +123,6 @@
   height: 180px;
   border-radius: 6px;
   border: 1px solid var(--gray-450);
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.18));
-  transform: translateZ(0);
 
   @media (max-width: 768px) {
     width: 104px;
@@ -222,8 +236,9 @@
 }
 
 .emojis {
+  width: 100%;
+  margin-bottom: 0 auto;
   margin-bottom: 24px;
-  gap: 8px;
 
   &_title {
     @extend %i-regular-16-lg;
@@ -234,7 +249,7 @@
   &_items {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    gap: 8px;
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(5, 1fr);
@@ -255,6 +270,14 @@
   border-radius: 10px;
   background: var(--overlay-dark-a50);
   padding: 16px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   &_title {
     @extend %i-regular-16-lg;

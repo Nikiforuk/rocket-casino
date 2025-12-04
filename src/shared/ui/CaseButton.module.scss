@@ -15,6 +15,15 @@
   border-radius: 10px;
   gap: 7px;
   color: inherit;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
 
   &_icon {
     height: 48px;
@@ -40,4 +49,5 @@
 .button_active {
   background: $gradient-screen-overlay;
   border: 1px solid var(--blue-300);
+  box-shadow: $shadow-glow;
 }

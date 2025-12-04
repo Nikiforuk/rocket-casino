@@ -128,3 +128,9 @@ $gradient-green-to-darkGreen: linear-gradient(
   var(--green-400) 0%,
   var(--green-400) 100%
 );
+
+$shadow-soft: 0 6px 14px rgba(0, 0, 0, 0.18);
+$shadow-strong: 0 10px 24px rgba(0, 0, 0, 0.28);
+$shadow-glow: 0 0 24px rgba(72, 138, 255, 0.25);
+$transition-fast: 180ms ease;
+$transition-medium: 260ms ease;

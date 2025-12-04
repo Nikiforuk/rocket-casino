@@ -9,6 +9,14 @@
   border-radius: 10px;
   background: var(--twilight-veil);
   border: 1px solid transparent;
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.03);
+  }
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -19,6 +27,7 @@
   &_highlighted {
     background:$gradient-screen-overlay;
     border: 1px solid var(--blue-300);
+    box-shadow: $shadow-glow;
   }
 }
 

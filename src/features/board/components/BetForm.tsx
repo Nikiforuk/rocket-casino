@@ -103,7 +103,7 @@ export default function BetForm({
             type="submit"
             border="1px solid rgba(49, 65, 88, 0.1)"
             height="36px"
-            background={isCashOutActive ? GRADIENTS.greenToGreen : 'rgba(193, 193, 193, 1)'}
+            background={isCashOutActive ? GRADIENTS.greenToGreen : 'rgba(15, 23, 43, 0.5)'}
             text={buttonText}
             borderRadius="8px"
             disabled={isBetting && gameState === EGameState.Idle}
@@ -120,7 +120,6 @@ export default function BetForm({
             background="rgba(15, 23, 43, 0.2)"
             borderRadius="4px"
             border="1px solid rgba(49, 65, 88, 0.1)"
-            colorText="#90A1B9"
             disabled={gameState !== EGameState.Idle}
             onClick={() => handleQuickButton(btn.value)}
           />

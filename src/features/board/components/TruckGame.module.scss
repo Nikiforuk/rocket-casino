@@ -9,6 +9,14 @@
   padding: 24px;
   background: var(--overlay-dark-a50);
   width: 653px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -40,6 +48,14 @@
   margin-bottom: 17px;
   position: relative;
   overflow: hidden;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 
   &_idle {
     background: $gradient-darkBlueDeepPurple;

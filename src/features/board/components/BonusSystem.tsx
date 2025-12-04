@@ -39,7 +39,6 @@ export default function BonusSystem() {
         background={GRADIENTS.greenToGreen}
         text={isClaiming ? 'Claiming...' : canClaim ? 'Claim Now!' : 'Wait...'}
         borderRadius="8px"
-        colorText="white"
         onClick={claimBonus}
         disabled={!canClaim || isClaiming}
       />

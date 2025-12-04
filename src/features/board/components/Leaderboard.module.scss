@@ -7,6 +7,14 @@
   border-radius: 14px;
   background: var(--overlay-dark-a50);
   padding: 24px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 }
 
 .top {

@@ -3,11 +3,21 @@
 @import '../../../shared/styles/extends';
 
 .container {
-  max-width: 448px;
+  max-width: 450px;
   width: 100%;
   background: var(--gray-800);
   border-radius: 14px;
   padding: 32px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  border: 1px solid transparent;
+
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+    border: 1px solid var(--blue-300);
+  }
 }
 
 .gradientBlock {
@@ -47,6 +57,11 @@
   &_box {
     @include flex($align: flex-start, $justify: center, $direction: column);
     margin-bottom: 12.5px;
+    transition: $transition-fast;
+
+    &:hover {
+      filter: brightness(1.03);
+    }
   }
 }
 
@@ -58,6 +73,8 @@
   &_link {
     @extend %i-medium-14-lg;
     color: var(--blue-200);
+    transition: $transition-fast;
+    &:hover { filter: brightness(1.1); }
   }
 
   &_line {

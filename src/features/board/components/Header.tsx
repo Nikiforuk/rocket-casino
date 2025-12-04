@@ -23,17 +23,10 @@ export default function Header() {
         <div className={styles.rightBlock}>
           <SmallButton
             text={`$${formatNumber(balance)}`}
-            textStyle={{
-              color: 'white',
-              fontWeight: 700,
-              fontSize: '16px',
-              lineHeight: '24px',
-              letterSpacing: '-0.31px',
-            }}
             icon="wallet"
             background={GRADIENTS.overlayMix}
-            border="1px solid rgba(0, 122, 85, 0.5)"
             borderRadius="10px"
+            border="1px solid rgba(0, 122, 85, 0.5)"
             width="140px"
             height="42px"
             widthIcon="16px"
@@ -41,29 +34,23 @@ export default function Header() {
           />
           <SmallButton
             icon="settings"
-            background="transparent"
-            border="none"
-            width="36px"
-            height="36px"
-            widthIcon="16px"
-            heightIcon="16px"
+            background="rgba(29, 41, 61, 0.5)"
+            borderRadius="50%"
+            border="1px solid rgba(0, 122, 85, 0.5)"
+            width="42px"
+            height="42px"
+            widthIcon="18px"
+            heightIcon="18px"
             onClick={() => setIsModal(true)}
           />
           <SmallButton
             text="Logout"
-            textStyle={{
-              color: '#CAD5E2',
-              fontWeight: 500,
-              fontSize: '14px',
-              lineHeight: '20px',
-              letterSpacing: '-0.15px',
-            }}
             icon="login"
             background="rgba(29, 41, 61, 0.5)"
-            border="1px solid rgba(49, 65, 88, 1)"
             borderRadius="10px"
-            width="98px"
-            height="32px"
+            border="1px solid rgba(0, 122, 85, 0.5)"
+            width="100px"
+            height="42px"
             widthIcon="16px"
             heightIcon="16px"
             onClick={handleSignOut}

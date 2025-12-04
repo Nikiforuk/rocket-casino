@@ -1,5 +1,6 @@
 @import '../../shared/styles/mixins';
 @import '../../shared/styles/extends';
+@import '../../shared/styles/variables';
 
 .elements {
   @include flex($align: center, $justify: flex-start);
@@ -24,6 +25,15 @@
 
 .input {
   width: 100%;
+  transition: $transition-fast;
+  box-shadow: none;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: $shadow-soft;
+    filter: brightness(1.06);
+  }
   
   &::placeholder {
     color: var(--placeholder-color, var(--gray-300));

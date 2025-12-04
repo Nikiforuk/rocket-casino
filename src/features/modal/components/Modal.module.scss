@@ -11,6 +11,11 @@
   height: 100%;
   background-color: var(--overlay-modal);
   z-index: 1000;
+  animation: modalFadeIn $transition-medium;
+}
+
+.overlay_closing {
+  animation: modalFadeOut $transition-medium forwards;
 }
 
 .container {
@@ -23,12 +28,33 @@
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  animation: modalScaleIn $transition-medium forwards;
+}
 
-  @media (max-width: 768px) {
-    padding: 16px;
-    width: 95%;
-    max-height: 85vh;
-  }
+.container_closing {
+  animation: modalScaleOut $transition-medium forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+  0% { opacity: 0; transform: translateY(12px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes modalFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalScaleOut {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(12px) scale(0.96); }
 }
 
 .top {
