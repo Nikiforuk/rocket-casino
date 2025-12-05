@@ -9,8 +9,19 @@ export const createAudio = (): AudioContext => {
   return new Ctx();
 };
 
-export const startTick = (ac: AudioContext) =>
-  window.setInterval(() => {
+export const startTick = (ac: AudioContext, duration = 3.6) => {
+  let timeoutId: number | null = null;
+  const startTime = ac.currentTime;
+
+  const tick = () => {
+    const elapsed = ac.currentTime - startTime;
+    const rawProgress = Math.min(elapsed / duration, 1);
+
+    if (rawProgress >= 1) return;
+
+    // ease-out: дуже швидко на старті, повільно до кінця
+    const progress = 1 - Math.pow(1 - rawProgress, 2);
+
     const o = ac.createOscillator();
     const g = ac.createGain();
     o.type = 'square';
@@ -22,7 +33,22 @@ export const startTick = (ac: AudioContext) =>
     g.connect(ac.destination);
     o.start();
     o.stop(ac.currentTime + 0.09);
-  }, 120);
+
+    const startInterval = 70;
+    const endInterval = 320;
+    const nextDelay = startInterval + (endInterval - startInterval) * progress;
+
+    timeoutId = window.setTimeout(tick, nextDelay);
+  };
+
+  tick();
+
+  return {
+    stop: () => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    },
+  };
+};
 
 export const stopTick = (id: number | null) => {
   if (id) window.clearInterval(id);

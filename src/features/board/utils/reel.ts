@@ -43,13 +43,20 @@ export const findCenterItem = <T extends { emoji: string }>(
     | NodeListOf<HTMLElement>
     | undefined;
   if (nodes && nodes.length) {
+    let bestIdx = 0;
+    let bestDist = Number.POSITIVE_INFINITY;
     for (let i = 0; i < nodes.length; i++) {
       const r = nodes[i].getBoundingClientRect();
-      if (cx >= r.left && cx <= r.right) {
-        selected = items[i % items.length];
-        break;
+      const center = (r.left + r.right) / 2;
+      const dist = Math.abs(center - cx);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIdx = i;
       }
     }
+    const idxAttr = nodes[bestIdx].getAttribute('data-index');
+    const mappedIdx = idxAttr ? Number.parseInt(idxAttr, 10) : bestIdx;
+    selected = items[Math.min(Math.max(mappedIdx, 0), items.length - 1)];
   }
   return selected;
 };

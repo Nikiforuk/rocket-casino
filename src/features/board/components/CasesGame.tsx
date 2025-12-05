@@ -80,6 +80,7 @@ export default function CasesGame() {
           <div className={layout.emojis_items}>
             {emojis
               .filter((item) => item.caseType === getCaseTypeByName(activeCase.name))
+              .slice(0, 16)
               .map((item) => (
                 <CaseItem
                   key={item.id}

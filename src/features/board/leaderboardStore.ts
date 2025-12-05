@@ -56,9 +56,19 @@ export const useLeaderboardStore = create<LeaderboardState>()(
               isCurrentUser,
               isWinner,
             };
+          }).filter((p) => {
+            const validId = typeof p.id === 'string' && p.id.length > 0;
+            const validName = typeof p.username === 'string' && p.username.length > 0;
+            const validNumbers = [p.gamesPlayed, p.totalWon, p.totalWagered, p.winPercentage].every(
+              (n) => Number.isFinite(n) && n >= 0,
+            );
+            return validId && validName && validNumbers;
           });
 
-          const top10 = processedPlayers.slice(0, 10);
+          const top10 = processedPlayers
+            .sort((a, b) => b.totalWon - a.totalWon)
+            .map((p, idx) => ({ ...p, rank: idx + 1 }))
+            .slice(0, 10);
 
           set({ players: top10, isLoading: false });
         } catch (error) {

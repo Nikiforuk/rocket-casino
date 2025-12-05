@@ -5,8 +5,8 @@
   @include flex($justify: center, $align: center);
   border-radius: 4px;
   border: 1px solid var(--gray-450);
-  min-width: 79px;
-  height: 60px;
+  min-width: 68px;
+  height: 54px;
 
   transition: $transition-medium;
   box-shadow: $shadow-soft;
@@ -16,11 +16,50 @@
     border-color: var(--blue-300);
     filter: brightness(1.04);
   }
+  @media (max-width: 1024px) {
+    min-width: 62px;
+    height: 52px;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 58px;
+    height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 54px;
+    height: 42px;
+  }
+
+  @media (max-width: 400px) {
+    min-width: 50px;
+    height: 40px;
+  }
 }
 
 .emoji {
   font-size: 30px;
   height: 36px;
+
+  @media (max-width: 1024px) {
+    font-size: 28px;
+    height: 34px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+    height: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    height: 30px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 22px;
+    height: 28px;
+  }
 }
 
 .common {

@@ -39,6 +39,7 @@ export default function CasesScreen({ items, offset, reelRef, trackRef, showSpla
                     key={`${e.emoji}-${i}`}
                     className={`${styles.itemBox} ${styles[`rarity_${e.rarity}`]}`}
                     data-role="reel-item"
+                    data-index={i}
                   >
                     <span className={styles.itemEmoji}>{e.emoji}</span>
                     <span className={styles.itemLabel}>{e.name}</span>

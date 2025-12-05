@@ -31,12 +31,14 @@
     width: 88px;
     flex: 0 0 88px;
     height: 140px;
+    padding: 8px;
   }
 
   @media (max-width: 400px) {
     width: 76px;
     flex: 0 0 76px;
     height: 120px;
+    padding: 6px;
   }
 }
 

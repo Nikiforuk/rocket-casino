@@ -14,6 +14,7 @@
   transition: $transition-medium;
 
   @media (max-width: 768px) { padding: 12px; }
+  @media (max-width: 480px) { padding: 11px; }
   @media (max-width: 400px) { padding: 10px; border-radius: 10px; }
 }
 
@@ -48,6 +49,7 @@
     pointer-events: none;
   }
 
+  @media (max-width: 480px) { padding: 11px; }
   @media (max-width: 400px) { padding: 10px; border-radius: 10px; }
 }
 
@@ -108,4 +110,5 @@
   background-size: 220% 220%;
   animation: resultShimmer 3s linear infinite;
   box-shadow: 0 0 34px rgba(255, 196, 0, 0.6);
+  @media (max-width: 480px) { box-shadow: 0 0 28px rgba(255, 196, 0, 0.5); }
 }

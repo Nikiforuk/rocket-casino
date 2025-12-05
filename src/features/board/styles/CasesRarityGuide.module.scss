@@ -26,6 +26,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    @media (max-width: 480px) { grid-template-columns: 1fr; gap: 8px; }
   }
 
   &_column {
@@ -34,6 +36,8 @@
     width: 100%;
     max-width: 184px;
     gap: 8px;
+    @media (max-width: 768px) { max-width: 100%; }
+    @media (max-width: 480px) { gap: 6px; }
 
     &_circle {
       width: 12px;
