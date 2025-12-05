@@ -3,8 +3,9 @@
 @import '../styles/mixins';
 
 .button {
-  @extend %i-medium-14-lg;
+  @extend %i-medium-16;
   @include flex($align: center, $justify: center);
+  font-weight: 300;
   gap: 10px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
@@ -13,7 +14,6 @@
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--blue-300);
     filter: brightness(1.04);
   }
 

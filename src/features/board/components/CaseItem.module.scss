@@ -7,6 +7,15 @@
   border: 1px solid var(--gray-450);
   min-width: 79px;
   height: 60px;
+
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
 }
 
 .emoji {
@@ -16,19 +25,37 @@
 
 .common {
   background: $gradient-cases-common;
+  box-shadow:
+    0px 4px 6px -4px var(--gray-400),
+    0px 10px 15px -3px var(--gray-400);
 }
 .uncommon {
   background: $gradient-cases-uncommon;
+  box-shadow:
+    0px 4px 6px -4px var(--green-a30),
+    0px 10px 15px -3px var(--green-a30);
 }
 .rare {
   background: $gradient-cases-rare;
+  box-shadow:
+    0px 4px 6px -4px var(--blue-800),
+    0px 10px 15px -3px var(--blue-800);
 }
 .epic {
   background: $gradient-cases-epic;
+  box-shadow:
+    0px 4px 6px -4px var(--purple-a20),
+    0px 10px 15px -3px var(--purple-a20);
 }
 .legendary {
   background: $gradient-cases-legendary;
+  box-shadow:
+    0px 4px 6px -4px var(--purple-a20),
+    0px 10px 15px -3px var(--purple-a20);
 }
 .gold {
   background: $gradient-cases-gold;
+  box-shadow:
+    0px 4px 6px -4px var(--gold-300),
+    0px 10px 15px -3px var(--gold-300);
 }

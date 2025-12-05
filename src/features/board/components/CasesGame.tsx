@@ -5,8 +5,11 @@ import { cases, emojis, rarityGuide } from '../../../shared/constants/cases';
 import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import CaseButton from '../../../shared/ui/CaseButton';
-import styles from '../components/CasesGame.module.scss';
 import { useCaseReel } from '../hooks/useCaseReel';
+import styles from '../styles/CasesItems.module.scss';
+import layout from '../styles/CasesLayout.module.scss';
+import guideStyles from '../styles/CasesRarityGuide.module.scss';
+import resultStyles from '../styles/CasesResult.module.scss';
 import { getCaseTypeByName } from '../utils/caseHelpers';
 
 export default function CasesGame() {
@@ -25,9 +28,9 @@ export default function CasesGame() {
   } = useCaseReel();
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>Select a Case</h3>
-      <div className={styles.groupButtons}>
+    <div className={layout.container}>
+      <h3 className={layout.title}>Select a Case</h3>
+      <div className={layout.groupButtons}>
         {cases.map((item, idx) => (
           <CaseButton
             onClick={() => handleSelectCase(idx)}
@@ -48,15 +51,18 @@ export default function CasesGame() {
         trackRef={trackRef}
       />
       {winningItem && (
-        <div className={styles.result}>
-          <div className={`${styles.itemBox} ${styles[`rarity_${winningItem.rarity}`]}`}>
-            <span className={styles.itemEmoji}>{winningItem.emoji}</span>
-            <span className={styles.itemLabel}>{winningItem.name}</span>
-            <span className={styles.itemLabel}>{winningItem.price}</span>
+        <div className={`${resultStyles.result} ${resultStyles[`result_${winningItem.rarity}`]}`}>
+          <div className={resultStyles.result_card}>
+            <p className={resultStyles.result_title}>You won</p>
+            <div className={`${styles.itemBox} ${styles[`rarity_${winningItem.rarity}`]}`}>
+              <span className={styles.itemEmoji}>{winningItem.emoji}</span>
+              <span className={styles.itemLabel}>{winningItem.name}</span>
+              <span className={styles.itemLabel}>{winningItem.price}</span>
+            </div>
           </div>
         </div>
       )}
-      <div className={styles.openBlock}>
+      <div className={layout.openBlock}>
         <Button
           icon={caseIcon}
           border="none"
@@ -68,10 +74,10 @@ export default function CasesGame() {
           disabled={isSpinning}
         />
       </div>
-      <div className={styles.emojis}>
-        <h3 className={styles.emojis_title}>Case Contents</h3>
-        <div className={styles.emojis_items}>
-          <div className={styles.emojis_items}>
+      <div className={layout.emojis}>
+        <h3 className={layout.emojis_title}>Case Contents</h3>
+        <div className={layout.emojis_items}>
+          <div className={layout.emojis_items}>
             {emojis
               .filter((item) => item.caseType === getCaseTypeByName(activeCase.name))
               .map((item) => (
@@ -86,19 +92,19 @@ export default function CasesGame() {
           </div>
         </div>
       </div>
-      <div className={styles.rarityGuide}>
+      <div className={guideStyles.rarityGuide}>
         <div>
-          <h4 className={styles.rarityGuide_title}>Rarity Guide</h4>
+          <h4 className={guideStyles.rarityGuide_title}>Rarity Guide</h4>
         </div>
-        <div className={styles.rarityGuide_net}>
+        <div className={guideStyles.rarityGuide_net}>
           {rarityGuide.map((item) => (
-            <div key={item.id} className={styles.rarityGuide_column}>
+            <div key={item.id} className={guideStyles.rarityGuide_column}>
               <div
                 style={{ background: item.circleColor }}
-                className={styles.rarityGuide_column_circle}
+                className={guideStyles.rarityGuide_column_circle}
               />
-              <p className={styles.rarityGuide_column_text}>{item.text}</p>
-              <p className={styles.rarityGuide_column_percents}>{item.percents}</p>
+              <p className={guideStyles.rarityGuide_column_text}>{item.text}</p>
+              <p className={guideStyles.rarityGuide_column_percents}>{item.percents}</p>
             </div>
           ))}
         </div>

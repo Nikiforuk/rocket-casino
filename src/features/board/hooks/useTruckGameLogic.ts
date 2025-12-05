@@ -8,6 +8,14 @@ import { useMultiplier } from './useTruckMultiplier';
 import { useToast } from '../../../features/toast/useToast';
 import { EGameState } from '../../../shared/types/board';
 import { generateCrashAt } from '../utils/generateCrashAt';
+import {
+  beginTruckRound,
+  makeCrashHandler,
+  unlockTruck,
+  lockTruck,
+  computePayout,
+  getTruckButtonText,
+} from '../utils/truckHelpers';
 
 export const useTruckGameLogic = () => {
   const { startBet, cashOut, isLoading: isBetting } = useBet();
@@ -41,22 +49,20 @@ export const useTruckGameLogic = () => {
     setBetAmount(amount);
     const crashMultiplier = generateCrashAt();
 
-    setGameState(EGameState.Accelerating);
-    setUiLocked(true);
-    setTruckActive(true);
-    playAudio();
-
-    setTimeout(() => {
-      setGameState(EGameState.Moving);
-      startMultiplier(crashMultiplier, 0.01, 30, () => {
-        setGameState(EGameState.Crashed);
-        stopAudio();
-        setUiLocked(false);
-        setTruckActive(false);
-        refreshProfile();
-        refreshLeaderboard();
-      });
-    }, 1200);
+    beginTruckRound(
+      crashMultiplier,
+      setGameState,
+      playAudio,
+      startMultiplier,
+      makeCrashHandler(
+        setGameState,
+        stopAudio,
+        () => unlockTruck(setUiLocked, setTruckActive),
+        refreshProfile,
+        refreshLeaderboard,
+      ),
+      () => lockTruck(setUiLocked, setTruckActive),
+    );
 
     return true;
   };
@@ -64,15 +70,13 @@ export const useTruckGameLogic = () => {
   const handleCashOut = async () => {
     stopMultiplier();
     stopAudio();
-    const totalPayout = Math.floor(betAmount * multiplier);
-    const profit = totalPayout - betAmount;
+    const { profit } = computePayout(betAmount, multiplier);
     const result = await cashOut(profit);
 
     if (!result.success) return (showError(result.error ?? 'Something went wrong'), false);
 
     setGameState(EGameState.Escaped);
-    setUiLocked(false);
-    setTruckActive(false);
+    unlockTruck(setUiLocked, setTruckActive);
     await refreshProfile();
     refreshLeaderboard();
     return true;
@@ -83,16 +87,10 @@ export const useTruckGameLogic = () => {
     stopAudio();
     resetMultiplier();
     setGameState(EGameState.Idle);
-    setUiLocked(false);
-    setTruckActive(false);
+    unlockTruck(setUiLocked, setTruckActive);
   };
 
-  const getButtonText = () => {
-    if (isBetting) return 'Starting...';
-    if ([EGameState.Accelerating, EGameState.Moving].includes(gameState)) return 'Cash Out';
-    if ([EGameState.Crashed, EGameState.Escaped].includes(gameState)) return 'Play Again';
-    return 'Start';
-  };
+  const getButtonText = () => getTruckButtonText(isBetting, gameState);
 
   const isActive = [EGameState.Accelerating, EGameState.Moving].includes(gameState);
   const isCashOutActive = isActive;

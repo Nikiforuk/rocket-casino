@@ -55,7 +55,6 @@ export default function Input({
           {label && <label className={styles.label}>{labelText}</label>}
         </div>
       )}
-
       <input
         className={`${styles.input} ${className || ''}`}
         name={name}

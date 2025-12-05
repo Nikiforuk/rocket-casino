@@ -1,5 +1,6 @@
-import styles from './CasesGame.module.scss';
 import caseImg from '../../../assets/images/case-game.png';
+import styles from '../styles/CasesItems.module.scss';
+import screen from '../styles/CasesScreen.module.scss';
 
 interface Item {
   emoji: string;
@@ -19,17 +20,17 @@ interface Props {
 export default function CasesScreen({ items, offset, reelRef, trackRef, showSplash }: Props) {
   return (
     <>
-      <div className={styles.screen}>
+      <div className={screen.screen}>
         {showSplash ? (
           <>
-            <img src={caseImg} className={styles.screen_img} alt="case-image" />
-            <p className={styles.screen_text}>Select a case and click Open to start</p>
+            <img src={caseImg} className={screen.screen_img} alt="case-image" />
+            <p className={screen.screen_text}>Select a case and click Open to start</p>
           </>
         ) : (
           <>
-            <div className={styles.reel} id="cases-reel" ref={reelRef}>
+            <div className={screen.reel} id="cases-reel" ref={reelRef}>
               <div
-                className={styles.track}
+                className={screen.track}
                 style={{ transform: `translateX(-${Math.round(offset)}px)` }}
                 ref={trackRef}
               >
@@ -46,7 +47,7 @@ export default function CasesScreen({ items, offset, reelRef, trackRef, showSpla
                 ))}
               </div>
             </div>
-            <div className={styles.indicator} />
+            <div className={screen.indicator} />
           </>
         )}
       </div>

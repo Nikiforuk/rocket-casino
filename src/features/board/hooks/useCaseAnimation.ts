@@ -26,9 +26,27 @@ export const useCaseAnimation = () => {
 
     const start = performance.now();
     const total = 2200;
+    const easeInQuad = (x: number) => x * x;
+    const easeOutCubic = (x: number) => 1 - Math.pow(1 - x, 3);
+    const piecewise = (p: number) => {
+      const w1 = 0.2;
+      const w2 = 0.6;
+      const w3 = 0.2;
+      if (p <= w1) {
+        const x = p / w1;
+        return easeInQuad(x) * w1;
+      }
+      if (p <= w1 + w2) {
+        const x = (p - w1) / w2;
+        return w1 + x * w2;
+      }
+      const x = (p - w1 - w2) / w3;
+      return w1 + w2 + easeOutCubic(x) * w3;
+    };
     const step = (t: number) => {
       const p = Math.min(Math.max((t - start) / total, 0), 1);
-      const next = base + (targetOffset - base) * (1 - Math.pow(1 - p, 3));
+      const progress = piecewise(p);
+      const next = base + (targetOffset - base) * progress;
       if (trackRef.current) trackRef.current.style.transform = `translateX(-${next}px)`;
       if (p >= 1) {
         const selected = findCenterItem(reelRef, items);

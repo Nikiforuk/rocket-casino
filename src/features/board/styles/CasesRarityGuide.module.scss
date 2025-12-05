@@ -1,0 +1,56 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/extends';
+@import '../../../shared/styles/variables';
+
+.rarityGuide {
+  border-radius: 10px;
+  background: var(--overlay-dark-a50);
+  padding: 16px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
+
+  &_title {
+    @extend %i-regular-16-lg;
+
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  &_net {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  &_column {
+    @include flex($align: center, $justify: flex-start);
+
+    width: 100%;
+    max-width: 184px;
+    gap: 8px;
+
+    &_circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    &_text {
+      @extend %i-regular-14-lg;
+
+      color: var(--gray-100);
+    }
+
+    &_percents {
+      @extend %i-regular-14-lg;
+
+      color: var(--gray-400);
+    }
+  }
+}

@@ -21,7 +21,7 @@
 .container {
   position: relative;
   background: var(--blue-900);
-  border: 1px solid var(--overlay-gray-a60);
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 24px;
   max-width: 500px;
@@ -31,6 +31,14 @@
   transform: translateY(8px) scale(0.98);
   opacity: 0;
   animation: modalScaleIn $transition-medium forwards;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--overlay-green-a50);
+    filter: brightness(1.04);
+  }
 }
 
 .container_closing {
