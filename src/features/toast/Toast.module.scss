@@ -1,0 +1,75 @@
+@import '../../shared/styles/mixins';
+
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+  }
+}
+
+.toast {
+  pointer-events: auto;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--twilight-veil);
+  border: 1px solid var(--overlay-gray-a60);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  animation: slideIn 0.3s ease-out;
+  min-width: 300px;
+  max-width: 400px;
+
+  @media (max-width: 768px) {
+    min-width: auto;
+    max-width: 100%;
+    padding: 14px 18px;
+  }
+
+  &_error {
+    border-left: 4px solid var(--red-100);
+  }
+
+  &_success {
+    border-left: 4px solid var(--green-600);
+  }
+
+  &_info {
+    border-left: 4px solid var(--blue-300);
+  }
+
+  &_message {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: -0.15px;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
