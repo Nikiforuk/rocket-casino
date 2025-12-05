@@ -1,4 +1,8 @@
-import CaseItem from './CaseItem';
+import CaseEmoji from './CaseEmoji';
+import itemsStyles from './CasesItems.module.scss';
+import layout from './CasesLayout.module.scss';
+import guideStyles from './CasesRarityGuide.module.scss';
+import resultStyles from './CasesResult.module.scss';
 import CasesScreen from './CasesScreen';
 import caseIcon from '../../../assets/icons/box.svg';
 import { cases, emojis, rarityGuide } from '../../../shared/constants/cases';
@@ -6,10 +10,6 @@ import { GRADIENTS } from '../../../shared/styles/gradients';
 import Button from '../../../shared/ui/Button';
 import CaseButton from '../../../shared/ui/CaseButton';
 import { useCaseReel } from '../hooks/useCaseReel';
-import styles from '../styles/CasesItems.module.scss';
-import layout from '../styles/CasesLayout.module.scss';
-import guideStyles from '../styles/CasesRarityGuide.module.scss';
-import resultStyles from '../styles/CasesResult.module.scss';
 import { getCaseTypeByName } from '../utils/caseHelpers';
 
 export default function CasesGame() {
@@ -54,10 +54,12 @@ export default function CasesGame() {
         <div className={`${resultStyles.result} ${resultStyles[`result_${winningItem.rarity}`]}`}>
           <div className={resultStyles.result_card}>
             <p className={resultStyles.result_title}>You won</p>
-            <div className={`${styles.itemBox} ${styles[`rarity_${winningItem.rarity}`]}`}>
-              <span className={styles.itemEmoji}>{winningItem.emoji}</span>
-              <span className={styles.itemLabel}>{winningItem.name}</span>
-              <span className={styles.itemLabel}>{winningItem.price}</span>
+            <div
+              className={`${itemsStyles.itemBox} ${itemsStyles[`rarity_${winningItem.rarity}`]}`}
+            >
+              <span className={itemsStyles.itemEmoji}>{winningItem.emoji}</span>
+              <span className={itemsStyles.itemLabel}>{winningItem.name}</span>
+              <span className={itemsStyles.itemLabel}>{winningItem.price}</span>
             </div>
           </div>
         </div>
@@ -82,7 +84,7 @@ export default function CasesGame() {
               .filter((item) => item.caseType === getCaseTypeByName(activeCase.name))
               .slice(0, 16)
               .map((item) => (
-                <CaseItem
+                <CaseEmoji
                   key={item.id}
                   id={item.id}
                   emoji={item.emoji}

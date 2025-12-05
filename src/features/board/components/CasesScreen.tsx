@@ -1,6 +1,6 @@
+import styles from './CasesItems.module.scss';
+import screen from './CasesScreen.module.scss';
 import caseImg from '../../../assets/images/case-game.png';
-import styles from '../styles/CasesItems.module.scss';
-import screen from '../styles/CasesScreen.module.scss';
 
 interface Item {
   emoji: string;
