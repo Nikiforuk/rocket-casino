@@ -1,8 +1,8 @@
 import BetForm from './BetForm';
 import styles from './TruckGame.module.scss';
 import TruckScreen from './TruckScreen';
-import { EGameState } from '../../../shared/types/board';
-import { useTruckGameLogic } from '../hooks/useTruckGameLogic';
+import { EGameState } from '../../../../shared/types/board';
+import { useTruckGameLogic } from '../../hooks/useTruckGameLogic';
 
 export default function TruckGame() {
   const {

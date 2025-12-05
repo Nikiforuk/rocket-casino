@@ -1,8 +1,8 @@
 import styles from './TruckGame.module.scss';
-import policeCar1Img from '../../../assets/images/car-police-1.png';
-import policeCar2Img from '../../../assets/images/car-police-2.png';
-import roadImg from '../../../assets/images/road.png';
-import truckImg from '../../../assets/images/truck.png';
+import policeCar1Img from '../../../../assets/images/car-police-1.png';
+import policeCar2Img from '../../../../assets/images/car-police-2.png';
+import roadImg from '../../../../assets/images/road.png';
+import truckImg from '../../../../assets/images/truck.png';
 
 export default function CrashedContent() {
   return (

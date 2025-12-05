@@ -1,5 +1,5 @@
-@import '../../../shared/styles/variables';
-@import '../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
 
 .container {
   @include flex($justify: center, $align: center);

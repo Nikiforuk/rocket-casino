@@ -1,7 +1,7 @@
 import styles from './TruckGame.module.scss';
-import truckImg from '../../../assets/images/truck.png';
+import truckImg from '../../../../assets/images/truck.png';
 
-export default function SplashScreen() {
+export default function TruckSplashScreen() {
   return (
     <div className={styles.splashScreen}>
       <img src={truckImg} alt="Truck" className={styles.splashTruck} />

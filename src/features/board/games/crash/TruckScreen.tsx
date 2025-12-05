@@ -4,7 +4,7 @@ import EscapedContent from './EscapedContent';
 import Multiplier from './Multiplier';
 import SplashScreen from './SplashScreen';
 import styles from './TruckGame.module.scss';
-import { EGameState } from '../../../shared/types/board';
+import { EGameState } from '../../../../shared/types/board';
 
 interface TruckScreenProps {
   gameState: EGameState;

@@ -4,13 +4,13 @@ import layout from './CasesLayout.module.scss';
 import guideStyles from './CasesRarityGuide.module.scss';
 import resultStyles from './CasesResult.module.scss';
 import CasesScreen from './CasesScreen';
-import caseIcon from '../../../assets/icons/box.svg';
-import { cases, emojis, rarityGuide } from '../../../shared/constants/cases';
-import { GRADIENTS } from '../../../shared/styles/gradients';
-import Button from '../../../shared/ui/Button';
-import CaseButton from '../../../shared/ui/CaseButton';
-import { useCaseReel } from '../hooks/useCaseReel';
-import { getCaseTypeByName } from '../utils/caseHelpers';
+import caseIcon from '../../../../assets/icons/box.svg';
+import { cases, emojis, rarityGuide } from '../../../../shared/constants/cases';
+import { GRADIENTS } from '../../../../shared/styles/gradients';
+import Button from '../../../../shared/ui/Button';
+import CaseButton from '../../../../shared/ui/CaseButton';
+import { useCaseReel } from '../../hooks/useCaseReel';
+import { getCaseTypeByName } from '../../utils/caseHelpers';
 
 export default function CasesGame() {
   const {

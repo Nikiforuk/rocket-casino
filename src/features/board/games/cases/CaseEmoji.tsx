@@ -1,5 +1,5 @@
 import styles from './CaseEmogi.module.scss';
-import type { Rarity } from '../../../shared/types/cases';
+import type { Rarity } from '../../../../shared/types/cases';
 
 export interface CaseEmojiProps {
   id: number;

@@ -3,11 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import styles from './Board.module.scss';
 import { useBoardStore } from '../features/board/boardStore';
 import BonusSystem from '../features/board/components/BonusSystem';
-import CasesGame from '../features/board/components/CasesGame';
 import Header from '../features/board/components/Header';
 import Leaderboard from '../features/board/components/Leaderboard';
 import TabList from '../features/board/components/TabList';
-import TruckGame from '../features/board/components/TruckGame';
+import CasesGame from '../features/board/games/cases/CasesGame';
+import TruckGame from '../features/board/games/crash/TruckGame';
 import { useRefreshProfile } from '../features/board/hooks/useRefreshProfile';
 import Modal from '../features/modal/components/Modal';
 

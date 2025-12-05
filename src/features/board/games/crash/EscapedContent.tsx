@@ -1,8 +1,8 @@
 import styles from './TruckGame.module.scss';
-import cityImg from '../../../assets/images/city.png';
-import roadImg from '../../../assets/images/road.png';
-import truckImg from '../../../assets/images/truck.png';
-import winImg from '../../../assets/images/win.png';
+import cityImg from '../../../../assets/images/city.png';
+import roadImg from '../../../../assets/images/road.png';
+import truckImg from '../../../../assets/images/truck.png';
+import winImg from '../../../../assets/images/win.png';
 
 export default function EscapedContent() {
   return (
