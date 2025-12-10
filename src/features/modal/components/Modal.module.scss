@@ -1,0 +1,232 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/extends';
+@import '../../../shared/styles/mixins';
+
+.overlay {
+  @include flex($align: center, $justify: center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-modal);
+  z-index: 1000;
+  animation: modalFadeIn $transition-medium;
+}
+
+.overlay_closing {
+  animation: modalFadeOut $transition-medium forwards;
+}
+
+.container {
+  position: relative;
+  background: var(--blue-900);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  animation: modalScaleIn $transition-medium forwards;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--overlay-green-a50);
+    filter: brightness(1.04);
+  }
+}
+
+.container_closing {
+  animation: modalScaleOut $transition-medium forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+  0% { opacity: 0; transform: translateY(12px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes modalFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalScaleOut {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(12px) scale(0.96); }
+}
+
+.top {
+  margin-bottom: 32px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
+
+  &_title {
+    @extend %i-semi-bold-18;
+    margin-bottom: 8px;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &_subtitle {
+    @extend %i-regular-14-lg;
+    color: var(--gray-200);
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }
+}
+
+.form {
+  margin-bottom: 8px;
+}
+
+.errorBlock {
+  @include flex($align: center, $justify: flex-start);
+  border-radius: 10px;
+  border: 1px solid var(--red-a50);
+  background: var(--red-a20);
+  padding: 12.5px;
+  margin-bottom: 16px;
+
+  &_text {
+    @extend %i-regular-14-lg;
+    color: var(--red-100);
+    margin-top: 4px;
+  }
+}
+
+.infoBlock {
+  margin-top: 9px;
+  margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
+
+  &_text {
+    @extend %i-regular-10;
+    color: var(--gray-200);
+
+    @media (max-width: 768px) {
+      font-size: 9px;
+      line-height: 12px;
+    }
+  }
+}
+
+.stats {
+  display: grid;
+  border-radius: 10px;
+  background: var(--overlay-dark-a50);
+  margin-top: 8px;
+  padding: 16px;
+  gap: 16.5px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  &_title {
+    @extend %i-regular-16;
+    color: var(--gray-100);
+    margin-bottom: 8.5px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  &_column {
+    display: grid;
+    gap: 3px;
+
+    &_firstText {
+      @extend %i-regular-16;
+      color: var(--gray-200);
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    &_secondText {
+      @extend %i-regular-16;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+.groupButtons {
+  @include flex($align: center, $justify: center);
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    flex-direction: column;
+  }
+}
+
+.closeBtn {
+  border: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  &_icon {
+    width: 20px;
+    height: 20px;
+
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

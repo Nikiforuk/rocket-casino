@@ -1,0 +1,12 @@
+@import '../shared/styles/mixins';
+
+.container {
+  @include flex($align: center, $justify: center, $direction: column);
+  height: 100dvh;
+  padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    min-height: 100dvh;
+  }
+}

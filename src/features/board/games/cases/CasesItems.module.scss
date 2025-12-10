@@ -1,0 +1,124 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/extends';
+
+.itemBox {
+  @include flex($align: center, $justify: center, $direction: column);
+
+  width: 130px;
+  flex: 0 0 130px;
+  height: 180px;
+
+  border-radius: 6px;
+  border: 1px solid var(--gray-450);
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    transform: translateY(-2px);
+    border-color: var(--blue-300);
+    filter: brightness(1.05);
+  }
+
+  @media (max-width: 768px) {
+    width: 104px;
+    flex: 0 0 104px;
+    height: 160px;
+  }
+
+  @media (max-width: 480px) {
+    width: 88px;
+    flex: 0 0 88px;
+    height: 140px;
+    padding: 8px;
+  }
+
+  @media (max-width: 400px) {
+    width: 76px;
+    flex: 0 0 76px;
+    height: 120px;
+    padding: 6px;
+  }
+}
+
+.itemEmoji {
+  font-size: 60px;
+  line-height: 60px;
+
+  @media (max-width: 768px) {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 34px;
+    line-height: 34px;
+  }
+}
+
+.itemLabel {
+  @extend %i-regular-12;
+
+  margin-top: 8px;
+  font-weight: 700;
+
+  @media (max-width: 400px) {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
+/* Rarity backgrounds */
+.rarity_common {
+  background: $gradient-cases-common;
+  color: var(--gray-200);
+  box-shadow:
+    0px 4px 6px -4px var(--gray-400),
+    0px 10px 15px -3px var(--gray-400);
+}
+
+.rarity_uncommon {
+  background: $gradient-cases-uncommon;
+  color: var(--green-600);
+  box-shadow:
+    0px 4px 6px -4px var(--green-a30),
+    0px 10px 15px -3px var(--green-a30);
+}
+
+.rarity_rare {
+  background: $gradient-cases-rare;
+  color: var(--blue-200);
+  box-shadow:
+    0px 4px 6px -4px var(--blue-800),
+    0px 10px 15px -3px var(--blue-800);
+}
+
+.rarity_epic {
+  background: $gradient-cases-epic;
+  color: var(--purple-100);
+  box-shadow:
+    0px 6px 12px rgba(128, 90, 213, 0.35),
+    0px 12px 20px rgba(128, 90, 213, 0.25);
+}
+
+.rarity_legendary {
+  background: $gradient-cases-legendary;
+  color: var(--red-50);
+  box-shadow:
+    0px 4px 6px -4px var(--purple-a20),
+    0px 10px 15px -3px var(--purple-a20);
+}
+
+.rarity_gold {
+  background: $gradient-cases-gold;
+  color: var(--gold-200);
+  box-shadow:
+    0px 4px 6px -4px var(--gold-300),
+    0px 10px 15px -3px var(--gold-300);
+}

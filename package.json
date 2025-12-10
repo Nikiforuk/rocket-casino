@@ -3,15 +3,25 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Nikiforuk.github.io/rocket-casino/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .ts,.tsx --fix"
+    "lint": "eslint . --ext .ts,.tsx --fix",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/supabase-js": "^2.86.0",
+    "framer-motion": "^12.23.24",
+    "immer": "^11.0.1",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.66.1",
+    "react-router-dom": "^7.9.6",
+    "zod": "^4.1.13",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
@@ -26,6 +36,8 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "prettier": "^3.6.2"
+    "gh-pages": "^6.3.0",
+    "prettier": "^3.6.2",
+    "sass-embedded": "^1.93.3"
   }
 }
