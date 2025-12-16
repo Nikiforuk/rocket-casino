@@ -1,7 +1,6 @@
-@import '../../../shared/styles/variables';
-@import '../../../shared/styles/mixins';
-@import '../../../shared/styles/extends';
-
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/extends' as *;
+@use '../../../shared/styles/mixins' as *;
 
 .container {
   border-radius: 14px;

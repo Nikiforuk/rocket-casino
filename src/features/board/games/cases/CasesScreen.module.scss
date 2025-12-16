@@ -1,6 +1,6 @@
-@import '../../../../shared/styles/variables';
-@import '../../../../shared/styles/mixins';
-@import '../../../../shared/styles/extends';
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
 
 .screen {
   @include flex($align: center, $justify: center, $direction: column);
