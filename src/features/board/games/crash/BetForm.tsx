@@ -5,7 +5,7 @@ import { Controller, useForm, type ControllerRenderProps } from 'react-hook-form
 import styles from './TruckGame.module.scss';
 import { quickBtns } from '../../../../shared/constants/truck';
 import { GRADIENTS } from '../../../../shared/styles/gradients';
-import { EGameState, type TruckGameData } from '../../../../shared/types/board';
+import { EGameState, type TruckGameData } from '../../../../shared/types/truck';
 import Button from '../../../../shared/ui/Button';
 import Input from '../../../../shared/ui/Input';
 import { useBoardStore } from '../../boardStore';

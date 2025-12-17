@@ -6,7 +6,7 @@ import { useBet } from './useBet';
 import { useTruckAudio } from './useTruckAudio';
 import { useMultiplier } from './useTruckMultiplier';
 import { useToast } from '../../../features/toast/useToast';
-import { EGameState } from '../../../shared/types/board';
+import { EGameState } from '../../../shared/types/truck';
 import { generateCrashAt } from '../utils/generateCrashAt';
 import {
   beginTruckRound,

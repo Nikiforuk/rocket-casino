@@ -1,0 +1,64 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: _, $justify: flex-start, $direction: column);
+}
+
+.top {
+  @include flex($align: center, $justify: space-between);
+  margin-bottom: 16px;
+
+  &_title {
+    @extend %i-bold-18;
+    font-weight: 500;
+  }
+
+  &_labels {
+    @include flex($align: center, $justify: space-between);
+    gap: 16px;
+  }
+
+
+  &_side {
+    @include flex($align: center);
+    gap: 5px;
+
+    &_text {
+      @extend %i-regular-16-lg;
+      color: var(--gray-100);
+    }
+
+    &_num {
+      @extend %i-bold-16;
+
+      &_secondColor {
+        color: var(--purple-100);
+      }
+    }
+  }
+}
+
+.screen {
+  @include flex($align: _, $justify: flex-start, $direction: column);
+}
+
+.mines {
+  display: grid;
+  grid-template-columns: repeat(5, 90px);
+  grid-template-rows: repeat(5, 90px);
+  background: $gradient-dark-gray;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  padding: 26px 60px;
+  gap: 10px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  
+  &:hover {
+    box-shadow: $shadow-strong;
+    border: 2px solid var(--purple-450);
+    filter: brightness(1.04);
+  }
+}

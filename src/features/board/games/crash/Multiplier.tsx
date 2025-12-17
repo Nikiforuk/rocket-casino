@@ -1,5 +1,5 @@
 import styles from './TruckGame.module.scss';
-import { EGameState } from '../../../../shared/types/board';
+import { EGameState } from '../../../../shared/types/truck';
 import { formatNumber } from '../../utils/numberHelpers';
 
 interface MultiplierProps {

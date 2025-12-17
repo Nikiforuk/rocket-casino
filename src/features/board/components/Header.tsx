@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 import gobletIcon from '../../../assets/icons/goblet-white.svg';
 import { GRADIENTS } from '../../../shared/styles/gradients';
@@ -11,9 +13,11 @@ export default function Header() {
   const handleSignOut = useSignOut();
   const username = useAuthStore((state) => state.getUsername());
   const { balance, setIsModal } = useBoardStore();
+  const [searchParams] = useSearchParams();
+  const game = searchParams.get('game') ?? 'truck';
   return (
     <header className={styles.container}>
-      <div className={styles.content}>
+      <div className={`${styles.content} ${game === 'mines' ? styles.contentMines : ''}`}>
         <div className={styles.leftBlock}>
           <div className={styles.gradientBlock}>
             <img src={gobletIcon} className={styles.gradientBlock_icon} alt="goblet-white" />

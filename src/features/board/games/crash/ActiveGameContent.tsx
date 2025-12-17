@@ -2,7 +2,7 @@ import styles from './TruckGame.module.scss';
 import cityImg from '../../../../assets/images/city.png';
 import roadImg from '../../../../assets/images/road.png';
 import truckImg from '../../../../assets/images/truck.png';
-import { EGameState } from '../../../../shared/types/board';
+import { EGameState } from '../../../../shared/types/truck';
 
 interface ActiveGameContentProps {
   gameState: EGameState;

@@ -1,0 +1,32 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: space-between);
+  border: 1px solid var(--blue-600);
+  border-radius: 14px;
+  padding: 24px;
+  background: var(--overlay-dark-a50);
+  transition: $transition-medium;
+  max-width: 1000px;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: var(--blue-300);
+    filter: brightness(1.04);
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+}
+
+.compartments {
+  display: grid;
+  grid-template-columns: 621px 298px;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+}

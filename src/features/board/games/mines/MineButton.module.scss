@@ -1,0 +1,12 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.button {
+  @include flex($align: center);
+  width: 93px;
+  height: 93px;
+  background: $gradient-blue-to-purple;
+  border-radius: 10px;
+  border: none;
+}

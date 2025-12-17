@@ -31,6 +31,10 @@
   }
 }
 
+.contentMines {
+  max-width: 1500px;
+}
+
 .leftBlock {
   @include flex($align: flex-start);
   gap: 12px;
