@@ -9,12 +9,37 @@
   background: $gradient-blue-to-purple;
   border-radius: 10px;
   border: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: $shadow-strong;
+  }
 }
 
-// .buttonDiamond {
-//   background: $gradient-green-to-green;
-// }
+.icon {
+  width: 28px;
+  height: 28px;
+}
 
-// .buttonDefeat {
-//   background: $gradient-red-to-darkRed;
-// }
+@keyframes revealCell {
+  0% { transform: scale(0.96); filter: brightness(0.9); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.buttonDiamond {
+  background: $gradient-green-to-green;
+  animation: revealCell 300ms ease;
+}
+
+@keyframes explodeMine {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(0.96); filter: brightness(0.8); }
+}
+
+.buttonDefeat {
+  background: $gradient-red-to-darkRed;
+  animation: explodeMine 500ms ease;
+}

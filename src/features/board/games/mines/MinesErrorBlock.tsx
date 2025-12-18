@@ -1,9 +1,15 @@
 import styles from './MinesErrorBlock.module.scss';
 import blastIcon from '../../../../assets/images/blast.png';
 import { GRADIENTS } from '../../../../shared/styles/gradients';
+import { EMinesState } from '../../../../shared/types/mines';
 import Button from '../../../../shared/ui/Button';
+import { useGameController } from '../../hooks/useGameController';
+import { useMinesStore } from '../../mineStore/minesStore';
 
 export default function MinesErrorBlock() {
+  const { state } = useMinesStore();
+  const { onNewGame } = useGameController();
+  if (state !== EMinesState.LOST) return null;
   return (
     <div className={styles.container}>
       <div className={styles.inner}>
@@ -17,7 +23,8 @@ export default function MinesErrorBlock() {
         width="200px"
         height="36px"
         background={GRADIENTS.casesLegendary}
-        type="submit"
+        type="button"
+        onClick={onNewGame}
       />
     </div>
   );

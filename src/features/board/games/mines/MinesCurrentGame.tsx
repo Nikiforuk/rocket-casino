@@ -1,7 +1,9 @@
 import styles from './MinesCurrentGame.module.scss';
 import ghostIcon from '../../../../assets/images/ghost.png';
+import { useMinesStore } from '../../mineStore/minesStore';
 
 export default function MinesCurrentGame() {
+  const { betAmount, currentValue, safeTilesLeft } = useMinesStore();
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -11,16 +13,20 @@ export default function MinesCurrentGame() {
       <div className={styles.rows}>
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Bet Amount:</p>
-          <b className={styles.rows_row_sum}>$10.00</b>
+          <b className={styles.rows_row_sum}>${betAmount.toFixed(2)}</b>
         </div>
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Current Value:</p>
-          <b className={`${styles.rows_row_sum} ${styles.rows_row_sum_greenColor}`}>$101.41</b>
+          <b className={`${styles.rows_row_sum} ${styles.rows_row_sum_greenColor}`}>
+            ${currentValue.toFixed(6)}
+          </b>
         </div>
         <div className={styles.rows_line} />
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Safe Tiles Left:</p>
-          <b className={`${styles.rows_row_sum} ${styles.rows_row_sum_blueColor}`}>22</b>
+          <b className={`${styles.rows_row_sum} ${styles.rows_row_sum_blueColor}`}>
+            {safeTilesLeft}
+          </b>
         </div>
       </div>
     </div>

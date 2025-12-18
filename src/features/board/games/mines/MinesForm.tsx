@@ -2,23 +2,33 @@ import { Controller, useForm } from 'react-hook-form';
 
 import styles from './MinesForm.module.scss';
 import amountIcon from '../../../../assets/images/amount.png';
+import { MINES_CONFIG } from '../../../../shared/constants/config';
 import { GRADIENTS } from '../../../../shared/styles/gradients';
 import type { MinesGameData } from '../../../../shared/types/mines';
+import { EMinesState } from '../../../../shared/types/mines';
 import Button from '../../../../shared/ui/Button';
 import Input from '../../../../shared/ui/Input';
+import { useGameController } from '../../hooks/useGameController';
 
 export default function MinesForm() {
-  const { control } = useForm<MinesGameData>({
-    defaultValues: { amount: '' },
-  });
+  const { control, setValue } = useForm<MinesGameData>({ defaultValues: { amount: '' } });
+  const {
+    onQuickAmount,
+    onQuickMines,
+    onStart,
+    onCashOut,
+    getMainButtonText,
+    isLoading,
+    minesCount,
+    setBetAmount,
+    state,
+  } = useGameController();
   const miniBtns = [{ label: '10' }, { label: '50' }, { label: '100' }, { label: '500' }];
-  const minesBtn = [
-    { label: '10' },
-    { label: '50' },
-    { label: '100' },
-    { label: '500' },
-    { label: '500' },
-  ];
+  const minesBtn = MINES_CONFIG.allowedMines.map((n) => ({ label: String(n) }));
+  const mainBtnBg =
+    state === EMinesState.PLAYING
+      ? 'linear-gradient(90deg, #D08700 0%, #F54900 100%)'
+      : GRADIENTS.greenToGreen;
   return (
     <>
       <form className={styles.container}>
@@ -39,7 +49,11 @@ export default function MinesForm() {
                   type="text"
                   width="100%"
                   value={field.value}
-                  onChange={() => console.log('bet')}
+                  onChange={(e) => {
+                    setValue('amount', e.target.value);
+                    const parsed = Number(e.target.value.replace(/[^0-9.]/g, ''));
+                    if (!Number.isNaN(parsed)) setBetAmount(parsed);
+                  }}
                   background="rgba(15, 23, 43, 0.5)"
                   border="1px solid rgba(15, 23, 43, 0.1)"
                   padding="8px 12px"
@@ -50,7 +64,7 @@ export default function MinesForm() {
                     letterSpacing: '-0.15px',
                     fontWeight: '400',
                   }}
-                  disabled={false}
+                  disabled={isLoading || state === EMinesState.PLAYING}
                 />
               )}
             />
@@ -66,8 +80,11 @@ export default function MinesForm() {
                 background="rgba(15, 23, 43, 0.5)"
                 borderRadius="4px"
                 border="1px solid rgba(49, 65, 88, 0.1)"
-                disabled={false}
-                onClick={() => console.log()}
+                disabled={isLoading || state === EMinesState.PLAYING}
+                onClick={() => {
+                  setValue('amount', btn.label);
+                  onQuickAmount(Number(btn.label));
+                }}
               />
             ))}
           </div>
@@ -75,7 +92,7 @@ export default function MinesForm() {
         <div className={styles.mines}>
           <div className={styles.mines_groupLabels}>
             <p className={styles.mines_text}>Mines:</p>
-            <b className={styles.mines_num}>1</b>
+            <b className={styles.mines_num}>{minesCount}</b>
           </div>
           <div className={styles.mines_btns}>
             {minesBtn.map((btn) => (
@@ -85,22 +102,31 @@ export default function MinesForm() {
                 text={btn.label}
                 width="46px"
                 height="37px"
-                background="rgba(15, 23, 43, 0.5)"
-                borderRadius="4px"
-                border="1px solid rgba(49, 65, 88, 0.1)"
-                disabled={false}
-                onClick={() => console.log()}
+                background={
+                  minesCount === Number(btn.label)
+                    ? GRADIENTS.transparentBluePurple
+                    : 'rgba(15, 23, 43, 0.5)'
+                }
+                borderRadius="6px"
+                border={
+                  minesCount === Number(btn.label)
+                    ? '1px solid rgba(49, 65, 88, 0.3)'
+                    : '1px solid rgba(49, 65, 88, 0.1)'
+                }
+                disabled={isLoading || state === EMinesState.PLAYING}
+                onClick={() => onQuickMines(Number(btn.label))}
               />
             ))}
           </div>
           <Button
-            type="submit"
+            type="button"
             border="1px solid rgba(49, 65, 88, 0.1)"
             height="36px"
-            background={GRADIENTS.greenToGreen}
-            text={'$ Start Game'}
+            background={mainBtnBg}
+            text={`$ ${getMainButtonText()}`}
             borderRadius="8px"
-            disabled={false}
+            disabled={isLoading}
+            onClick={state === EMinesState.PLAYING ? onCashOut : onStart}
           />
         </div>
       </form>

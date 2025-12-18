@@ -1,15 +1,23 @@
 import styles from './MineButton.module.scss';
-// import diamongImg from '../../../../assets/icons/diamond.svg';
-// import defeatImg from '../../../../assets/icons/mine.svg';
+import defeatIcon from '../../../../assets/icons/defeat.svg';
+import diamondIcon from '../../../../assets/icons/diamond.svg';
+import { EMinesTileStatus } from '../../../../shared/types/mines';
 
-export default function MineButton() {
+export default function MineButton({
+  status,
+  onClick,
+}: {
+  status: EMinesTileStatus;
+  onClick: () => void;
+}) {
+  const isSafe = status === EMinesTileStatus.SAFE;
+  const isMine = status === EMinesTileStatus.MINE;
+  const isHidden = status === EMinesTileStatus.HIDDEN;
+  const cls = `${styles.button} ${isSafe ? styles.buttonDiamond : ''} ${isMine ? styles.buttonDefeat : ''}`;
   return (
-    <button
-      className={`${styles.button} ${styles.buttonDiamond} ${styles.buttonDefeat}`}
-      type="button"
-    >
-      {/* <img className={styles.gradientBlock_logo} src={diamongImg} alt="diamong-image" /> */}
-      {/* <img className={styles.gradientBlock_logo} src={mineImg} alt="mine-image" /> */}
+    <button className={cls} type="button" onClick={onClick} disabled={!isHidden}>
+      {isSafe && <img className={styles.icon} src={diamondIcon} alt="diamond-icon" />}
+      {isMine && <img className={styles.icon} src={defeatIcon} alt="defeat-icon" />}
     </button>
   );
 }
