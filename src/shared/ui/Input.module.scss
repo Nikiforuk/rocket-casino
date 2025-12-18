@@ -25,6 +25,9 @@
 
 .input {
   width: 100%;
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
   transition: $transition-fast;
   box-shadow: none;
   outline: none;

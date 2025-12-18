@@ -56,7 +56,6 @@ export default function MinesForm() {
               key={btn.label}
               type="button"
               text={`$${btn.label}`}
-              width="60px"
               height="38px"
               background="rgba(15, 23, 43, 0.5)"
               borderRadius="4px"

@@ -5,6 +5,7 @@
 .container {
   max-width: 450px;
   width: 100%;
+  box-sizing: border-box;
   background: var(--gray-800);
   border-radius: 14px;
   padding: 32px;
@@ -21,13 +22,13 @@
 }
 
 .gradientBlock {
-   @include flex($align: center, $justify: center);
-   background: $gradient-green-blue-purple;
-   width: 64px;
-   height: 64px;
-   border-radius: 10px;
-   margin: 0 auto;
-   margin-bottom: 16px;
+  @include flex($align: center, $justify: center);
+  background: $gradient-green-blue-purple;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-bottom: 16px;
 
   &_logo {
     width: 40px;
@@ -56,6 +57,7 @@
 .fields {
   &_box {
     @include flex($align: flex-start, $justify: center, $direction: column);
+    width: 100%;
     margin-bottom: 12.5px;
     transition: $transition-fast;
 

@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 :root {
   --white: #FFFFFF;
   --midnight-navy: #1A1D28;
@@ -33,13 +35,12 @@
 
   --green-100: #00BC7D;
   --green-200: #00D492;
-  
   --green-300: #009966;
   --green-400: #00A63E;
   --green-450: #008236;
   --green-500: #004F3B;
   --green-600: #05DF72;
-  
+
   --green-a10: rgba(0, 188, 125, 0.1);
   --green-a20: rgba(0, 188, 125, 0.2);
   --green-a30: rgba(0, 188, 125, 0.4);
@@ -80,10 +81,7 @@
   --overlay-modal: rgba(0, 0, 0, 0.5);
 }
 
-#E2E8F0
-
-
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
