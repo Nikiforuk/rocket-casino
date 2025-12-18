@@ -1,4 +1,5 @@
 import styles from './MinesGame.module.scss';
+import MinesScreen from './MinesScreen';
 // import MinesScreen from './MinesScreen';
 import MinesSettings from './MinesSettings';
 import MinesSplashScreen from './MinesSplashScreen';

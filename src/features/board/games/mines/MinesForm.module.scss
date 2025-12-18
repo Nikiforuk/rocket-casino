@@ -10,10 +10,20 @@
   margin-bottom: 16px;
 }
 
-.label {
-  @extend %i-medium-16;
-  margin-bottom: 8px;
-  color: var(--gray-25);
+.top {
+  @include flex($align: center, $justify: flex-start);
+   gap: 8px;
+   margin-bottom: 8px;
+
+  &_label {
+    @extend %i-medium-16;
+    color: var(--gray-25);
+  }
+
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .fieldBox {

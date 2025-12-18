@@ -10,9 +10,19 @@
   margin-bottom: 16px;
 }
 
-.title {
-  @extend %i-bold-16;
-  margin-bottom: 12px;
+.top {
+  @include flex($align: center, $justify: flex-start);
+  gap: 8px;
+  margin-bottom: 10px;
+
+  .title {
+    @extend %i-bold-16;
+  }
+
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .rows {

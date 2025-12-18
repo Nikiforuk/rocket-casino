@@ -8,11 +8,17 @@
 
 .top {
   @include flex($align: center, $justify: flex-start);
+  gap: 8px;
   margin-bottom: 16px;
 
   &_title {
     @extend %i-bold-18;
     font-weight: 500;
+  }
+
+  &_icon {
+    width: 40px;
+    height: 40px;
   }
 }
 

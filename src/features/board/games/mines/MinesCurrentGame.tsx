@@ -1,9 +1,13 @@
 import styles from './MinesCurrentGame.module.scss';
+import ghostIcon from '../../../../assets/images/ghost.png';
 
 export default function MinesCurrentGame() {
   return (
     <div className={styles.container}>
-      <h4 className={styles.title}>Current Game</h4>
+      <div className={styles.top}>
+        <h4 className={styles.top_title}>Current Game</h4>
+        <img className={styles.top_icon} src={ghostIcon} alt="bandit-icon" />
+      </div>
       <div className={styles.rows}>
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Bet Amount:</p>

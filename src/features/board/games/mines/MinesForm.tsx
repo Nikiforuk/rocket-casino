@@ -1,6 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
 
 import styles from './MinesForm.module.scss';
+import amountIcon from '../../../../assets/images/amount.png';
 import { GRADIENTS } from '../../../../shared/styles/gradients';
 import type { MinesGameData } from '../../../../shared/types/mines';
 import Button from '../../../../shared/ui/Button';
@@ -21,7 +22,10 @@ export default function MinesForm() {
   return (
     <>
       <form className={styles.container}>
-        <p className={styles.label}>Bet Amount</p>
+        <div className={styles.top}>
+          <p className={styles.top_label}>Bet Amount</p>
+          <img className={styles.top_icon} src={amountIcon} alt="amount-icon" />
+        </div>
         <div className={styles.inner}>
           <div className={styles.fieldBox}>
             <Controller

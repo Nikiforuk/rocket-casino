@@ -5,6 +5,12 @@ $gradient-dark-green-purple: linear-gradient(
   var(--purple-300) 100%
 );
 
+$gradient-red-to-darkRed: linear-gradient(
+  135deg,
+  var(--red-250) 0%,
+  var(--red-500) 100%
+);
+
 $gradient-green-blue-purple: linear-gradient(
   135deg,
   var(--green-100) 0%,

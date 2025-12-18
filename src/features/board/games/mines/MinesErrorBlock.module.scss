@@ -9,6 +9,14 @@
   border-radius: 10px;
   max-height: 106px;
   height: 100%;
+
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+  }
 }
 
 .inner {
