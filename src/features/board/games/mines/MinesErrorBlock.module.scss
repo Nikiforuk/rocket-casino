@@ -1,0 +1,22 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: center, $direction: column);
+  background: rgba(130, 24, 26, 0.3);
+  border: 1px solid rgba(193, 0, 7, 0.5);
+  border-radius: 10px;
+  max-height: 106px;
+  height: 100%;
+}
+
+.inner {
+  @include flex($align: center, $justify: center);
+  margin-bottom: 5px;
+
+  &_icon {
+    width: 32px;
+    height: 32px;
+  }
+}

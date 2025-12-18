@@ -1,4 +1,5 @@
 import MineButton from './MineButton';
+import MinesErrorBlock from './MinesErrorBlock';
 import styles from './MinesScreen.module.scss';
 
 export default function MinesScreen() {
@@ -27,6 +28,7 @@ export default function MinesScreen() {
           ))}
         </div>
       </div>
+      <MinesErrorBlock />
     </div>
   );
 }

@@ -1,0 +1,39 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: _, $justify: flex-start, $direction: column);
+}
+
+.top {
+  @include flex($align: center, $justify: flex-start);
+  margin-bottom: 16px;
+
+  &_title {
+    @extend %i-bold-18;
+    font-weight: 500;
+  }
+}
+
+.splashScreen {
+  @include flex($align: center, $justify: center, $direction: column);
+  background: $gradient-darkBlueDeepPurple;
+  border-radius: 14px;
+  max-height: 552px;
+  height: 100%;
+  gap: 21px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  margin-bottom: 16px;
+
+  &_icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+  }
+}
