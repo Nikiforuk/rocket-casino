@@ -14,7 +14,7 @@ export default function MinesScreen() {
   const { onReveal } = useGameController();
   const revealed = grid.filter((t) => t.status === EMinesTileStatus.SAFE).length;
   const color =
-    multiplier < 1.5 ? 'var(--green-200)' : multiplier < 3 ? 'var(--yellow-200)' : 'var(--red-200)';
+    multiplier < 1.5 ? '#00D492' : multiplier < 3 ? '#F0B100' : '#D4183D';
   return (
     <div className={styles.container}>
       <div className={styles.top}>

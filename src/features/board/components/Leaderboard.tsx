@@ -33,7 +33,7 @@ export default function Leaderboard() {
             />
           ))
         ) : (
-          <p style={{ color: 'var(--gray-200)', textAlign: 'center' }}>No players yet</p>
+          <p className={styles.noPlayers}>No players yet</p>
         )}
       </div>
       <div className={styles.line} />

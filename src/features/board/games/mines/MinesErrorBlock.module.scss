@@ -4,8 +4,8 @@
 
 .container {
   @include flex($align: center, $justify: center, $direction: column);
-  background: rgba(130, 24, 26, 0.3);
-  border: 1px solid rgba(193, 0, 7, 0.5);
+  background: $red-239-a15;
+  border: 1px solid $red-a50;
   border-radius: 10px;
   max-height: 106px;
   height: 100%;

@@ -17,7 +17,7 @@
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--white);
+    border-color: $white;
     filter: brightness(1.06);
   }
   @media (max-width: 768px) {
@@ -30,7 +30,7 @@
 }
 
 .button_active {
-  border: 1px solid var(--gray-100);
+  border: 1px solid $gray-100;
   box-shadow: $shadow-glow;
 }
 

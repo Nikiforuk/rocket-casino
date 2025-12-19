@@ -4,21 +4,15 @@
 
 .screen {
   @include flex($align: center, $justify: center, $direction: column);
-
   position: relative;
   width: 100%;
   max-width: 603px;
   height: 248px;
-
-  border: 2px solid var(--purple-450);
   border-radius: 14px;
-
-  background: $gradient-darkBlueDeepPurple;
+  background: $gradient-darkBlueDeepPurple;;
   background-clip: padding-box;
-
   margin-bottom: 26px;
   box-shadow: $shadow-soft;
-
   transition: $transition-medium;
 
   &:hover {
@@ -41,7 +35,7 @@
   &_text {
     @extend %i-medium-16;
     font-weight: 400;
-    color: var(--white);
+    color: $white;
     letter-spacing: 0.3px;
   }
 }
@@ -62,7 +56,7 @@
   border-radius: 8px;
 
   @media (max-width: 480px) {
-    background: rgba(0,0,0,0.15);
+    background: $overlay-black-a15;
     backdrop-filter: blur(4px);
   }
 }
@@ -83,25 +77,18 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-
   width: 4px;
   height: 100%;
   pointer-events: none;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 215, 140, 0.9),
-    rgba(255, 206, 100, 1),
-    rgba(255, 170, 60, 0.9)
-  );
+  background: $gradient-gold-indicator;
 
   box-shadow:
-    0 0 14px rgba(255, 200, 80, 0.8),
-    0 0 26px rgba(255, 180, 70, 0.55);
+    0 0 14px $gold-glow-1-a80,
+    0 0 26px $gold-glow-2-a55;
 
   border-radius: 2px;
 
   @media (max-width: 768px) { width: 3px; }
-  @media (max-width: 480px) { width: 2px; box-shadow: 0 0 12px rgba(255, 200, 80, 0.65); }
-  @media (max-width: 400px) { width: 2px; box-shadow: 0 0 10px rgba(255, 200, 80, 0.6); }
+  @media (max-width: 480px) { width: 2px; box-shadow: 0 0 12px $gold-glow-1-a65; }
+  @media (max-width: 400px) { width: 2px; box-shadow: 0 0 10px $gold-glow-1-a60; }
 }

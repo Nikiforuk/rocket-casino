@@ -1,0 +1,17 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/extends' as *;
+@use '../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: flex-start);
+  border-radius: 10px;
+  border: 1px solid $red-50;
+  background: $red-a20;
+  padding: 12.5px;
+  margin-bottom: 16px;
+}
+
+.text {
+  @extend %i-regular-14-lg;
+  color: $red-50;
+}

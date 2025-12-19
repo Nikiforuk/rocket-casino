@@ -1,0 +1,26 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/extends' as *;
+@use '../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: center, $direction: column);
+  margin-top: 19px;
+  gap: 18px;
+}
+
+.link {
+    @extend %i-medium-14-lg;
+    color: $blue-200;;
+    transition: $transition-fast;
+    &:hover { filter: brightness(1.1); }
+  }
+
+.line {
+  border: 0.5px solid $gray-500;
+  width: 100%;
+}
+
+.text {
+  @extend %i-regular-12;
+  color: $gray-400;    
+}

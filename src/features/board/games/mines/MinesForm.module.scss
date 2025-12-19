@@ -5,7 +5,7 @@
 .container {
   max-width: 298px;
   padding: 17px;
-  background: var(--twilight-veil);
+  background: $twilight-veil;
   border-radius: 10px;
   margin-bottom: 16px;
 }
@@ -17,7 +17,7 @@
 
   &_label {
     @extend %i-medium-16;
-    color: var(--gray-25);
+    color: $gray-25;
   }
 
   &_icon {

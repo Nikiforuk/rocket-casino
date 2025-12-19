@@ -24,9 +24,9 @@
   pointer-events: auto;
   padding: 16px 20px;
   border-radius: 8px;
-  background: var(--twilight-veil);
-  border: 1px solid var(--overlay-gray-a60);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: $twilight-veil;
+  border: 1px solid $overlay-gray-a60;
+  box-shadow: 0 4px 12px $black-a30;
   cursor: pointer;
   animation: slideIn 0.3s ease-out;
   min-width: 300px;
@@ -39,22 +39,22 @@
   }
 
   &_error {
-    border-left: 4px solid var(--red-100);
+    border-left: 4px solid $red-100;
   }
 
   &_success {
-    border-left: 4px solid var(--green-600);
+    border-left: 4px solid $green-600;
   }
 
   &_info {
-    border-left: 4px solid var(--blue-300);
+    border-left: 4px solid $blue-300;
   }
 
   &_message {
     margin: 0;
     font-size: 14px;
     line-height: 20px;
-    color: var(--white);
+    color: $white;
     font-weight: 400;
     letter-spacing: -0.15px;
 
@@ -75,4 +75,3 @@
     opacity: 1;
   }
 }
-

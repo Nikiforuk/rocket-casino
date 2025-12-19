@@ -1,48 +1,25 @@
 export const GRADIENTS = {
-  darkGreenPurple:
-    'linear-gradient(135deg, var(--gray-900) 0%, var(--green-a40) 30%, var(--purple-300) 100%)',
-
-  greenBluePurple:
-    'linear-gradient(135deg, var(--green-100) 0%, var(--blue-300) 50%, var(--purple-200) 100%)',
-
-  greenToBlue: 'linear-gradient(90deg, var(--green-300) 0%, var(--blue-500) 100%)',
-
-  screenOverlay: 'linear-gradient(180deg, var(--blue-700) 0%, var(--purple-a20) 100%)',
-
-  blueToPurple: 'linear-gradient(90deg, var(--blue-500) 0%, var(--purple-200) 100%)',
-
-  greenToGreen: 'linear-gradient(90deg, var(--green-300) 0%, var(--green-400) 100%)',
-
+  darkGreenPurple: 'linear-gradient(135deg, #0F172B 0%, rgba(0,79,59,0.4) 30%, #59168B 100%)',
+  greenBluePurple: 'linear-gradient(135deg, #00BC7D 0%, #2B7FFF 50%, #9810FA 100%)',
+  greenToBlue: 'linear-gradient(90deg, #009966 0%, #155DFC 100%)',
+  screenOverlay: 'linear-gradient(180deg, #1C398E 0%, rgba(173,70,255,0.2) 100%)',
+  blueToPurple: 'linear-gradient(90deg, #155DFC 0%, #9810FA 100%)',
+  greenToGreen: 'linear-gradient(90deg, #009966 0%, #00A63E 100%)',
   transparentGreenToBlue:
-    'linear-gradient(135deg, var(--green-a10) 0%, var(--overlay-blue-a10) 100%)',
-
-  transparentBluePurple: 'linear-gradient(90deg, var(--blue-200) 0%, var(--purple-100) 100%)',
-
-  transparentOverlay: 'linear-gradient(0deg, var(--transparent), var(--transparent))',
-
-  overlayMix:
-    'linear-gradient(90deg, var(--green-a40) 0%, var(--blue-700) 50%, var(--purple-a30) 100%)',
-
-  greenMint: 'linear-gradient(90deg, var(--green-200) 0%, var(--green-600) 100%)',
-
-  purpleToMint: 'linear-gradient(var(--overlay-blue-a20), var(--purple-a10))',
-
-  blueToPink: 'linear-gradient(90deg, var(--blue-200) 0%, var(--purple-100) 100%)',
-
+    'linear-gradient(135deg, rgba(0,188,125,0.1) 0%, rgba(43,127,255,0.1) 100%)',
+  transparentBluePurple: 'linear-gradient(90deg, #51A2FF 0%, #C27AFF 100%)',
+  transparentOverlay: 'linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0))',
+  overlayMix: 'linear-gradient(90deg, rgba(0,79,59,0.4) 0%, #1C398E 50%, rgba(89,22,139,0.3) 100%)',
+  greenMint: 'linear-gradient(90deg, #00D492 0%, #05DF72 100%)',
+  purpleToMint: 'linear-gradient(rgba(43,127,255,0.2), rgba(173,70,255,0.2))',
+  blueToPink: 'linear-gradient(90deg, #51A2FF 0%, #C27AFF 100%)',
   darkBlueDeepPurple:
-    'linear-gradient(135deg, var(--gray-900) 0%, var(--blue-700-a20) 50%, var(--purple-a20) 100%)',
-
-  greenToDarkGreen: 'linear-gradient(90deg, var(--green-400) 0%, var(--green-300) 100%)',
-
-  casesCommon: 'linear-gradient(135deg, var(--gray-450) 0%, var(--gray-500) 100%)',
-
-  casesUncommon: 'linear-gradient(135deg, var(--green-400) 0%, var(--green-450) 100%)',
-
-  casesRare: 'linear-gradient(135deg, var(--blue-500) 0%, var(--blue-450) 100%)',
-
-  casesEpic: 'linear-gradient(135deg, var(--purple-200) 0%, var(--purple-250) 100%)',
-
-  casesLegendary: 'linear-gradient(135deg, var(--pink-500) 0%, var(--red-250) 100%)',
-
-  casesGold: 'linear-gradient(135deg, var(--gold-300) 0%, var(--gold-400) 100%)',
+    'linear-gradient(135deg, #0F172B 0%, rgba(28,57,142,0.2) 50%, rgba(173,70,255,0.2) 100%)',
+  greenToDarkGreen: 'linear-gradient(90deg, #00A63E 0%, #009966 100%)',
+  casesCommon: 'linear-gradient(135deg, #45556C 0%, #314158 100%)',
+  casesUncommon: 'linear-gradient(135deg, #00A63E 0%, #008236 100%)',
+  casesRare: 'linear-gradient(135deg, #155DFC 0%, rgba(20,71,230,0.3) 100%)',
+  casesEpic: 'linear-gradient(135deg, #9810FA 0%, #8200DB 100%)',
+  casesLegendary: 'linear-gradient(135deg, #E60076 0%, #E7000B 100%)',
+  casesGold: 'linear-gradient(135deg, #F0B100 0%, #E17100 100%)',
 };

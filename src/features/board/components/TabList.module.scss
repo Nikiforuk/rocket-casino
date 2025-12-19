@@ -5,10 +5,10 @@
 .container {
   @include flex($align: center, $justify: flex-start);
   width: 100%;
-  border: 1px solid var(--blue-600);
+  border: 1px solid $blue-600;
   border-radius: 16px;
   padding: 4.5px;
-  background: var(--overlay-dark-a50);
+  background: $overlay-dark-a50;
   gap: 12.5px;
   max-width: 653px;
   margin-bottom: 24px;
@@ -18,7 +18,7 @@
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--blue-300);
+    border-color: $blue-300;
     filter: brightness(1.04);
   }
 

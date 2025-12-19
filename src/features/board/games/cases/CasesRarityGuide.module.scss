@@ -4,14 +4,14 @@
 
 .rarityGuide {
   border-radius: 10px;
-  background: var(--overlay-dark-a50);
+  background: $overlay-dark-a50;
   padding: 16px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--blue-300);
+    border-color: $blue-300;
     filter: brightness(1.04);
   }
 
@@ -48,13 +48,13 @@
     &_text {
       @extend %i-regular-14-lg;
 
-      color: var(--gray-100);
+      color: $gray-100;
     }
 
     &_percents {
       @extend %i-regular-14-lg;
 
-      color: var(--gray-400);
+      color: $gray-400;;
     }
   }
 }

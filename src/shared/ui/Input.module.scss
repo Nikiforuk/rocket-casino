@@ -39,7 +39,7 @@
   }
   
   &::placeholder {
-    color: var(--placeholder-color, var(--gray-300));
+    color: $gray-300;
   }
 }
 

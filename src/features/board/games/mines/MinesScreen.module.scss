@@ -27,14 +27,14 @@
 
     &_text {
       @extend %i-regular-16-lg;
-      color: var(--gray-100);
+      color: $gray-100;
     }
 
     &_num {
       @extend %i-bold-16;
 
       &_secondColor {
-        color: var(--purple-100);
+        color: $purple-100;
       }
     }
   }
@@ -59,7 +59,7 @@
   
   &:hover {
     box-shadow: $shadow-strong;
-    border: 2px solid var(--purple-450);
+    border: 2px solid $purple-450;
     filter: brightness(1.04);
   }
 }

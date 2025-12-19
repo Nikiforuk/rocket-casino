@@ -3,16 +3,16 @@
 @use '../../../shared/styles/mixins' as *;
 
 .container {
-  border: 1px solid var(--blue-600);
+  border: 1px solid $blue-600;
   border-radius: 14px;
-  background: var(--overlay-dark-a50);
+  background: $overlay-dark-a50;
   padding: 24px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--blue-300);
+    border-color: $blue-300;
     filter: brightness(1.04);
   }
 }
@@ -44,7 +44,7 @@
 
   &_subtitle {
     @extend %i-medium-14-lg;
-    color: var(--gray-100);
+    color: $gray-100;
   }
 }
 
@@ -54,9 +54,14 @@
   margin-bottom: 40px;
 }
 
+.noPlayers {
+  color: $gray-200;
+  text-align: center;
+}
+
 .line {
   width: 100%;
-  border: 0.5px solid var(--gray-500);
+  border: 0.5px solid $gray-500;
   margin-bottom: 17.5px;
 }
 
@@ -65,6 +70,6 @@
 
   &_text {
     @extend %i-medium-14-lg;
-    color: var(--gray-100);
+    color: $gray-100;
   }
 }

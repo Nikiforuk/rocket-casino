@@ -2,7 +2,6 @@
 @use '../../../../shared/styles/extends' as *;
 @use '../../../../shared/styles/mixins' as *;
 
-
 .itemBox {
   @include flex($align: center, $justify: center, $direction: column);
 
@@ -11,14 +10,14 @@
   height: 180px;
 
   border-radius: 6px;
-  border: 1px solid var(--gray-450);
+  border: 1px solid $gray-450;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
 
   &:hover {
     box-shadow: $shadow-strong;
     transform: translateY(-2px);
-    border-color: var(--blue-300);
+    border-color: $blue-300;
     filter: brightness(1.05);
   }
 
@@ -75,51 +74,50 @@
   }
 }
 
-/* Rarity backgrounds */
 .rarity_common {
   background: $gradient-cases-common;
-  color: var(--gray-200);
+  color: $gray-200;
   box-shadow:
-    0px 4px 6px -4px var(--gray-400),
-    0px 10px 15px -3px var(--gray-400);
+    0px 4px 6px -4px $gray-400,
+    0px 10px 15px -3px $gray-400;
 }
 
 .rarity_uncommon {
   background: $gradient-cases-uncommon;
-  color: var(--green-600);
+  color: $green-600;
   box-shadow:
-    0px 4px 6px -4px var(--green-a30),
-    0px 10px 15px -3px var(--green-a30);
+    0px 4px 6px -4px $green-a30,
+    0px 10px 15px -3px $green-a30;
 }
 
 .rarity_rare {
   background: $gradient-cases-rare;
-  color: var(--blue-200);
+  color: $blue-200;
   box-shadow:
-    0px 4px 6px -4px var(--blue-800),
-    0px 10px 15px -3px var(--blue-800);
+    0px 4px 6px -4px $blue-800,
+    0px 10px 15px -3px $blue-800;
 }
 
 .rarity_epic {
   background: $gradient-cases-epic;
-  color: var(--purple-100);
+  color: $purple-100;
   box-shadow:
-    0px 6px 12px rgba(128, 90, 213, 0.35),
-    0px 12px 20px rgba(128, 90, 213, 0.25);
+    0px 6px 12px $purple-500-a35,
+    0px 12px 20px $purple-500-a25;
 }
 
 .rarity_legendary {
   background: $gradient-cases-legendary;
-  color: var(--red-50);
+  color: $red-50;
   box-shadow:
-    0px 4px 6px -4px var(--purple-a20),
-    0px 10px 15px -3px var(--purple-a20);
+    0px 4px 6px -4px $purple-a20,
+    0px 10px 15px -3px $purple-a20;
 }
 
 .rarity_gold {
   background: $gradient-cases-gold;
-  color: var(--gold-200);
+  color: $gold-200;
   box-shadow:
-    0px 4px 6px -4px var(--gold-300),
-    0px 10px 15px -3px var(--gold-300);
+    0px 4px 6px -4px $gold-300,
+    0px 10px 15px -3px $gold-300;
 }

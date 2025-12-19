@@ -5,7 +5,7 @@
 .container {
   max-width: 298px;
   padding: 17px;
-  background: var(--twilight-veil);
+  background: $twilight-veil;
   border-radius: 10px;
   margin-bottom: 16px;
   background: $gradient-darkBlueDeepPurple;
@@ -28,6 +28,6 @@
   
   &_item {
     @extend %i-regular-14-lg;
-    color: var(--gray-100);
+    color: $gray-100;
   }
 }

@@ -1,0 +1,35 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/extends' as *;
+@use '../../../shared/styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: center);
+  background: $gradient-green-blue-purple;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+
+  &_logo {
+    width: 40px;
+    height: 40px;
+  } 
+}
+
+.content {
+  margin-bottom: 56.5px;
+
+  &_title {
+    @extend %i-regular-30;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &_text {
+    @extend %i-regular-16;
+    text-align: center;
+    color: $gray-200;
+  }
+}

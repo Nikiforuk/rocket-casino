@@ -4,7 +4,7 @@
 
 .container {
   @include flex($align: center, $justify: space-between);
-  background: var(--overlay-gray-a80);
+  background: $overlay-gray-a80;
   padding: 18px;
   margin-bottom: 20px;
 
@@ -13,7 +13,7 @@
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--white);
+    border-color: $white;
     filter: brightness(1.06);
   }
 }
