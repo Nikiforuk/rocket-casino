@@ -2,10 +2,10 @@ import { useSearchParams } from 'react-router-dom';
 
 import styles from './Board.module.scss';
 import { useBoardStore } from '../features/board/boardStore';
-import BonusSystem from '../features/board/components/BonusSystem';
-import Header from '../features/board/components/Header';
-import Leaderboard from '../features/board/components/Leaderboard';
-import TabList from '../features/board/components/TabList';
+import BonusSystem from '../features/board/components/bonus/BonusSystem';
+import Header from '../features/board/components/layout/Header';
+import Leaderboard from '../features/board/components/leaderboard/Leaderboard';
+import TabList from '../features/board/components/tablist/TabList';
 import CasesGame from '../features/board/games/cases/CasesGame';
 import TruckGame from '../features/board/games/crash/TruckGame';
 import MinesGame from '../features/board/games/mines/MinesGame';

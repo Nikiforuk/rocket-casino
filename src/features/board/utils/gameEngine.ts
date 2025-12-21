@@ -3,7 +3,7 @@ import { computeTotalMultiplier } from './multiplier';
 import { pickUniqueIndices } from './rng';
 import { MINES_CONFIG } from '../../../shared/constants/config';
 import { EMinesState, EMinesTileStatus } from '../../../shared/types/mines';
-import { minesCashout, minesReveal, minesStart } from '../api/boardApi';
+import { minesCashout, minesReveal, minesStart } from '../api/minesApi';
 import { useMinesStore } from '../mineStore/minesStore';
 
 export const start = async (betAmount: number, minesCount: number, clientSeed?: string) => {
@@ -50,7 +50,6 @@ export const reveal = async (tileIndex: number) => {
     betAmount,
     gameId,
     minesPositions,
-    clientSeed,
     setGrid,
     setTileStatus,
     setState,

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import { spendBalance, addWager, addWin, getProfile } from '../api/boardApi';
+import { addWager, addWin } from '../api/amountApi';
+import { spendBalance } from '../api/balanceApi';
+import { getProfile } from '../api/profileApi';
 import { useBoardStore } from '../boardStore';
 import { useLeaderboardStore } from '../leaderboardStore';
 

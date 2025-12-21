@@ -1,5 +1,6 @@
 import { useToast } from '../../toast/useToast';
-import { addWager, addWin, spendBalance } from '../api/boardApi';
+import { addWager, addWin } from '../api/amountApi';
+import { spendBalance } from '../api/balanceApi';
 import { useBoardStore } from '../boardStore';
 import { useLeaderboardStore } from '../leaderboardStore';
 

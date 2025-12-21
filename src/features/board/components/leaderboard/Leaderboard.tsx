@@ -1,7 +1,7 @@
 import styles from './Leaderboard.module.scss';
 import LeaderCard from './LeaderCard';
-import gobletIcon from '../../../assets/icons/goblet-gradient.svg';
-import { useLeaderboard } from '../hooks/useLeaderboard';
+import gobletIcon from '../../../../assets/icons/goblet-gradient.svg';
+import { useLeaderboard } from '../../hooks/useLeaderboard';
 
 export default function Leaderboard() {
   const { players, currentUserRank } = useLeaderboard();

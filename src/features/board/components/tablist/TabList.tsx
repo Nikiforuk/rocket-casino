@@ -1,11 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './TabList.module.scss';
-import caseImg from '../../../assets/images/case-tab.png';
-import mineImg from '../../../assets/images/mine.png';
-import turboTruckImg from '../../../assets/images/turbo-truck.png';
-import TabButton from '../../../shared/ui/TabButton';
-import { useBoardStore } from '../boardStore';
+import caseImg from '../../../../assets/images/case-tab.png';
+import mineImg from '../../../../assets/images/mine.png';
+import turboTruckImg from '../../../../assets/images/turbo-truck.png';
+import TabButton from '../../../../shared/ui/TabButton';
+import { useBoardStore } from '../../boardStore';
 
 export default function TabList() {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useToast } from '../../../features/toast/useToast';
-import { addBalance } from '../api/boardApi';
+import { addBalance } from '../api/balanceApi';
 import { useBoardStore } from '../boardStore';
 
 const BONUS_AMOUNT = 10;

@@ -1,4 +1,4 @@
-import { resetProfile } from '../../board/api/boardApi';
+import { resetProfile } from '../../board/api/profileApi';
 import { useBoardStore } from '../../board/boardStore';
 import { useToast } from '../../toast/useToast';
 

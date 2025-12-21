@@ -19,10 +19,7 @@ export const useSignUp = () => {
     try {
       const result = await signupUser(username, email, password);
       if (result.success && result.data) {
-        setUser({
-          username,
-          email,
-        });
+        setUser({ username, email });
         navigate(ROUTES.BOARD);
       } else if (result.error) {
         setErrorMessage(result.error.message);

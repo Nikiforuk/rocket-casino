@@ -1,13 +1,13 @@
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './Header.module.scss';
-import gobletIcon from '../../../assets/icons/goblet-white.svg';
-import { GRADIENTS } from '../../../shared/styles/gradients';
-import SmallButton from '../../../shared/ui/SmallButton';
-import { useAuthStore } from '../../auth/authStore';
-import { useSignOut } from '../../auth/hooks/useSignOut';
-import { useBoardStore } from '../boardStore';
-import { formatNumber } from '../utils/numberHelpers';
+import gobletIcon from '../../../../assets/icons/goblet-white.svg';
+import { GRADIENTS } from '../../../../shared/styles/gradients';
+import SmallButton from '../../../../shared/ui/SmallButton';
+import { useAuthStore } from '../../../auth/authStore';
+import { useSignOut } from '../../../auth/hooks/useSignOut';
+import { useBoardStore } from '../../boardStore';
+import { formatNumber } from '../../utils/numberHelpers';
 
 export default function Header() {
   const handleSignOut = useSignOut();

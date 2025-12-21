@@ -1,5 +1,5 @@
 import styles from './LeaderCard.module.scss';
-import { formatNumber } from '../utils/numberHelpers';
+import { formatNumber } from '../../utils/numberHelpers';
 
 interface LeaderCardProps {
   rank: number;

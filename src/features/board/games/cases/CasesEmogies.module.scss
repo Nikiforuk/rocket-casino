@@ -1,0 +1,24 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.emojis_title {
+  @extend %i-regular-16-lg;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.emojis_items {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 8px;
+  justify-items: stretch;
+  align-items: stretch;
+
+  @media (max-width: 768px) { gap: 6px; }
+  @media (max-width: 480px) { gap: 4px; }
+  @media (max-width: 360px) { gap: 3px; }
+}
+
+.emojis { width: 100%; margin-bottom: 24px; }

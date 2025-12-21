@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { useAuthStore } from '../auth/authStore';
-import { getLeaderboard } from './api/boardApi';
+import { getLeaderboard } from './api/leaderBoardApi';
 import { getPercentageWin } from './utils/leaderboardHelpers';
 
 export interface LeaderboardPlayer {

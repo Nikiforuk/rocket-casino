@@ -62,7 +62,6 @@ export default function SignInForm() {
             />
           )}
         />
-
         <AuthFieldBox<SignInFormData>
           name="password"
           control={control}
