@@ -1,4 +1,4 @@
-import { EGameState } from '../../../shared/types/truck';
+import { EGameState } from '../types/truck';
 
 export const lockTruck = (
   setUiLocked: (value: boolean) => void,

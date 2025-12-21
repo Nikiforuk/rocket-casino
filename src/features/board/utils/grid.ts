@@ -1,5 +1,5 @@
-import { MINES_CONFIG } from '../../../shared/constants/config';
-import { EMinesTileStatus, type MinesGrid } from '../../../shared/types/mines';
+import { MINES_CONFIG } from '../games/mines/constants/mines';
+import { EMinesTileStatus, type MinesGrid } from '../games/mines/types/mines';
 
 export const createGrid = (): MinesGrid =>
   Array.from({ length: MINES_CONFIG.totalTiles }, (_, i) => ({

@@ -1,12 +1,12 @@
 import MineButton from './MineButton';
 import MinesErrorBlock from './MinesErrorBlock';
 import styles from './MinesScreen.module.scss';
-import { MINES_CONFIG } from '../../../../shared/constants/config';
-import { EMinesTileStatus } from '../../../../shared/types/mines';
-import { EMinesState } from '../../../../shared/types/mines';
-import { useGameController } from '../../hooks/useGameController';
+import { MINES_CONFIG } from './constants/mines';
+import { EMinesTileStatus } from './types/mines';
+import { EMinesState } from './types/mines';
+import { useGameController } from './hooks/useGameController';
 import { useMultiplier } from '../../hooks/useMultiplier';
-import { useMinesStore } from '../../mineStore/minesStore';
+import { useMinesStore } from './store/minesStore';
 
 export default function MinesScreen() {
   const { grid, state } = useMinesStore();

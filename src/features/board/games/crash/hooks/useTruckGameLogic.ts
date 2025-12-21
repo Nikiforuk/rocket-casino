@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { useBoardStore } from '../boardStore';
 import { useLeaderboardStore } from '../leaderboardStore';
-import { useBet } from './useBet';
-import { useTruckAudio } from './useTruckAudio';
-import { useMultiplier } from './useTruckMultiplier';
+import { useBet } from '../games/crash/hooks/useBet';
+import { useTruckAudio } from '../games/crash/hooks/useTruckAudio';
+import { useMultiplier } from '../games/crash/hooks/useTruckMultiplier';
 import { useToast } from '../../../features/toast/useToast';
 import { EGameState } from '../../../shared/types/truck';
 import { generateCrashAt } from '../utils/generateCrashAt';

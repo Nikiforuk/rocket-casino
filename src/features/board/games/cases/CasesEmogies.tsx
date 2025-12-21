@@ -1,7 +1,7 @@
 import CaseEmoji from './CaseEmoji';
 import styles from './CasesEmogies.module.scss';
-import { emojis } from '../../../../shared/constants/cases';
-import { getCaseTypeByName } from '../../utils/caseHelpers';
+import { emojis } from './constants/cases';
+import { getCaseTypeByName } from './utils/caseHelpers';
 
 interface CasesEmogiesProps {
   activeCase: { name: string };

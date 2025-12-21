@@ -1,12 +1,12 @@
+import CaseButton from './CaseButton';
 import CasesEmogies from './CasesEmogies';
 import layout from './CasesGame.module.scss';
 import CasesOpenBlock from './CasesOpenBlock';
 import CasesRarityGuide from './CasesRarityGuide';
 import CasesResult from './CasesResult';
 import CasesScreen from './CasesScreen';
-import { cases } from '../../../../shared/constants/cases';
-import CaseButton from '../../../../shared/ui/CaseButton';
-import { useCaseReel } from '../../hooks/useCaseReel';
+import { useCaseReel } from './hooks/useCaseReel';
+import { cases } from './constants/cases';
 
 export default function CasesGame() {
   const {

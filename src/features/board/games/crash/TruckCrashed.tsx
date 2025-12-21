@@ -1,10 +1,10 @@
-import styles from './TruckGame.module.scss';
+import styles from './TruckCrashed.module.scss';
 import policeCar1Img from '../../../../assets/images/car-police-1.png';
 import policeCar2Img from '../../../../assets/images/car-police-2.png';
 import roadImg from '../../../../assets/images/road.png';
 import truckImg from '../../../../assets/images/truck.png';
 
-export default function CrashedContent() {
+export default function TruckCrashed() {
   return (
     <>
       <img src={roadImg} alt="Road" className={styles.roadBackground} />

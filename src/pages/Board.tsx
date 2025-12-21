@@ -1,7 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './Board.module.scss';
-import { useBoardStore } from '../features/board/boardStore';
 import BonusSystem from '../features/board/components/bonus/BonusSystem';
 import Header from '../features/board/components/layout/Header';
 import Leaderboard from '../features/board/components/leaderboard/Leaderboard';
@@ -10,6 +9,7 @@ import CasesGame from '../features/board/games/cases/CasesGame';
 import TruckGame from '../features/board/games/crash/TruckGame';
 import MinesGame from '../features/board/games/mines/MinesGame';
 import { useRefreshProfile } from '../features/board/hooks/useRefreshProfile';
+import { useBoardStore } from '../features/board/store/boardStore';
 import Modal from '../features/modal/components/Modal';
 
 export default function Board() {

@@ -1,5 +1,5 @@
 import styles from './CasesRarityGuide.module.scss';
-import { rarityGuide } from '../../../../shared/constants/cases';
+import { rarityGuide } from './constants/cases';
 
 export default function CasesRarityGuide() {
   return (

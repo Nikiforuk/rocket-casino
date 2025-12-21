@@ -1,16 +1,16 @@
 import { useCallback } from 'react';
 
-import { useBoardStore } from '../boardStore';
-import { useBet } from './useBet';
-import { EMinesState } from '../../../shared/types/mines';
-import { useToast } from '../../toast/useToast';
-import { useMinesStore } from '../mineStore/minesStore';
+import { EMinesState } from '../types/mines.ts';
+import { useToast } from '../../../../toast/hooks/useToast';
+import { useBoardStore } from '../../../store/boardStore.ts';
+import { useBet } from '../../../hooks/useBet';
+import { useMinesStore } from '../store/minesStore.ts';
 import {
   start as engineStart,
   reveal as engineReveal,
   cashOut as engineCashOut,
   end as engineEnd,
-} from '../utils/gameEngine';
+} from '../utils/gameEngine.ts';
 
 export const useGameController = () => {
   const setUiLocked = useBoardStore((s) => s.setUiLocked);

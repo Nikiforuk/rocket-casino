@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 
 import styles from './Auth.module.scss';
 import { ROUTES } from '../../../../app/routes';
-import { GRADIENTS } from '../../../../shared/styles/gradients';
-import type { SignUpFormData } from '../../../../shared/types/auth';
-import Button from '../../../../shared/ui/Button';
-import Input from '../../../../shared/ui/Input';
+import { GRADIENTS } from '../../../../styles/gradients';
+import Button from '../../../../ui/Button';
+import Input from '../../../../ui/Input';
 import { useAuthSession } from '../../hooks/useAuthSession';
 import { useSignUp } from '../../hooks/useSignUp';
 import { signUpSchema } from '../../schemas/signUpSchema';
+import type { SignUpFormData } from '../../types/auth';
 import AuthErrorBlock from '../AuthErrorBlock';
 import AuthFieldBox from '../AuthFieldBox';
 import AuthFooter from '../AuthFooter';

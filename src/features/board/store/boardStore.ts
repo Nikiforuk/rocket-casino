@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { getProfile } from './api/profileApi';
+import { getProfile } from '../../modal/api/profileApi';
 
 interface BoardState {
   isModal: boolean;

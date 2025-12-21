@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { MINES_CONFIG } from '../../../shared/constants/config';
-import { EMinesState, EMinesTileStatus, type MinesGrid } from '../../../shared/types/mines';
+import { MINES_CONFIG } from '../constants/mines';
+import { EMinesState, EMinesTileStatus, type MinesGrid } from '../types/mines';
 
 interface MinesState {
   state: EMinesState;

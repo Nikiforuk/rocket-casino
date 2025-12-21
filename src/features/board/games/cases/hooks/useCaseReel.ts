@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useCaseAnimation } from './useCaseAnimation';
 import { useCaseBalance } from './useCaseBalance';
 import { useCaseData } from './useCaseData';
-import type CasesItem from '../../../shared/types/cases';
-import { useBoardStore } from '../boardStore';
+import type CasesItem from '../types/cases';
+import { useBoardStore } from '../../../store/boardStore';
 import {
   DEFAULT_RARITY_ORDER,
   DEFAULT_RARITY_WEIGHTS,

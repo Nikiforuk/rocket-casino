@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
+import { useToastStore } from './store/toastStore';
 import styles from './Toast.module.scss';
-import { useToastStore } from './toastStore';
 
 export default function Toast() {
   const { toasts, removeToast } = useToastStore();

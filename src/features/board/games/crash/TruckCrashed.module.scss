@@ -1,0 +1,55 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.roadBackground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 2;
+  object-fit: cover;
+}
+
+.truck {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: auto;
+  z-index: 3;
+  object-fit: contain;
+}
+
+
+.policeCar {
+  position: absolute;
+  bottom: 15.5%;
+  width: 80px;
+  height: auto;
+  z-index: 4;
+  object-fit: contain;
+  animation: policeCarArrive 0.8s ease-out forwards;
+  opacity: 0;
+
+  &_left {
+    left: 0;
+  }
+
+  &_right {
+    right: 0;
+  }
+}
+
+@keyframes policeCarArrive {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

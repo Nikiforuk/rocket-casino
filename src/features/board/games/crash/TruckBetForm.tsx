@@ -2,15 +2,15 @@ import type { ChangeEvent } from 'react';
 
 import { Controller, useForm, type ControllerRenderProps } from 'react-hook-form';
 
-import styles from './TruckGame.module.scss';
-import { quickBtns } from '../../../../shared/constants/truck';
-import { GRADIENTS } from '../../../../shared/styles/gradients';
-import { EGameState, type TruckGameData } from '../../../../shared/types/truck';
-import Button from '../../../../shared/ui/Button';
-import Input from '../../../../shared/ui/Input';
-import { useBoardStore } from '../../boardStore';
+import styles from './TruckBetForm.module.scss';
+import { quickBtns } from './constants/truck';
+import { GRADIENTS } from '../../../../styles/gradients';
+import { EGameState, type TruckGameData } from './types/truck';
+import Button from '../../../../ui/Button';
+import Input from '../../../../ui/Input';
+import { useBoardStore } from '../../store/boardStore';
 
-interface BetFormProps {
+interface TruckBetFormProps {
   gameState: EGameState;
   isBetting: boolean;
   isCashOutActive: boolean;
@@ -19,14 +19,14 @@ interface BetFormProps {
   onReset: () => void;
 }
 
-export default function BetForm({
+export default function TruckBetForm({
   gameState,
   isBetting,
   isCashOutActive,
   buttonText,
   onSubmit,
   onReset,
-}: BetFormProps) {
+}: TruckBetFormProps) {
   const { balance } = useBoardStore();
   const { control, handleSubmit, setValue } = useForm<TruckGameData>({
     defaultValues: { amount: '' },

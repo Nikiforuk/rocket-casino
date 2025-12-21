@@ -1,5 +1,5 @@
-import { resetProfile } from '../../board/api/profileApi';
-import { useBoardStore } from '../../board/boardStore';
+import { resetProfile } from '../api/profileApi';
+import { useBoardStore } from '../../board/store/boardStore';
 import { useToast } from '../../toast/useToast';
 
 export const useResetProfile = () => {

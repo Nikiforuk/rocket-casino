@@ -1,10 +1,10 @@
-import styles from './TruckGame.module.scss';
+import styles from './TruckEscaped.module.scss';
 import cityImg from '../../../../assets/images/city.png';
 import roadImg from '../../../../assets/images/road.png';
 import truckImg from '../../../../assets/images/truck.png';
 import winImg from '../../../../assets/images/win.png';
 
-export default function EscapedContent() {
+export default function TruckEscaped() {
   return (
     <>
       <img src={cityImg} alt="City" className={styles.cityBackground} />

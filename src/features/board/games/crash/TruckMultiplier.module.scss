@@ -1,0 +1,27 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/extends' as *;
+@use '../../../../shared/styles/mixins' as *;
+
+.multiplier {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 72px;
+  font-weight: bold;
+  z-index: 5;
+  letter-spacing: -2px;
+  line-height: 1;
+
+  &_active {
+    color: $white;
+  }
+
+  &_win {
+    color: $green-600;
+  }
+
+  &_fail {
+    color: $red-100;
+  }
+}

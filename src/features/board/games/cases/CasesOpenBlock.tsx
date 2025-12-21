@@ -1,7 +1,7 @@
 import styles from './CasesOpenBlock.module.scss';
 import caseIcon from '../../../../assets/icons/box.svg';
-import { GRADIENTS } from '../../../../shared/styles/gradients';
-import Button from '../../../../shared/ui/Button';
+import { GRADIENTS } from '../../../../styles/gradients';
+import Button from '../../../../ui/Button';
 
 interface CasesOpenBlockProps {
   isSpinning: boolean;

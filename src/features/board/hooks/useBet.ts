@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
+import { getProfile } from '../../modal/api/profileApi';
 import { addWager, addWin } from '../api/amountApi';
 import { spendBalance } from '../api/balanceApi';
-import { getProfile } from '../api/profileApi';
-import { useBoardStore } from '../boardStore';
-import { useLeaderboardStore } from '../leaderboardStore';
+import { useBoardStore } from '../store/boardStore';
+import { useLeaderboardStore } from '../store/leaderboardStore';
 
 export const useBet = () => {
   const [isLoading, setIsLoading] = useState(false);

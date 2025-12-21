@@ -1,6 +1,6 @@
 import styles from './MinesCurrentGame.module.scss';
 import ghostIcon from '../../../../assets/images/ghost.png';
-import { useMinesStore } from '../../mineStore/minesStore';
+import { useMinesStore } from './store/minesStore';
 
 export default function MinesCurrentGame() {
   const { betAmount, currentValue, safeTilesLeft } = useMinesStore();

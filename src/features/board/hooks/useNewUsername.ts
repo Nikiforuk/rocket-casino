@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { supabase } from '../../../app/supabaseClient';
-import { useToast } from '../../../features/toast/useToast';
-import { useAuthStore } from '../../auth/authStore';
-import { updateUsername } from '../api/profileApi';
+import { useAuthStore } from '../../auth/store/authStore';
+import { updateUsername } from '../../modal/api/profileApi';
+import { useToast } from '../../toast/hooks/useToast';
 
 export const useNewUsername = () => {
   const session = useAuthStore((state) => state.session);

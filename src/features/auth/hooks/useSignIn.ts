@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from '../../../app/routes';
 import { loginUser } from '../api/authApi';
-import { useAuthStore } from '../authStore';
+import { useAuthStore } from '../store/authStore';
 
 export const useSignIn = () => {
   const navigate = useNavigate();

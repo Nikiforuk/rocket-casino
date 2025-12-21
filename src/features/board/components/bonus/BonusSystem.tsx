@@ -1,8 +1,8 @@
 import styles from './BonusSystem.module.scss';
 import presentIcon from '../../../../assets/icons/present.svg';
 import timeIcon from '../../../../assets/icons/time.svg';
-import { GRADIENTS } from '../../../../shared/styles/gradients';
-import Button from '../../../../shared/ui/Button';
+import { GRADIENTS } from '../../../../styles/gradients';
+import Button from '../../../../ui/Button';
 import { useBonusSystem } from '../../hooks/useBonusSystem';
 
 export default function BonusSystem() {

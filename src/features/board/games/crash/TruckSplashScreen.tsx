@@ -1,4 +1,4 @@
-import styles from './TruckGame.module.scss';
+import styles from './TruckSplashScreen.module.scss';
 import truckImg from '../../../../assets/images/truck.png';
 
 export default function TruckSplashScreen() {

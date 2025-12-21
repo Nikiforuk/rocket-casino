@@ -1,5 +1,5 @@
 import styles from './CasesItems.module.scss';
-import type CasesItem from '../../../shared/types/cases';
+import type CasesItem from './types/cases';
 
 interface CasesItemsProps {
   item: CasesItem;

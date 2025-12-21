@@ -1,14 +1,14 @@
-import styles from './TruckGame.module.scss';
+import styles from './TruckActiveGame.module.scss';
 import cityImg from '../../../../assets/images/city.png';
 import roadImg from '../../../../assets/images/road.png';
 import truckImg from '../../../../assets/images/truck.png';
-import { EGameState } from '../../../../shared/types/truck';
+import { EGameState } from './types/truck';
 
-interface ActiveGameContentProps {
+interface TruckActiveGameProps {
   gameState: EGameState;
 }
 
-export default function ActiveGameContent({ gameState }: ActiveGameContentProps) {
+export default function TruckActiveGame({ gameState }: TruckActiveGameProps) {
   return (
     <>
       <img src={cityImg} alt="City" className={styles.cityBackground} />

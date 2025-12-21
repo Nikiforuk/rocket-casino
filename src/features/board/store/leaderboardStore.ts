@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { useAuthStore } from '../auth/authStore';
-import { getLeaderboard } from './api/leaderBoardApi';
-import { getPercentageWin } from './utils/leaderboardHelpers';
+import { useAuthStore } from '../../auth/store/authStore';
+import { getLeaderboard } from '../api/leaderBoardApi';
+import { getPercentageWin } from '../utils/leaderboardHelpers';
 
 export interface LeaderboardPlayer {
   id: string;
@@ -58,21 +58,21 @@ export const useLeaderboardStore = create<LeaderboardState>()(
                 isWinner,
               };
             })
-            .filter((p) => {
-              const validId = typeof p.id === 'string' && p.id.length > 0;
-              const validName = typeof p.username === 'string' && p.username.length > 0;
+            .filter((player) => {
+              const validId = typeof player.id === 'string' && player.id.length > 0;
+              const validName = typeof player.username === 'string' && player.username.length > 0;
               const validNumbers = [
-                p.gamesPlayed,
-                p.totalWon,
-                p.totalWagered,
-                p.winPercentage,
-              ].every((n) => Number.isFinite(n) && n >= 0);
+                player.gamesPlayed,
+                player.totalWon,
+                player.totalWagered,
+                player.winPercentage,
+              ].every((num) => Number.isFinite(num) && num >= 0);
               return validId && validName && validNumbers;
             });
 
           const top10 = processedPlayers
             .sort((a, b) => b.totalWon - a.totalWon)
-            .map((p, idx) => ({ ...p, rank: idx + 1 }))
+            .map((player, idx) => ({ ...player, rank: idx + 1 }))
             .slice(0, 10);
 
           set({ players: top10, isLoading: false });

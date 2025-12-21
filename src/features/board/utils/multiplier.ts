@@ -1,4 +1,4 @@
-import { MINES_CONFIG } from '../../../shared/constants/config';
+import { MINES_CONFIG } from '../games/mines/constants/mines';
 
 export const computeTotalMultiplier = (
   minesCount: number,
@@ -19,9 +19,8 @@ export const computeTotalMultiplier = (
 export const computeStepMultiplier = (minesCount: number, revealedSafeCount: number): number => {
   const N = MINES_CONFIG.totalTiles;
   const M = minesCount;
-  const i = revealedSafeCount; // next reveal index
+  const i = revealedSafeCount;
   const totalRemaining = N - i;
   const safeRemaining = N - M - i;
   return totalRemaining / safeRemaining;
 };
-

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { MINES_CONFIG } from '../../../shared/constants/config';
-import { useMinesStore } from '../mineStore/minesStore';
+import { MINES_CONFIG } from '../games/mines/constants/mines';
+import { useMinesStore } from '../games/mines/store/minesStore';
 
 export const useMultiplier = () => {
   const target = useMinesStore((s) => s.currentMultiplier);

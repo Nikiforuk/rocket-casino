@@ -1,6 +1,6 @@
 import CasesItems from './CasesItems';
 import styles from './CasesResult.module.scss';
-import type CasesItem from '../../../shared/types/cases';
+import type CasesItem from './types/cases';
 
 interface CasesResultProps {
   winningItem: CasesItem | null;

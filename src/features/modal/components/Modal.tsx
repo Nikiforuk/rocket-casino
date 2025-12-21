@@ -5,12 +5,12 @@ import { Controller, useForm } from 'react-hook-form';
 
 import styles from './Modal.module.scss';
 import crossIcon from '../../../assets/icons/cross.svg';
-import { GRADIENTS } from '../../../shared/styles/gradients';
-import type { ModalData } from '../../../shared/types/modal';
-import Button from '../../../shared/ui/Button';
-import Input from '../../../shared/ui/Input';
-import { useAuthStore } from '../../auth/authStore';
-import { useBoardStore } from '../../board/boardStore';
+import { GRADIENTS } from '../../../styles/gradients';
+import type { ModalData } from '../types/modal';
+import Button from '../../../ui/Button';
+import Input from '../../../ui/Input';
+import { useAuthStore } from '../../auth/store/authStore';
+import { useBoardStore } from '../../board/store/boardStore';
 import { useNewUsername } from '../../board/hooks/useNewUsername';
 import { useRefreshProfile } from '../../board/hooks/useRefreshProfile';
 import { formatNumber } from '../../board/utils/numberHelpers';
