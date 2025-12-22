@@ -1,6 +1,6 @@
-@import '../../shared/styles/mixins';
-@import '../../shared/styles/extends';
-@import '../../shared/styles/variables';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
 
 .button,
 .disabled {

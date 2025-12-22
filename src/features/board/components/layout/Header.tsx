@@ -4,8 +4,8 @@ import styles from './Header.module.scss';
 import gobletIcon from '../../../../assets/icons/goblet-white.svg';
 import { GRADIENTS } from '../../../../styles/gradients';
 import SmallButton from '../../../../ui/SmallButton';
-import { useAuthStore } from '../../../auth/store/authStore';
 import { useSignOut } from '../../../auth/hooks/useSignOut';
+import { useAuthStore } from '../../../auth/store/authStore';
 import { useBoardStore } from '../../store/boardStore';
 import { formatNumber } from '../../utils/numberHelpers';
 

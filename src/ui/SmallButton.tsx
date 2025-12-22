@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react';
 
 import styles from './SmallButton.module.scss';
-import loginIcon from '../../assets/icons/login-gray.svg';
-import settingsIcon from '../../assets/icons/settings.svg';
-import walletIcon from '../../assets/icons/wallet.svg';
+import loginIcon from '../assets/icons/login-gray.svg';
+import settingsIcon from '../assets/icons/settings.svg';
+import walletIcon from '../assets/icons/wallet.svg';
 
 interface SmallButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;

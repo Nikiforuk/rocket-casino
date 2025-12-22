@@ -1,16 +1,16 @@
 import { useCallback } from 'react';
 
-import { EMinesState } from '../types/mines.ts';
 import { useToast } from '../../../../toast/hooks/useToast';
-import { useBoardStore } from '../../../store/boardStore.ts';
 import { useBet } from '../../../hooks/useBet';
-import { useMinesStore } from '../store/minesStore.ts';
+import { useBoardStore } from '../../../store/boardStore';
+import { useMinesStore } from '../store/minesStore';
+import { EMinesState } from '../types/mines';
 import {
   start as engineStart,
   reveal as engineReveal,
   cashOut as engineCashOut,
   end as engineEnd,
-} from '../utils/gameEngine.ts';
+} from '../utils/gameEngine';
 
 export const useGameController = () => {
   const setUiLocked = useBoardStore((s) => s.setUiLocked);
@@ -30,7 +30,7 @@ export const useGameController = () => {
     if (!result.success) return showError(result.error ?? 'Something went wrong');
     setUiLocked(true);
     await engineStart(betAmount, minesCount);
-  }, [betAmount, minesCount, startBet, setUiLocked]);
+  }, [betAmount, minesCount, startBet, setUiLocked, balance, showError]);
 
   const onReveal = useCallback(
     async (index: number) => {

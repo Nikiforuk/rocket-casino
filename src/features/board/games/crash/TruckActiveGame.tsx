@@ -1,8 +1,8 @@
 import styles from './TruckActiveGame.module.scss';
+import { EGameState } from './types/truck';
 import cityImg from '../../../../assets/images/city.png';
 import roadImg from '../../../../assets/images/road.png';
 import truckImg from '../../../../assets/images/truck.png';
-import { EGameState } from './types/truck';
 
 interface TruckActiveGameProps {
   gameState: EGameState;

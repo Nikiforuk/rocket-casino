@@ -1,10 +1,10 @@
+import { useGameController } from './hooks/useGameController';
 import styles from './MinesErrorBlock.module.scss';
+import { useMinesStore } from './store/minesStore';
+import { EMinesState } from './types/mines';
 import blastIcon from '../../../../assets/images/blast.png';
 import { GRADIENTS } from '../../../../styles/gradients';
-import { EMinesState } from './types/mines';
 import Button from '../../../../ui/Button';
-import { useGameController } from './hooks/useGameController';
-import { useMinesStore } from './store/minesStore';
 
 export default function MinesErrorBlock() {
   const { state } = useMinesStore();

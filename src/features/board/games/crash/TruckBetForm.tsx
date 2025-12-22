@@ -2,10 +2,10 @@ import type { ChangeEvent } from 'react';
 
 import { Controller, useForm, type ControllerRenderProps } from 'react-hook-form';
 
-import styles from './TruckBetForm.module.scss';
 import { quickBtns } from './constants/truck';
-import { GRADIENTS } from '../../../../styles/gradients';
+import styles from './TruckBetForm.module.scss';
 import { EGameState, type TruckGameData } from './types/truck';
+import { GRADIENTS } from '../../../../styles/gradients';
 import Button from '../../../../ui/Button';
 import Input from '../../../../ui/Input';
 import { useBoardStore } from '../../store/boardStore';

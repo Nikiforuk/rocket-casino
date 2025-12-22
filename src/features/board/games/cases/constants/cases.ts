@@ -1,8 +1,8 @@
+import animalCaseImg from '../../../../../assets/images/animal-case.png';
+import foodCaseImg from '../../../../../assets/images/food-case.png';
+import spaceCaseImg from '../../../../../assets/images/space-case.png';
+import sportsCaseImg from '../../../../../assets/images/sports-case.png';
 import { GRADIENTS } from '../../../../../styles/gradients';
-import animalCaseImg from '../../assets/images/animal-case.png';
-import foodCaseImg from '../../assets/images/food-case.png';
-import spaceCaseImg from '../../assets/images/space-case.png';
-import sportsCaseImg from '../../assets/images/sports-case.png';
 import type CasesItem from '../types/cases';
 
 export const cases = [

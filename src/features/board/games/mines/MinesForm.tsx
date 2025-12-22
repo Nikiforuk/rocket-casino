@@ -1,14 +1,14 @@
 import { Controller, useForm } from 'react-hook-form';
 
-import styles from './MinesForm.module.scss';
-import amountIcon from '../../../../assets/images/amount.png';
 import { MINES_CONFIG } from './constants/mines';
-import { GRADIENTS } from '../../../../styles/gradients';
+import { useGameController } from './hooks/useGameController';
+import styles from './MinesForm.module.scss';
 import type { MinesGameData } from './types/mines';
 import { EMinesState } from './types/mines';
+import amountIcon from '../../../../assets/images/amount.png';
+import { GRADIENTS } from '../../../../styles/gradients';
 import Button from '../../../../ui/Button';
 import Input from '../../../../ui/Input';
-import { useGameController } from './hooks/useGameController';
 
 export default function MinesForm() {
   const { control, setValue } = useForm<MinesGameData>({ defaultValues: { amount: '' } });

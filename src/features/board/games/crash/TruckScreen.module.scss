@@ -1,6 +1,6 @@
-@use '../../../../shared/styles/variables' as *;
-@use '../../../../shared/styles/extends' as *;
-@use '../../../../shared/styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
 
 .resultTitle {
   @extend %i-regular-30;

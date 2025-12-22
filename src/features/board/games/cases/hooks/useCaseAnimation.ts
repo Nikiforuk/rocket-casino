@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 
-import type CasesItem from '../../../shared/types/cases';
+import type CasesItem from '../types/cases';
 import { align } from '../utils/reel';
-import { createAudio, playChime, startTick } from '../utils/reelAudio';
+import { createAudio, startTick, playChime } from '../utils/reelAudio';
 
 export const useCaseAnimation = () => {
   const reelRef = useRef<HTMLDivElement | null>(null);

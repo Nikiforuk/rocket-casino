@@ -1,4 +1,4 @@
-import { supabase } from '../../../app/supabaseClient';
+import { supabase } from '../../../../../app/supabaseClient';
 
 export const minesStart = async (bet_amount: number, mines_count: number, client_seed?: string) => {
   const { data, error } = await supabase.rpc('mines_start', {

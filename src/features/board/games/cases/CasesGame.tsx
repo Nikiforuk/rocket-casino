@@ -5,8 +5,8 @@ import CasesOpenBlock from './CasesOpenBlock';
 import CasesRarityGuide from './CasesRarityGuide';
 import CasesResult from './CasesResult';
 import CasesScreen from './CasesScreen';
-import { useCaseReel } from './hooks/useCaseReel';
 import { cases } from './constants/cases';
+import { useCaseReel } from './hooks/useCaseReel';
 
 export default function CasesGame() {
   const {

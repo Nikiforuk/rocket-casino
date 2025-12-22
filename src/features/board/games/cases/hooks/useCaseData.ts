@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
-import { cases, emojis } from '../../../shared/constants/cases';
-import type CasesItem from '../../../shared/types/cases';
+import { cases, emojis } from '../constants/cases';
+import type CasesItem from '../types/cases';
 import { getCaseTypeByName } from '../utils/caseHelpers';
 
 export const useCaseData = () => {

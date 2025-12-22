@@ -2,8 +2,8 @@ import styles from './MinesGame.module.scss';
 import MinesScreen from './MinesScreen';
 import MinesSettings from './MinesSettings';
 import MinesSplashScreen from './MinesSplashScreen';
-import { EMinesState } from './types/mines';
 import { useMinesStore } from './store/minesStore';
+import { EMinesState } from './types/mines';
 
 export default function MinesGame() {
   const { state } = useMinesStore();

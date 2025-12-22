@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './Input.module.scss';
-import userIcon from '../../assets/icons/profile.svg';
+import userIcon from '../assets/icons/profile.svg';
 
 interface InputProps {
   icon?: boolean;

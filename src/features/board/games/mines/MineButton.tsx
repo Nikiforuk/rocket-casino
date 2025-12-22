@@ -1,7 +1,7 @@
 import styles from './MineButton.module.scss';
+import { EMinesTileStatus } from './types/mines';
 import defeatIcon from '../../../../assets/icons/defeat.svg';
 import diamondIcon from '../../../../assets/icons/diamond.svg';
-import { EMinesTileStatus } from './types/mines';
 
 export default function MineButton({
   status,

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import truckEngineMp3 from '../../../assets/audio/truck-engine.mp3';
+import truckEngineMp3 from '../../../../../assets/audio/truck-engine.mp3';
 
 export const useTruckAudio = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);

@@ -1,8 +1,8 @@
-import { useToast } from '../../toast/useToast';
-import { addWager, addWin } from '../api/amountApi';
-import { spendBalance } from '../api/balanceApi';
-import { useBoardStore } from '../boardStore';
-import { useLeaderboardStore } from '../leaderboardStore';
+import { useToast } from '../../../../toast/hooks/useToast';
+import { addWager, addWin } from '../../../api/amountApi';
+import { spendBalance } from '../../../api/balanceApi';
+import { useBoardStore } from '../../../store/boardStore';
+import { useLeaderboardStore } from '../../../store/leaderboardStore';
 
 export const useCaseBalance = () => {
   const { showError } = useToast();

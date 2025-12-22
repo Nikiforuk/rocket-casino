@@ -1,6 +1,6 @@
-@import '../../shared/styles/mixins';
-@import '../../shared/styles/extends';
-@import '../../shared/styles/variables';
+@import '../styles/extends';
+@import '../styles/variables';
+@import '../styles/mixins';
 
 .elements {
   @include flex($align: center, $justify: flex-start);

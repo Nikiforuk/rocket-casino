@@ -1,13 +1,5 @@
 import { useState } from 'react';
 
-import { useBoardStore } from '../boardStore';
-import { useLeaderboardStore } from '../leaderboardStore';
-import { useBet } from '../games/crash/hooks/useBet';
-import { useTruckAudio } from '../games/crash/hooks/useTruckAudio';
-import { useMultiplier } from '../games/crash/hooks/useTruckMultiplier';
-import { useToast } from '../../../features/toast/useToast';
-import { EGameState } from '../../../shared/types/truck';
-import { generateCrashAt } from '../utils/generateCrashAt';
 import {
   beginTruckRound,
   makeCrashHandler,
@@ -15,7 +7,15 @@ import {
   lockTruck,
   computePayout,
   getTruckButtonText,
-} from '../utils/truckHelpers';
+} from './truckHelpers';
+import { useTruckAudio } from './useTruckAudio';
+import { useMultiplier } from './useTruckMultiplier';
+import { useToast } from '../../../../toast/hooks/useToast';
+import { useBet } from '../../../hooks/useBet';
+import { useBoardStore } from '../../../store/boardStore';
+import { useLeaderboardStore } from '../../../store/leaderboardStore';
+import { EGameState } from '../types/truck';
+import { generateCrashAt } from '../utils/generateCrashAt';
 
 export const useTruckGameLogic = () => {
   const { startBet, cashOut, isLoading: isBetting } = useBet();

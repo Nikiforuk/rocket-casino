@@ -1,10 +1,10 @@
-import { createGrid, revealTile, countRevealedSafe, calcSafeTilesLeft } from './grid';
-import { computeTotalMultiplier } from './multiplier';
-import { pickUniqueIndices } from './rng';
-import { MINES_CONFIG } from '../../../shared/constants/config';
-import { EMinesState, EMinesTileStatus } from '../../../shared/types/mines';
-import { minesCashout, minesReveal, minesStart } from '../api/minesApi';
-import { useMinesStore } from '../mineStore/minesStore';
+import { createGrid, countRevealedSafe, revealTile, calcSafeTilesLeft } from '../../../utils/grid';
+import { computeTotalMultiplier } from '../../../utils/multiplier';
+import { pickUniqueIndices } from '../../../utils/rng';
+import { minesStart, minesReveal, minesCashout } from '../api/minesApi';
+import { MINES_CONFIG } from '../constants/mines';
+import { useMinesStore } from '../store/minesStore';
+import { EMinesState, EMinesTileStatus } from '../types/mines';
 
 export const start = async (betAmount: number, minesCount: number, clientSeed?: string) => {
   const {
