@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import styles from './TabList.module.scss';
 import caseImg from '../../../../assets/images/case-tab.png';
 import mineImg from '../../../../assets/images/mine.png';
+import plinkoImg from '../../../../assets/images/plinko.png';
 import turboTruckImg from '../../../../assets/images/turbo-truck.png';
 import TabButton from '../../../../ui/TabButton';
 import { useBoardStore } from '../../store/boardStore';
@@ -37,6 +38,13 @@ export default function TabList() {
         text="Mines"
         onClick={() => setGame(GameKey.Mines)}
         active={searchParams.get('game') === GameKey.Mines}
+        disabled={uiLocked}
+      />
+      <TabButton
+        icon={plinkoImg}
+        text="Plinko"
+        onClick={() => setGame(GameKey.Plinko)}
+        active={searchParams.get('game') === GameKey.Plinko}
         disabled={uiLocked}
       />
     </div>

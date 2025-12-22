@@ -1,0 +1,34 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: _, $justify: flex-start, $direction: column);
+}
+
+.splashScreen {
+  @include flex($align: center, $justify: center, $direction: column);
+  background: $gradient-darkBlueDeepPurple;
+  border-radius: $radius-2xl;
+  height: 552px;
+  width: 621px;
+  gap: 21px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  margin-bottom: 16px;
+
+  &_icon {
+    width: 64px;
+    height: 64px;
+    animation: floatUpDown 2000ms ease-in-out infinite;
+  }
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+  }
+
+  &_text {
+    @extend %text-body-md;
+  }
+}

@@ -14,6 +14,7 @@ import { useRefreshProfile } from '../features/board/hooks/useRefreshProfile';
 import { GameKey, isGameKey } from '../features/board/types/game';
 const Modal = lazy(() => import('../features/modal/components/Modal'));
 import { useModalStore } from '../features/modal/store/modalStore';
+import PlinkoGame from '../features/board/games/plinko/PlinkoGame';
 
 export default function Board() {
   const isModal = useModalStore((state) => state.isOpen);
@@ -40,6 +41,8 @@ export default function Board() {
               <MinesGame />
             ) : game === GameKey.Truck ? (
               <TruckGame />
+            ) : game === GameKey.Plinko ? (
+              <PlinkoGame />
             ) : (
               <TruckGame />
             )}
