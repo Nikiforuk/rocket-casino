@@ -46,16 +46,16 @@ export default function TruckBetForm({
     await onSubmit(Number(data.amount));
   };
 
-  const handleFormSubmitWrapper = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmitWrapper = async (event: React.FormEvent) => {
+    event.preventDefault();
     await handleSubmit(handleFormSubmit)();
   };
 
   const handleReplaceSymbols = (
-    e: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>,
     field: ControllerRenderProps<TruckGameData, 'amount'>,
   ) => {
-    let val = e.target.value.replace(/\D+/g, '');
+    let val = event.target.value.replace(/\D+/g, '');
 
     val = val.replace(/^0+(?=\d)/, '');
 
@@ -83,7 +83,7 @@ export default function TruckBetForm({
               placeholder="Your bet"
               type="text"
               value={field.value}
-              onChange={(e) => handleReplaceSymbols(e, field)}
+              onChange={(event) => handleReplaceSymbols(event, field)}
               background="rgba(15, 23, 43, 0.3)"
               border="1px solid rgba(15, 23, 43, 0.1)"
               padding="8px 12px"

@@ -6,7 +6,7 @@
   @include flex($align: center, $justify: center, $direction: column);
   background: $red-239-a15;
   border: 1px solid $red-a50;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   max-height: 106px;
   height: 100%;
 

@@ -6,23 +6,25 @@ import { Controller, useForm } from 'react-hook-form';
 import styles from './Modal.module.scss';
 import crossIcon from '../../../assets/icons/cross.svg';
 import { GRADIENTS } from '../../../styles/gradients';
-import type { ModalData } from '../types/modal';
 import Button from '../../../ui/Button';
 import Input from '../../../ui/Input';
 import { useAuthStore } from '../../auth/store/authStore';
-import { useBoardStore } from '../../board/store/boardStore';
 import { useNewUsername } from '../../board/hooks/useNewUsername';
 import { useRefreshProfile } from '../../board/hooks/useRefreshProfile';
+import { useBoardStore } from '../../board/store/boardStore';
 import { formatNumber } from '../../board/utils/numberHelpers';
 import { useResetProfile } from '../hooks/useResetProfile';
 import { modalSchema } from '../schemas/modalSchema';
+import { useModalStore } from '../store/modalStore';
+import type { ModalData } from '../types/modal';
 
 export default function Modal() {
   const [isClosing, setIsClosing] = useState(false);
   const { handleReset } = useResetProfile();
   const username = useAuthStore((state) => state.getUsername());
   const { handleNewUsername, isLoading, errorMessage } = useNewUsername();
-  const { balance, gamesPlayed, totalWagered, totalWon, setIsModal } = useBoardStore();
+  const { balance, gamesPlayed, totalWagered, totalWon } = useBoardStore();
+  const setOpen = useModalStore((state) => state.setOpen);
   const {
     control,
     handleSubmit,
@@ -51,7 +53,7 @@ export default function Modal() {
 
   const handleClose = () => {
     setIsClosing(true);
-    setTimeout(() => setIsModal(false), 240);
+    setTimeout(() => setOpen(false), 240);
   };
 
   return (
@@ -60,7 +62,7 @@ export default function Modal() {
       className={`${styles.overlay} ${isClosing ? styles.overlay_closing : ''}`}
     >
       <div
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
         className={`${styles.container} ${isClosing ? styles.container_closing : ''}`}
       >
         <button onClick={handleClose} className={styles.closeBtn}>

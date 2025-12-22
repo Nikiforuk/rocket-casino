@@ -21,8 +21,7 @@
   }
 
   &_text {
-    @extend %i-regular-16;
-    font-weight: 500;
+    @extend %text-body-md-medium;
     margin-bottom: 8.5px;
     color: $gray-100;
   }

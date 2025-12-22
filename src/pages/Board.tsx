@@ -1,43 +1,63 @@
+import { Suspense, lazy } from 'react';
+
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './Board.module.scss';
-import BonusSystem from '../features/board/components/bonus/BonusSystem';
-import Header from '../features/board/components/layout/Header';
-import Leaderboard from '../features/board/components/leaderboard/Leaderboard';
-import TabList from '../features/board/components/tablist/TabList';
-import CasesGame from '../features/board/games/cases/CasesGame';
-import TruckGame from '../features/board/games/crash/TruckGame';
-import MinesGame from '../features/board/games/mines/MinesGame';
+const BonusSystem = lazy(() => import('../features/board/components/bonus/BonusSystem'));
+const Header = lazy(() => import('../features/board/components/layout/Header'));
+const Leaderboard = lazy(() => import('../features/board/components/leaderboard/Leaderboard'));
+const TabList = lazy(() => import('../features/board/components/tablist/TabList'));
+const CasesGame = lazy(() => import('../features/board/games/cases/CasesGame'));
+const TruckGame = lazy(() => import('../features/board/games/crash/TruckGame'));
+const MinesGame = lazy(() => import('../features/board/games/mines/MinesGame'));
 import { useRefreshProfile } from '../features/board/hooks/useRefreshProfile';
-import { useBoardStore } from '../features/board/store/boardStore';
-import Modal from '../features/modal/components/Modal';
+import { GameKey, isGameKey } from '../features/board/types/game';
+const Modal = lazy(() => import('../features/modal/components/Modal'));
+import { useModalStore } from '../features/modal/store/modalStore';
 
 export default function Board() {
-  const { isModal } = useBoardStore();
+  const isModal = useModalStore((state) => state.isOpen);
   useRefreshProfile();
   const [searchParams] = useSearchParams();
-  const game = searchParams.get('game') || 'truck' || 'mines';
+  const gameParam = searchParams.get('game');
+  const game: GameKey = isGameKey(gameParam) ? gameParam : GameKey.Truck;
   return (
     <>
-      <Header />
-      <main className={`${styles.container} ${game === 'mines' ? styles.containerMines : ''}`}>
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
+      <main
+        className={`${styles.container} ${game === GameKey.Mines ? styles.containerMines : ''}`}
+      >
         <div className={styles.content}>
-          <TabList />
-          {game === 'cases' ? (
-            <CasesGame />
-          ) : game === 'mines' ? (
-            <MinesGame />
-          ) : game === 'truck' ? (
-            <TruckGame />
-          ) : (
-            <TruckGame />
-          )}
+          <Suspense fallback={null}>
+            <TabList />
+          </Suspense>
+          <Suspense fallback={null}>
+            {game === GameKey.Cases ? (
+              <CasesGame />
+            ) : game === GameKey.Mines ? (
+              <MinesGame />
+            ) : game === GameKey.Truck ? (
+              <TruckGame />
+            ) : (
+              <TruckGame />
+            )}
+          </Suspense>
         </div>
         <div className={styles.content}>
-          <BonusSystem />
-          <Leaderboard />
+          <Suspense fallback={null}>
+            <BonusSystem />
+          </Suspense>
+          <Suspense fallback={null}>
+            <Leaderboard />
+          </Suspense>
         </div>
-        {isModal ? <Modal /> : null}
+        {isModal ? (
+          <Suspense fallback={null}>
+            <Modal />
+          </Suspense>
+        ) : null}
       </main>
     </>
   );

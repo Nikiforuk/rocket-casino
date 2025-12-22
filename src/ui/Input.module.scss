@@ -1,6 +1,6 @@
-@import '../styles/extends';
-@import '../styles/variables';
-@import '../styles/mixins';
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
 
 .elements {
   @include flex($align: center, $justify: flex-start);
@@ -44,7 +44,7 @@
 }
 
 .label {
-  @extend %i-medium-14-sm;
+  @extend %text-body-sm-medium-tight;
 
   @media (max-width: 768px) {
     font-size: 12px;

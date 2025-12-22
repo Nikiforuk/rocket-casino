@@ -1,11 +1,10 @@
-@import '../styles/extends';
-@import '../styles/variables';
-@import '../styles/mixins';
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
 
 .button {
-  @extend %i-medium-16;
+  @extend %text-body-md-medium;
   @include flex($align: center, $justify: center);
-  font-weight: 300;
   gap: 10px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;

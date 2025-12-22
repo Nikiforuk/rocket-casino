@@ -3,8 +3,7 @@
 @use '../../../../styles/mixins' as *;
 
 .emojis_title {
-  @extend %i-regular-16-lg;
-  font-weight: 500;
+  @extend %text-body-md-medium;
   margin-bottom: 12px;
 }
 

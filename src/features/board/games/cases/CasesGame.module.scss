@@ -5,7 +5,7 @@
 .container {
   width: 100%;
   border: 1px solid $blue-600;
-  border-radius: 14px;
+  border-radius: $radius-2xl;
   padding: 24px;
   background: $overlay-dark-a50;
   max-width: 653px;
@@ -23,13 +23,12 @@
   @media (max-width: 768px) { max-width: 640px; padding: 20px; }
   @media (max-width: 600px) { padding: 18px; }
   @media (max-width: 720px) { max-width: 560px; }
-  @media (max-width: 400px) { max-width: 360px; padding: 16px; border-radius: 10px; }
+  @media (max-width: 400px) { max-width: 360px; padding: 16px; border-radius: $radius-lg; }
 }
 
 .title {
-  @extend %i-regular-16-lg;
+  @extend %text-body-md-medium;
   margin-bottom: 16px;
-  font-weight: 500;
   @media (max-width: 400px) { font-size: 14px; margin-bottom: 12px; }
 }
 

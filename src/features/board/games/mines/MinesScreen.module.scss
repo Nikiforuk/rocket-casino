@@ -11,8 +11,7 @@
   margin-bottom: 16px;
 
   &_title {
-    @extend %i-bold-18;
-    font-weight: 500;
+    @extend %text-title-lg-bold;
   }
 
   &_labels {
@@ -26,12 +25,12 @@
     gap: 5px;
 
     &_text {
-      @extend %i-regular-16-lg;
+      @extend %text-body-md;
       color: $gray-100;
     }
 
     &_num {
-      @extend %i-bold-16;
+      @extend %text-body-md-bold;
 
       &_secondColor {
         color: $purple-100;

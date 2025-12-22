@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import styles from './Leaderboard.module.scss';
 import LeaderCard from './LeaderCard';
 import gobletIcon from '../../../../assets/icons/goblet-gradient.svg';
 import { useLeaderboard } from '../../hooks/useLeaderboard';
 
-export default function Leaderboard() {
+function Leaderboard() {
   const { players, currentUserRank } = useLeaderboard();
 
   return (
@@ -45,3 +47,5 @@ export default function Leaderboard() {
     </div>
   );
 }
+
+export default memo(Leaderboard);

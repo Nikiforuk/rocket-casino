@@ -6,7 +6,7 @@
   @include flex($align: center, $justify: flex-start);
   width: 100%;
   border: 1px solid $blue-600;
-  border-radius: 16px;
+  border-radius: $radius-3xl;
   padding: 4.5px;
   background: $overlay-dark-a50;
   gap: 12.5px;

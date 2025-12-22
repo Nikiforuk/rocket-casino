@@ -5,14 +5,13 @@
 .button,
 .disabled {
   @include flex($align: center, $justify: center, $direction: column);
-  @extend %i-regular-16-lg;
-  font-weight: 700;
+  @extend %text-body-md-bold;
   max-width: 138px;
   width: 100%;
   padding: 18px 18px 10px 18px;
   background: $twilight-veil;
   border: 2px solid $overlay-gray-a60;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   gap: 7px;
   color: inherit;
   transition: $transition-medium;
@@ -31,8 +30,7 @@
   }
 
   &_price {
-    @extend %i-regular-14-lg;
-    font-weight: 700;
+    @extend %text-body-sm-medium;
     color: $green-600;
   }
 

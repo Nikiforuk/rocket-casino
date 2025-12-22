@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
 import { useCaseAnimation } from './useCaseAnimation';
 import { useCaseBalance } from './useCaseBalance';
 import { useCaseData } from './useCaseData';
 import { useBoardStore } from '../../../store/boardStore';
-import type CasesItem from '../types/cases';
+import { useCasesStore } from '../store/casesStore';
 import {
   DEFAULT_RARITY_ORDER,
   DEFAULT_RARITY_WEIGHTS,
@@ -15,37 +13,40 @@ export const useCaseReel = () => {
   const { iCase, activeCase, items, reelItems, setCaseIndex } = useCaseData();
   const { canOpen, spendCase, applyPrize } = useCaseBalance();
   const { reelRef, trackRef, offset, setOffset, animateTo } = useCaseAnimation();
-  const setUiLocked = useBoardStore((s) => s.setUiLocked);
+  const setUiLocked = useBoardStore((state) => state.setUiLocked);
 
-  const [spinning, setSpinning] = useState(false);
-  const [winning, setWinning] = useState<CasesItem | null>(null);
-  const [splash, setSplash] = useState(true);
+  const isSpinning = useCasesStore((state) => state.isSpinning);
+  const showSplash = useCasesStore((state) => state.showSplash);
+  const winningItem = useCasesStore((state) => state.winningItem);
+  const setSpinning = useCasesStore((state) => state.setSpinning);
+  const setShowSplash = useCasesStore((state) => state.setShowSplash);
+  const setWinningItem = useCasesStore((state) => state.setWinningItem);
 
   const handleSelectCase = (idx: number) => {
-    if (spinning) return;
+    if (isSpinning) return;
     setCaseIndex(idx);
-    setWinning(null);
+    setWinningItem(null);
     setOffset(0);
   };
 
   const handleOpen = async () => {
-    if (spinning) return;
+    if (isSpinning) return;
     const price = Number((activeCase.price || '$0').replace(/[^\d.]/g, ''));
     if (!canOpen(price)) return;
     setSpinning(true);
-    setSplash(false);
+    setShowSplash(false);
     setUiLocked(true);
     const ok = await spendCase(price);
     if (!ok) {
       setSpinning(false);
       setUiLocked(false);
-      setSplash(true);
+      setShowSplash(true);
       return;
     }
     const targetLocal = selectTargetLocalIndex(items, DEFAULT_RARITY_WEIGHTS, DEFAULT_RARITY_ORDER);
     const targetIndex = items.length * 8 + targetLocal;
-    animateTo(items, targetIndex, async (_final, selected) => {
-      setWinning(selected);
+    animateTo(items, targetIndex, async (_finalIndex, selected) => {
+      setWinningItem(selected);
       setSpinning(false);
       setUiLocked(false);
       const prize = Number(selected.price.replace(/[^\d.]/g, '')) || 0;
@@ -58,10 +59,10 @@ export const useCaseReel = () => {
     trackRef,
     activeCase,
     iCase,
-    isSpinning: spinning,
+    isSpinning,
     trackOffset: offset,
-    winningItem: winning,
-    showSplash: splash,
+    winningItem,
+    showSplash,
     items,
     reelItems,
     handleSelectCase,

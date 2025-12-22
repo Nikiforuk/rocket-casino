@@ -7,7 +7,7 @@
   width: 93px;
   height: 93px;
   background: $gradient-blue-to-purple;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   border: none;
   transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
 

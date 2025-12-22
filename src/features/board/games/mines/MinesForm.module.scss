@@ -6,7 +6,7 @@
   max-width: 298px;
   padding: 17px;
   background: $twilight-veil;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   margin-bottom: 16px;
 }
 
@@ -16,7 +16,7 @@
    margin-bottom: 8px;
 
   &_label {
-    @extend %i-medium-16;
+    @extend %text-body-md-medium;
     color: $gray-25;
   }
 

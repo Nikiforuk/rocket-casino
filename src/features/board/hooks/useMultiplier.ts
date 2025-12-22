@@ -4,7 +4,7 @@ import { MINES_CONFIG } from '../games/mines/constants/mines';
 import { useMinesStore } from '../games/mines/store/minesStore';
 
 export const useMultiplier = () => {
-  const target = useMinesStore((s) => s.currentMultiplier);
+  const target = useMinesStore((state) => state.currentMultiplier);
   const [animated, setAnimated] = useState(target);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
@@ -15,18 +15,18 @@ export const useMultiplier = () => {
     const duration = MINES_CONFIG.animations.multiplierDurationMs;
     fromRef.current = animated;
     startRef.current = null;
-    const step = (ts: number) => {
-      if (startRef.current == null) startRef.current = ts;
-      const p = Math.min(1, (ts - startRef.current) / duration);
-      const next = fromRef.current + (target - fromRef.current) * p;
+    const step = (timestamp: number) => {
+      if (startRef.current == null) startRef.current = timestamp;
+      const progress = Math.min(1, (timestamp - startRef.current) / duration);
+      const next = fromRef.current + (target - fromRef.current) * progress;
       setAnimated(Number(next.toFixed(6)));
-      if (p < 1) rafRef.current = requestAnimationFrame(step);
+      if (progress < 1) rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [target]);
+  }, [animated, target]);
 
   return { multiplier: animated };
 };

@@ -24,7 +24,7 @@ export default function MinesForm() {
     state,
   } = useGameController();
   const miniBtns = [{ label: '10' }, { label: '50' }, { label: '100' }, { label: '500' }];
-  const minesBtn = MINES_CONFIG.allowedMines.map((n) => ({ label: String(n) }));
+  const minesBtn = MINES_CONFIG.allowedMines.map((countValue) => ({ label: String(countValue) }));
   const mainBtnBg =
     state === EMinesState.PLAYING
       ? 'linear-gradient(90deg, #D08700 0%, #F54900 100%)'
@@ -49,9 +49,9 @@ export default function MinesForm() {
                   type="text"
                   width="100%"
                   value={field.value}
-                  onChange={(e) => {
-                    setValue('amount', e.target.value);
-                    const parsed = Number(e.target.value.replace(/[^0-9.]/g, ''));
+                  onChange={(event) => {
+                    setValue('amount', event.target.value);
+                    const parsed = Number(event.target.value.replace(/[^0-9.]/g, ''));
                     if (!Number.isNaN(parsed)) setBetAmount(parsed);
                   }}
                   background="rgba(15, 23, 43, 0.5)"

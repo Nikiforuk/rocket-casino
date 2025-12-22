@@ -4,7 +4,7 @@
 
 .container {
   border: 1px solid $blue-600;
-  border-radius: 14px;
+  border-radius: $radius-2xl;
   background: $overlay-dark-a50;
   padding: 24px;
   transition: $transition-medium;
@@ -28,7 +28,7 @@
   width: 40px;
   height: 40px;
   background: $gradient-purple-to-mint;
-  border-radius: 10px;
+  border-radius: $radius-lg;
 
   &_icon {
     width: 20px;
@@ -38,12 +38,11 @@
 
 .sideBlock {
   &_title {
-    @extend %i-medium-16;
-    font-weight: 600;
+    @extend %text-body-md-medium;
   }
 
   &_subtitle {
-    @extend %i-medium-14-lg;
+    @extend %text-body-sm-medium;
     color: $gray-100;
   }
 }
@@ -69,7 +68,7 @@
   @include flex($align: center, $justify: center);
 
   &_text {
-    @extend %i-medium-14-lg;
+    @extend %text-body-sm-medium;
     color: $gray-100;
   }
 }

@@ -4,19 +4,15 @@ import { persist } from 'zustand/middleware';
 import { getProfile } from '../../modal/api/profileApi';
 
 interface BoardState {
-  isModal: boolean;
   balance: number;
   uiLocked: boolean;
-  truckActive: boolean;
   newUsername: string;
   gamesPlayed: number;
   totalWagered: number;
   totalWon: number;
 
-  setIsModal: (value: boolean) => void;
   setBalance: (value: number | ((prev: number) => number)) => void;
   setUiLocked: (value: boolean) => void;
-  setTruckActive: (value: boolean) => void;
   setGamesPlayed: (value: number) => void;
   setTotalWon: (value: number) => void;
   setNewUsername: (value: string) => void;
@@ -28,33 +24,22 @@ interface BoardState {
 export const useBoardStore = create<BoardState>()(
   persist(
     (set) => ({
-      isModal: false,
       balance: 0,
       uiLocked: false,
-      truckActive: false,
       newUsername: '',
       gamesPlayed: 0,
       totalWagered: 0,
       totalWon: 0,
 
-      setIsModal: (value) => set({ isModal: value }),
-
       setBalance: (value) =>
         set((state) => ({
           balance: typeof value === 'function' ? value(state.balance) : value,
         })),
-
       setUiLocked: (value) => set({ uiLocked: value }),
-      setTruckActive: (value) => set({ truckActive: value }),
-
       setTotalWon: (value) => set({ gamesPlayed: value }),
-
       setGamesPlayed: (value) => set({ gamesPlayed: value }),
-
       setNewUsername: (value) => set({ newUsername: value }),
-
       setTotalWagered: (value) => set({ totalWagered: value }),
-
       refreshProfile: async () => {
         try {
           const data = await getProfile();
@@ -68,13 +53,11 @@ export const useBoardStore = create<BoardState>()(
           console.error('Failed to refresh profile');
         }
       },
-
       resetLocal: () =>
         set({
           balance: 0,
           gamesPlayed: 0,
           uiLocked: false,
-          truckActive: false,
           newUsername: '',
           totalWon: 0,
           totalWagered: 0,
@@ -88,7 +71,6 @@ export const useBoardStore = create<BoardState>()(
         totalWagered: state.totalWagered,
         totalWon: state.totalWon,
         uiLocked: state.uiLocked,
-        truckActive: state.truckActive,
       }),
     },
   ),

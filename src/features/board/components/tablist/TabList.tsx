@@ -6,11 +6,12 @@ import mineImg from '../../../../assets/images/mine.png';
 import turboTruckImg from '../../../../assets/images/turbo-truck.png';
 import TabButton from '../../../../ui/TabButton';
 import { useBoardStore } from '../../store/boardStore';
+import { GameKey } from '../../types/game';
 
 export default function TabList() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const uiLocked = useBoardStore((s) => s.uiLocked);
-  const setGame = (game: 'truck' | 'cases' | 'mines') => {
+  const uiLocked = useBoardStore((state) => state.uiLocked);
+  const setGame = (game: GameKey) => {
     const next = new URLSearchParams(searchParams);
     next.set('game', game);
     setSearchParams(next);
@@ -20,22 +21,22 @@ export default function TabList() {
       <TabButton
         icon={turboTruckImg}
         text="Crash"
-        onClick={() => setGame('truck')}
-        active={(searchParams.get('game') || 'truck') === 'truck'}
+        onClick={() => setGame(GameKey.Truck)}
+        active={(searchParams.get('game') || GameKey.Truck) === GameKey.Truck}
         disabled={uiLocked}
       />
       <TabButton
         icon={caseImg}
         text="Cases"
-        onClick={() => setGame('cases')}
-        active={searchParams.get('game') === 'cases'}
+        onClick={() => setGame(GameKey.Cases)}
+        active={searchParams.get('game') === GameKey.Cases}
         disabled={uiLocked}
       />
       <TabButton
         icon={mineImg}
         text="Mines"
-        onClick={() => setGame('mines')}
-        active={searchParams.get('game') === 'mines'}
+        onClick={() => setGame(GameKey.Mines)}
+        active={searchParams.get('game') === GameKey.Mines}
         disabled={uiLocked}
       />
     </div>

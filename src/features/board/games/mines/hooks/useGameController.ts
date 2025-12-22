@@ -5,17 +5,15 @@ import { useBet } from '../../../hooks/useBet';
 import { useBoardStore } from '../../../store/boardStore';
 import { useMinesStore } from '../store/minesStore';
 import { EMinesState } from '../types/mines';
-import {
-  start as engineStart,
-  reveal as engineReveal,
-  cashOut as engineCashOut,
-  end as engineEnd,
-} from '../utils/gameEngine';
+import { cashOut as engineCashOut } from '../utils/cashOut';
+import { end as engineEnd } from '../utils/end';
+import { reveal as engineReveal } from '../utils/reveal';
+import { start as engineStart } from '../utils/start';
 
 export const useGameController = () => {
-  const setUiLocked = useBoardStore((s) => s.setUiLocked);
+  const setUiLocked = useBoardStore((state) => state.setUiLocked);
   const { startBet, cashOut, isLoading } = useBet();
-  const balance = useBoardStore((s) => s.balance);
+  const balance = useBoardStore((state) => state.balance);
   const { showError } = useToast();
   const { state, betAmount, minesCount, currentMultiplier, setBetAmount, setMinesCount, setState } =
     useMinesStore();

@@ -58,14 +58,15 @@ export const useLeaderboardStore = create<LeaderboardState>()(
                 isWinner,
               };
             })
-            .filter((player) => {
-              const validId = typeof player.id === 'string' && player.id.length > 0;
-              const validName = typeof player.username === 'string' && player.username.length > 0;
+            .filter((playerInfo) => {
+              const validId = typeof playerInfo.id === 'string' && playerInfo.id.length > 0;
+              const validName =
+                typeof playerInfo.username === 'string' && playerInfo.username.length > 0;
               const validNumbers = [
-                player.gamesPlayed,
-                player.totalWon,
-                player.totalWagered,
-                player.winPercentage,
+                playerInfo.gamesPlayed,
+                playerInfo.totalWon,
+                playerInfo.totalWagered,
+                playerInfo.winPercentage,
               ].every((num) => Number.isFinite(num) && num >= 0);
               return validId && validName && validNumbers;
             });
@@ -91,7 +92,7 @@ export const useLeaderboardStore = create<LeaderboardState>()(
         const { players } = get();
         const session = useAuthStore.getState().session;
         const currentUserId = session?.user?.id;
-        const player = players.find((p) => p.id === currentUserId);
+        const player = players.find((playerItem) => playerItem.id === currentUserId);
         return player ? player.rank : null;
       },
     }),

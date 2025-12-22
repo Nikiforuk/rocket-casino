@@ -7,7 +7,7 @@
   width: 100%;
   margin: 12px 0 24px;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: $radius-xl;
   background: $twilight-veil;
   border: 1px solid $overlay-gray-a60;
   gap: 12px;
@@ -15,13 +15,13 @@
 
   @media (max-width: 768px) { padding: 12px; }
   @media (max-width: 480px) { padding: 11px; }
-  @media (max-width: 400px) { padding: 10px; border-radius: 10px; }
+  @media (max-width: 400px) { padding: 10px; border-radius: $radius-lg; }
 }
 
 .result_card {
   position: relative;
   padding: 12px;
-  border-radius: 12px;
+  border-radius: $radius-xl;
   background: $overlay-gray-a35;
   border: 1px solid $overlay-gray-a60;
   overflow: hidden;
@@ -45,11 +45,11 @@
   }
 
   @media (max-width: 480px) { padding: 11px; }
-  @media (max-width: 400px) { padding: 10px; border-radius: 10px; }
+  @media (max-width: 400px) { padding: 10px; border-radius: $radius-lg; }
 }
 
 .result_title {
-  @extend %i-regular-14-lg;
+  @extend %text-body-sm;
   color: $gray-100;
   margin-bottom: 8px;
 

@@ -6,7 +6,7 @@
   max-width: 298px;
   padding: 17px;
   background: $twilight-veil;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   margin-bottom: 16px;
 }
 
@@ -16,7 +16,7 @@
   margin-bottom: 10px;
 
   .title {
-    @extend %i-bold-16;
+    @extend %text-body-md-bold;
   }
 
   &_icon {
@@ -33,13 +33,12 @@
     @include flex($align: center, $justify: space-between);
 
     &_text {
-      @extend %i-regular-14-lg;
+      @extend %text-body-sm;
       color: $gray-200;
     }
 
     &_sum {
-      @extend %i-medium-14-lg;
-      font-weight: 700;
+      @extend %text-body-sm-medium;
 
       &_greenColor {
         color: $green-600;

@@ -1,4 +1,4 @@
-import { MINES_CONFIG } from '../games/mines/constants/mines';
+import { MINES_CONFIG } from '../constants/mines';
 
 export const computeTotalMultiplier = (
   minesCount: number,

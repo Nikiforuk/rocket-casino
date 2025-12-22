@@ -4,7 +4,7 @@
 
 .container {
   @include flex($align: center, $justify: flex-start);
-  border-radius: 10px;
+  border-radius: $radius-lg;
   border: 1px solid $red-50;
   background: $red-a20;
   padding: 12.5px;
@@ -12,6 +12,6 @@
 }
 
 .text {
-  @extend %i-regular-14-lg;
+  @extend %text-body-sm;
   color: $red-50;
 }

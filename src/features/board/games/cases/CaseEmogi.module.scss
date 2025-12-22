@@ -4,7 +4,7 @@
 
 .container {
   @include flex($justify: center, $align: center);
-  border-radius: 4px;
+  border-radius: $radius-xs;
   border: 1px solid $gray-450;
   min-width: 68px;
   height: 54px;

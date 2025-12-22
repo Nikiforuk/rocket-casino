@@ -6,8 +6,8 @@ import { useLeaderboardStore } from '../../../store/leaderboardStore';
 
 export const useCaseBalance = () => {
   const { showError } = useToast();
-  const balance = useBoardStore((s) => s.balance);
-  const setBalance = useBoardStore((s) => s.setBalance);
+  const balance = useBoardStore((state) => state.balance);
+  const setBalance = useBoardStore((state) => state.setBalance);
   const refreshProfile = useBoardStore.getState().refreshProfile;
   const refreshLeaderboard = useLeaderboardStore.getState().fetchLeaderboard;
 

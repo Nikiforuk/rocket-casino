@@ -14,15 +14,16 @@ import { useToast } from '../../../../toast/hooks/useToast';
 import { useBet } from '../../../hooks/useBet';
 import { useBoardStore } from '../../../store/boardStore';
 import { useLeaderboardStore } from '../../../store/leaderboardStore';
+import { useCrashStore } from '../store/crashStore';
 import { EGameState } from '../types/truck';
 import { generateCrashAt } from '../utils/generateCrashAt';
 
 export const useTruckGameLogic = () => {
   const { startBet, cashOut, isLoading: isBetting } = useBet();
   const { showError } = useToast();
-  const setUiLocked = useBoardStore((s) => s.setUiLocked);
-  const setTruckActive = useBoardStore((s) => s.setTruckActive);
-  const balance = useBoardStore((s) => s.balance);
+  const setUiLocked = useBoardStore((state) => state.setUiLocked);
+  const setCrashActive = useCrashStore((state) => state.setActive);
+  const balance = useBoardStore((state) => state.balance);
   const refreshProfile = useBoardStore.getState().refreshProfile;
   const refreshLeaderboard = useLeaderboardStore.getState().fetchLeaderboard;
 
@@ -57,11 +58,11 @@ export const useTruckGameLogic = () => {
       makeCrashHandler(
         setGameState,
         stopAudio,
-        () => unlockTruck(setUiLocked, setTruckActive),
+        () => unlockTruck(setUiLocked, setCrashActive),
         refreshProfile,
         refreshLeaderboard,
       ),
-      () => lockTruck(setUiLocked, setTruckActive),
+      () => lockTruck(setUiLocked, setCrashActive),
     );
 
     return true;
@@ -76,7 +77,7 @@ export const useTruckGameLogic = () => {
     if (!result.success) return (showError(result.error ?? 'Something went wrong'), false);
 
     setGameState(EGameState.Escaped);
-    unlockTruck(setUiLocked, setTruckActive);
+    unlockTruck(setUiLocked, setCrashActive);
     await refreshProfile();
     refreshLeaderboard();
     return true;
@@ -87,7 +88,7 @@ export const useTruckGameLogic = () => {
     stopAudio();
     resetMultiplier();
     setGameState(EGameState.Idle);
-    unlockTruck(setUiLocked, setTruckActive);
+    unlockTruck(setUiLocked, setCrashActive);
   };
 
   const getButtonText = () => getTruckButtonText(isBetting, gameState);

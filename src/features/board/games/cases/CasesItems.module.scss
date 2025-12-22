@@ -9,7 +9,7 @@
   flex: 0 0 130px;
   height: 180px;
 
-  border-radius: 6px;
+  border-radius: $radius-sm;
   border: 1px solid $gray-450;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
@@ -63,10 +63,10 @@
 }
 
 .itemLabel {
-  @extend %i-regular-12;
+  @extend %text-body-xs;
 
   margin-top: 8px;
-  font-weight: 700;
+  @extend %text-body-xs-medium;
 
   @media (max-width: 400px) {
     font-size: 11px;

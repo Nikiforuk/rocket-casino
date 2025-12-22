@@ -9,7 +9,7 @@
 }
 
 .link {
-    @extend %i-medium-14-lg;
+    @extend %text-body-sm-medium;
     color: $blue-200;;
     transition: $transition-fast;
     &:hover { filter: brightness(1.1); }
@@ -21,6 +21,6 @@
 }
 
 .text {
-  @extend %i-regular-12;
+  @extend %text-body-xs;
   color: $gray-400;    
 }

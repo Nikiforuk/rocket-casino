@@ -45,8 +45,7 @@
   }
 
   &_text {
-    @extend %i-regular-16-lg;
-    font-weight: 700;
+    @extend %text-body-md-bold;
   }
 }
 
@@ -55,7 +54,7 @@
   background: $gradient-green-blue-purple;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: $radius-lg;
 
   &_icon {
     width: 24px;

@@ -31,8 +31,8 @@ interface MinesState {
 }
 
 const createEmptyGrid = (): MinesGrid =>
-  Array.from({ length: MINES_CONFIG.totalTiles }, (_, i) => ({
-    index: i,
+  Array.from({ length: MINES_CONFIG.totalTiles }, (_, index) => ({
+    index,
     status: EMinesTileStatus.HIDDEN,
   }));
 
@@ -57,7 +57,7 @@ export const useMinesStore = create<MinesState>((set, get) => ({
 
   setTileStatus: (index, status) =>
     set((state) => ({
-      grid: state.grid.map((t) => (t.index === index ? { ...t, status } : t)),
+      grid: state.grid.map((tile) => (tile.index === index ? { ...tile, status } : tile)),
       revealedSafeCount:
         status === EMinesTileStatus.SAFE ? state.revealedSafeCount + 1 : state.revealedSafeCount,
     })),

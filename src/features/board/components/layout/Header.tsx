@@ -6,18 +6,25 @@ import { GRADIENTS } from '../../../../styles/gradients';
 import SmallButton from '../../../../ui/SmallButton';
 import { useSignOut } from '../../../auth/hooks/useSignOut';
 import { useAuthStore } from '../../../auth/store/authStore';
+import { useModalStore } from '../../../modal/store/modalStore';
 import { useBoardStore } from '../../store/boardStore';
+import { GameKey } from '../../types/game';
 import { formatNumber } from '../../utils/numberHelpers';
 
 export default function Header() {
   const handleSignOut = useSignOut();
   const username = useAuthStore((state) => state.getUsername());
-  const { balance, setIsModal } = useBoardStore();
+  const { balance } = useBoardStore();
+  const setOpen = useModalStore((state) => state.setOpen);
   const [searchParams] = useSearchParams();
-  const game = searchParams.get('game') ?? 'truck';
+  const gameParam = searchParams.get('game');
+  const game =
+    gameParam === GameKey.Mines || gameParam === GameKey.Cases || gameParam === GameKey.Truck
+      ? gameParam
+      : GameKey.Truck;
   return (
     <header className={styles.container}>
-      <div className={`${styles.content} ${game === 'mines' ? styles.contentMines : ''}`}>
+      <div className={`${styles.content} ${game === GameKey.Mines ? styles.contentMines : ''}`}>
         <div className={styles.leftBlock}>
           <div className={styles.gradientBlock}>
             <img src={gobletIcon} className={styles.gradientBlock_icon} alt="goblet-white" />
@@ -45,7 +52,7 @@ export default function Header() {
             height="42px"
             widthIcon="18px"
             heightIcon="18px"
-            onClick={() => setIsModal(true)}
+            onClick={() => setOpen(true)}
           />
           <SmallButton
             text="Logout"

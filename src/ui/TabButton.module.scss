@@ -1,16 +1,16 @@
-@import '../styles/extends';
-@import '../styles/variables';
-@import '../styles/mixins';
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
 
 .button {
   @include flex($align: center, $justify: center);
-  @extend %i-medium-14-lg;
+  @extend %text-body-sm-medium;
   width: 100px;
   height: 29px;
   background: $gradient-darkBlueDeepPurple;
   background-clip: padding-box;
   border: 1px solid transparent;
-  border-radius: 14px;
+  border-radius: $radius-2xl;
   color: inherit;
   transition: $transition-fast;
   box-shadow: $shadow-soft;
@@ -24,7 +24,7 @@
     height: 26px;
     font-size: 12px;
     line-height: 16px;
-    border-radius: 14px;
+    border-radius: $radius-2xl;
     padding: 0 8px;
   }
 }
@@ -35,7 +35,7 @@
 }
 
 .text {
-  @extend %i-regular-14-lg;
+  @extend %text-body-sm;
 }
 
 .icon {

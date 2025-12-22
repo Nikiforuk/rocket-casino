@@ -3,8 +3,7 @@
 @use '../../../../styles/mixins' as *;
 
 .resultTitle {
-  @extend %i-regular-30;
-  font-weight: bold;
+  @extend %text-heading-lg-bold;
   text-align: center;
   margin-bottom: 8px;
   letter-spacing: 2px;
@@ -23,7 +22,7 @@
   height: 317px;
   width: 100%;
   background: $twilight-veil;
-  border-radius: 6px;
+  border-radius: $radius-sm;
   margin-bottom: 17px;
   position: relative;
   overflow: hidden;

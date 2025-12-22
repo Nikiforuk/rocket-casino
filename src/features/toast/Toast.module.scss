@@ -22,7 +22,7 @@
 .toast {
   pointer-events: auto;
   padding: 16px 20px;
-  border-radius: 8px;
+  border-radius: $radius-md;
   background: $twilight-veil;
   border: 1px solid $overlay-gray-a60;
   box-shadow: 0 4px 12px $black-a30;

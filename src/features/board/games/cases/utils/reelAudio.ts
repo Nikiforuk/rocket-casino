@@ -19,7 +19,6 @@ export const startTick = (ac: AudioContext, duration = 3.6) => {
 
     if (rawProgress >= 1) return;
 
-    // ease-out: дуже швидко на старті, повільно до кінця
     const progress = 1 - Math.pow(1 - rawProgress, 2);
 
     const o = ac.createOscillator();

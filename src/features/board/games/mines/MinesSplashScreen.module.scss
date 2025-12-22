@@ -12,8 +12,7 @@
   margin-bottom: 16px;
 
   &_title {
-    @extend %i-bold-18;
-    font-weight: 500;
+    @extend %text-title-lg-bold;
   }
 
   &_icon {
@@ -25,7 +24,7 @@
 .splashScreen {
   @include flex($align: center, $justify: center, $direction: column);
   background: $gradient-darkBlueDeepPurple;
-  border-radius: 14px;
+  border-radius: $radius-2xl;
   max-height: 552px;
   height: 100%;
   gap: 21px;

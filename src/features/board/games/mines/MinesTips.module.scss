@@ -6,7 +6,7 @@
   max-width: 298px;
   padding: 17px;
   background: $twilight-veil;
-  border-radius: 10px;
+  border-radius: $radius-lg;
   margin-bottom: 16px;
   background: $gradient-darkBlueDeepPurple;
 }
@@ -27,7 +27,7 @@
   gap: 4px;
   
   &_item {
-    @extend %i-regular-14-lg;
+    @extend %text-body-sm;
     color: $gray-100;
   }
 }
