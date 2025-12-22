@@ -10,11 +10,11 @@ const TabList = lazy(() => import('../features/board/components/tablist/TabList'
 const CasesGame = lazy(() => import('../features/board/games/cases/CasesGame'));
 const TruckGame = lazy(() => import('../features/board/games/crash/TruckGame'));
 const MinesGame = lazy(() => import('../features/board/games/mines/MinesGame'));
+import PlinkoGame from '../features/board/games/plinko/PlinkoGame';
 import { useRefreshProfile } from '../features/board/hooks/useRefreshProfile';
 import { GameKey, isGameKey } from '../features/board/types/game';
 const Modal = lazy(() => import('../features/modal/components/Modal'));
 import { useModalStore } from '../features/modal/store/modalStore';
-import PlinkoGame from '../features/board/games/plinko/PlinkoGame';
 
 export default function Board() {
   const isModal = useModalStore((state) => state.isOpen);
@@ -28,7 +28,13 @@ export default function Board() {
         <Header />
       </Suspense>
       <main
-        className={`${styles.container} ${game === GameKey.Mines ? styles.containerMines : ''}`}
+        className={`${styles.container} ${
+          game === GameKey.Mines
+            ? styles.containerMines
+            : game === GameKey.Plinko
+              ? styles.containerPlinko
+              : ''
+        }`}
       >
         <div className={styles.content}>
           <Suspense fallback={null}>

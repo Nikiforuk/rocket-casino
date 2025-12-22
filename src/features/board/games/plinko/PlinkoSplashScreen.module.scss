@@ -9,6 +9,8 @@
 .splashScreen {
   @include flex($align: center, $justify: center, $direction: column);
   background: $gradient-darkBlueDeepPurple;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
   border-radius: $radius-2xl;
   height: 552px;
   width: 621px;

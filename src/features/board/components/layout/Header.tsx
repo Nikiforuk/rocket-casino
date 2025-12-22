@@ -19,12 +19,17 @@ export default function Header() {
   const [searchParams] = useSearchParams();
   const gameParam = searchParams.get('game');
   const game =
-    gameParam === GameKey.Mines || gameParam === GameKey.Cases || gameParam === GameKey.Truck
+    gameParam === GameKey.Mines ||
+    gameParam === GameKey.Cases ||
+    gameParam === GameKey.Truck ||
+    gameParam === GameKey.Plinko
       ? gameParam
       : GameKey.Truck;
   return (
     <header className={styles.container}>
-      <div className={`${styles.content} ${game === GameKey.Mines ? styles.contentMines : ''}`}>
+      <div
+        className={`${styles.content} ${game === GameKey.Mines || game === GameKey.Plinko ? styles.contentMines : ''}`}
+      >
         <div className={styles.leftBlock}>
           <div className={styles.gradientBlock}>
             <img src={gobletIcon} className={styles.gradientBlock_icon} alt="goblet-white" />

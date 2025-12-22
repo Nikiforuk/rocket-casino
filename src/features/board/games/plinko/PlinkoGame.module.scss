@@ -3,13 +3,14 @@
 @use '../../../../styles/mixins' as *;
 
 .container {
-  @include flex($align: center, $justify: space-between, $direction: column);
+  @include flex($align: flex-start, $justify: flex-start, $direction: row);
+  gap: 20px;
   border: 1px solid $blue-600;
   border-radius: $radius-2xl;
   padding: 24px;
   background: $overlay-dark-a50;
   transition: $transition-medium;
-  max-width: 1000px;
+  max-width: 1500px;
   box-shadow: $shadow-soft;
 
   &:hover {
@@ -20,5 +21,24 @@
 
   @media (max-width: 1024px) {
     width: 100%;
+    @include flex($align: stretch, $justify: flex-start, $direction: column);
   }
+}
+
+.aside {
+  max-width: 280px;
+  width: 100%;
+  @include flex($align: stretch, $justify: center, $direction: column);
+  gap: 16px;
+}
+
+.asideRight {
+  width: 200px;
+  @include flex($align: stretch, $justify: flex-start, $direction: column);
+  gap: 16px;
+}
+
+.game {
+  @include flex($align: center, $justify: center, $direction: column);
+  flex: 1 2 auto;
 }

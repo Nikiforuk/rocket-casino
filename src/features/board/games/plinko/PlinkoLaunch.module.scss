@@ -1,3 +1,97 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/extends' as *;
 @use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: center, $direction: column);
+  gap: 12px;
+  width: 100%;
+}
+
+.panel {
+  @include flex($align: flex-start, $justify: center, $direction: column);
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid $blue-600;
+  border-radius: $radius-xl;
+  background: $overlay-dark-a50;
+  max-width: 280px;
+}
+
+.panelTitle {
+  @extend %text-body-sm-medium;
+  color: $white;
+}
+
+.row {
+  @include flex($align: center, $justify: center);
+  gap: 8px;
+}
+
+.value {
+  @extend %text-body-sm-medium;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(60px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.gridItem {
+  @include flex($align: center, $justify: center, $direction: column);
+  gap: 4px;
+  height: 56px;
+  border-radius: $radius-md;
+  border: 1px solid rgba(49, 65, 88, 0.2);
+  background: $gradient-dark-gray;
+  color: $white;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
+  overflow: hidden;
+  transition: $transition-medium;
+
+  &:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: $shadow-soft;
+  }
+
+  &:active {
+    transform: translateY(0);
+    filter: brightness(0.98);
+  }
+}
+
+.gridItem_primary {
+  @extend %text-body-sm-medium;
+}
+
+.gridItem_secondary {
+  @extend %text-body-xs;
+  color: $gray-200;
+}
+
+.active {
+  border: 1px solid rgba(49, 65, 88, 0.1);
+  background: $gradient-cases-gold;
+  color: #000000;
+  box-shadow: $shadow-soft;
+  animation: selectionGlow 480ms ease;
+}
+
+@keyframes selectionGlow {
+  0% {
+    box-shadow: none;
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.08);
+  }
+  100% {
+    box-shadow: $shadow-soft;
+    filter: brightness(1.02);
+  }
+}
