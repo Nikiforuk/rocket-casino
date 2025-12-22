@@ -1,6 +1,7 @@
 import styles from './MinesCurrentGame.module.scss';
 import { useMinesStore } from './store/minesStore';
 import ghostIcon from '../../../../assets/images/ghost.png';
+import { formatNumber } from '../../utils/numberHelpers';
 
 export default function MinesCurrentGame() {
   const { betAmount, currentValue, safeTilesLeft } = useMinesStore();
@@ -18,7 +19,7 @@ export default function MinesCurrentGame() {
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Current Value:</p>
           <b className={`${styles.rows_row_sum} ${styles.rows_row_sum_greenColor}`}>
-            ${currentValue.toFixed(6)}
+            ${formatNumber(currentValue)}
           </b>
         </div>
         <div className={styles.rows_line} />

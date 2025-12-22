@@ -7,6 +7,7 @@ import { useMinesStore } from './store/minesStore';
 import { EMinesTileStatus } from './types/mines';
 import { EMinesState } from './types/mines';
 import { useMultiplier } from '../../hooks/useMultiplier';
+import { formatNumber } from '../../utils/numberHelpers';
 
 export default function MinesScreen() {
   const { grid, state } = useMinesStore();
@@ -32,7 +33,7 @@ export default function MinesScreen() {
                 transition: `color ${MINES_CONFIG.animations.multiplierDurationMs}ms ease`,
               }}
             >
-              {multiplier.toFixed(6)}x
+              {formatNumber(multiplier)}x
             </b>
           </div>
         </div>
