@@ -16,6 +16,7 @@
   color: inherit;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
+  box-sizing: border-box;
 
   &:hover {
     box-shadow: $shadow-strong;
@@ -27,21 +28,51 @@
   &_icon {
     height: 48px;
     width: 48px;
+
+    @media (max-width: 600px) { height: 40px; width: 40px; }
+    @media (max-width: 480px) { height: 36px; width: 36px; }
+    @media (max-width: 400px) { height: 32px; width: 32px; }
+  }
+
+  &_text {
+    @media (max-width: 480px) { font-size: 13px; }
+    @media (max-width: 400px) { font-size: 12px; }
   }
 
   &_price {
     @extend %text-body-sm-medium;
     color: $green-600;
+
+    @media (max-width: 480px) { font-size: 12px; }
+    @media (max-width: 400px) { font-size: 11px; }
   }
 
   @media (max-width: 768px) {
-    padding: 12px 12px 5px 12px;
+    padding: 12px 12px 8px 12px;
     max-width: 100%;
+    gap: 5px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px 10px 6px 10px;
+    gap: 4px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 8px 5px 8px;
+    gap: 3px;
+    border-radius: $radius-md;
+  }
+
+  @media (max-width: 400px) {
+    padding: 6px 6px 4px 6px;
+    gap: 2px;
   }
 }
 
 .disabled {
   opacity: 50%;
+  pointer-events: none;
 }
 
 .button_active {

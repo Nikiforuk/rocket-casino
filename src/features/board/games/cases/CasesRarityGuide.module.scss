@@ -15,44 +15,61 @@
     filter: brightness(1.04);
   }
 
+  @media (max-width: 600px) { padding: 14px; }
+  @media (max-width: 480px) { padding: 12px; border-radius: $radius-md; }
+  @media (max-width: 400px) { padding: 10px; }
+
   &_title {
     @extend %text-body-md-medium;
     margin-bottom: 12px;
+
+    @media (max-width: 480px) { font-size: 14px; margin-bottom: 10px; }
+    @media (max-width: 400px) { font-size: 13px; margin-bottom: 8px; }
   }
 
   &_net {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+
     @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    @media (max-width: 480px) { grid-template-columns: 1fr; gap: 8px; }
+    @media (max-width: 480px) { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    @media (max-width: 400px) { gap: 6px; }
   }
 
   &_column {
     @include flex($align: center, $justify: flex-start);
-
     width: 100%;
     max-width: 184px;
     gap: 8px;
+
     @media (max-width: 768px) { max-width: 100%; }
     @media (max-width: 480px) { gap: 6px; }
+    @media (max-width: 400px) { gap: 4px; }
 
     &_circle {
       width: 12px;
       height: 12px;
       border-radius: 50%;
+      flex-shrink: 0;
+
+      @media (max-width: 400px) { width: 10px; height: 10px; }
     }
 
     &_text {
       @extend %text-body-sm;
-
       color: $gray-100;
+
+      @media (max-width: 480px) { font-size: 12px; }
+      @media (max-width: 400px) { font-size: 11px; }
     }
 
     &_percents {
       @extend %text-body-sm;
+      color: $gray-400;
 
-      color: $gray-400;;
+      @media (max-width: 480px) { font-size: 12px; }
+      @media (max-width: 400px) { font-size: 11px; }
     }
   }
 }

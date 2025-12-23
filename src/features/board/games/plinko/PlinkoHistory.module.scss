@@ -13,6 +13,7 @@
   overflow-y: auto;
   width: 100%;
   max-height: 200px;
+  box-sizing: border-box;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -29,16 +30,28 @@
   }
   scrollbar-width: thin;
   scrollbar-color: $gold-200 transparent;
+
+  @media (max-width: 768px) { gap: 6px; padding: 10px; max-height: 180px; }
+  @media (max-width: 600px) { padding: 10px; border-radius: $radius-lg; max-height: 160px; }
+  @media (max-width: 480px) { padding: 8px; gap: 5px; max-height: 140px; }
+  @media (max-width: 400px) { padding: 8px; gap: 4px; border-radius: $radius-md; max-height: 120px; }
 }
 
-.flexbox{
+.flexbox {
   @include flex($align: center, $justify: center);
   gap: 10px;
+
+  @media (max-width: 600px) { gap: 8px; }
+  @media (max-width: 480px) { gap: 6px; }
+  @media (max-width: 400px) { gap: 4px; }
 }
 
 .title {
   @extend %text-body-sm-medium;
   color: $white;
+
+  @media (max-width: 480px) { font-size: 12px; }
+  @media (max-width: 400px) { font-size: 11px; }
 }
 
 .item {
@@ -48,14 +61,27 @@
   width: 100%;
   border-radius: $radius-sm;
   background: rgba(15, 23, 43, 0.35);
+  box-sizing: border-box;
+
+  @media (max-width: 600px) { padding: 5px 6px; gap: 6px; }
+  @media (max-width: 480px) { padding: 4px 6px; gap: 4px; }
+  @media (max-width: 400px) { padding: 4px 5px; }
 }
 
 .multiplier {
   @extend %text-body-md;
   color: $gold-200;
+
+  @media (max-width: 600px) { font-size: 13px; }
+  @media (max-width: 480px) { font-size: 12px; }
+  @media (max-width: 400px) { font-size: 11px; }
 }
 
 .win {
   @extend %text-body-sm-medium;
   color: $green-200;
+
+  @media (max-width: 600px) { font-size: 12px; }
+  @media (max-width: 480px) { font-size: 11px; }
+  @media (max-width: 400px) { font-size: 10px; }
 }

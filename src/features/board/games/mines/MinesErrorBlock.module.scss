@@ -7,24 +7,80 @@
   background: $red-239-a15;
   border: 1px solid $red-a50;
   border-radius: $radius-lg;
-  max-height: 106px;
-  height: 100%;
-
+  width: 100%;
+  padding: 16px;
+  gap: 10px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
+  box-sizing: border-box;
 
   &:hover {
     box-shadow: $shadow-strong;
     filter: brightness(1.04);
+  }
+
+  @media (max-width: 600px) {
+    padding: 14px;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+    gap: 6px;
+    border-radius: $radius-md;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+  }
+
+  // Responsive button inside
+  button {
+    @media (max-width: 600px) {
+      width: 100% !important;
+      max-width: 200px;
+    }
+    @media (max-width: 480px) {
+      height: 32px !important;
+      font-size: 13px !important;
+    }
+    @media (max-width: 400px) {
+      font-size: 12px !important;
+    }
   }
 }
 
 .inner {
   @include flex($align: center, $justify: center);
   margin-bottom: 5px;
+  gap: 8px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 3px;
+    gap: 6px;
+  }
 
   &_icon {
     width: 32px;
     height: 32px;
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+    }
+
+    @media (max-width: 400px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &_text {
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+    @media (max-width: 400px) {
+      font-size: 13px;
+    }
   }
 }

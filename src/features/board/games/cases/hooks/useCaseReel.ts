@@ -51,7 +51,7 @@ export const useCaseReel = () => {
       setUiLocked(false);
       const prize = Number(selected.price.replace(/[^\d.]/g, '')) || 0;
       await applyPrize(prize);
-    });
+    }, reelItems);
   };
 
   return {

@@ -9,11 +9,13 @@
   max-width: 603px;
   height: 248px;
   border-radius: $radius-2xl;
-  background: $gradient-darkBlueDeepPurple;;
+  background: $gradient-darkBlueDeepPurple;
   background-clip: padding-box;
   margin-bottom: 26px;
   box-shadow: $shadow-soft;
   transition: $transition-medium;
+  overflow: hidden;
+  box-sizing: border-box;
 
   &:hover {
     box-shadow: $shadow-strong;
@@ -21,9 +23,9 @@
   }
 
   @media (max-width: 768px) { max-width: 100%; height: 200px; }
-  @media (max-width: 600px) { padding: 12px; }
-  @media (max-width: 480px) { height: 160px; border-radius: $radius-xl; }
-  @media (max-width: 400px) { height: 140px; border-radius: $radius-lg; padding: 10px; }
+  @media (max-width: 600px) { height: 180px; margin-bottom: 20px; }
+  @media (max-width: 480px) { height: 155px; border-radius: $radius-xl; margin-bottom: 16px; }
+  @media (max-width: 400px) { height: 135px; border-radius: $radius-lg; margin-bottom: 14px; }
 
   &_img {
     width: 64px;
@@ -65,7 +67,6 @@
   display: flex;
   gap: 16px;
   will-change: transform;
-  transition: transform 0.15s ease-out;
 
   @media (max-width: 768px) { gap: 12px; }
   @media (max-width: 480px) { gap: 8px; }

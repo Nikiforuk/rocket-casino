@@ -3,21 +3,35 @@
 @use '../../../../styles/mixins' as *;
 
 .container {
-  @include flex($align: _, $justify: flex-start, $direction: column);
+  @include flex($align: center, $justify: flex-start, $direction: column);
+  width: 100%;
 }
 
 .top {
   @include flex($align: center, $justify: flex-start);
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
+
+  @media (max-width: 600px) { margin-bottom: 12px; gap: 6px; }
+  @media (max-width: 480px) { margin-bottom: 10px; }
+  @media (max-width: 400px) { margin-bottom: 8px; }
 
   &_title {
     @extend %text-title-lg-bold;
+
+    @media (max-width: 600px) { font-size: 20px; }
+    @media (max-width: 480px) { font-size: 18px; }
+    @media (max-width: 400px) { font-size: 16px; }
   }
 
   &_icon {
     width: 40px;
     height: 40px;
+
+    @media (max-width: 600px) { width: 34px; height: 34px; }
+    @media (max-width: 480px) { width: 30px; height: 30px; }
+    @media (max-width: 400px) { width: 26px; height: 26px; }
   }
 }
 
@@ -26,16 +40,52 @@
   background: $gradient-darkBlueDeepPurple;
   border-radius: $radius-2xl;
   max-height: 552px;
+  min-height: 350px;
   height: 100%;
+  width: 100%;
   gap: 21px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
   margin-bottom: 16px;
 
+  @media (max-width: 768px) {
+    min-height: 300px;
+    border-radius: $radius-xl;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    min-height: 260px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 220px;
+    gap: 14px;
+    border-radius: $radius-lg;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 400px) {
+    min-height: 180px;
+    gap: 12px;
+    border-radius: $radius-md;
+    margin-bottom: 8px;
+  }
+
   &_icon {
     width: 64px;
     height: 64px;
     animation: floatUpDown 2000ms ease-in-out infinite;
+
+    @media (max-width: 600px) { width: 56px; height: 56px; }
+    @media (max-width: 480px) { width: 48px; height: 48px; }
+    @media (max-width: 400px) { width: 40px; height: 40px; }
+  }
+
+  &_text {
+    @media (max-width: 480px) { font-size: 14px; }
+    @media (max-width: 400px) { font-size: 13px; }
   }
 
   &:hover {

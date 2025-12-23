@@ -12,6 +12,7 @@
   transition: $transition-medium;
   max-width: 1500px;
   box-shadow: $shadow-soft;
+  box-sizing: border-box;
 
   &:hover {
     box-shadow: $shadow-strong;
@@ -22,6 +23,30 @@
   @media (max-width: 1024px) {
     width: 100%;
     @include flex($align: stretch, $justify: flex-start, $direction: column);
+    gap: 16px;
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 14px;
+    gap: 12px;
+    border-radius: $radius-xl;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+    gap: 8px;
+    border-radius: $radius-lg;
   }
 }
 
@@ -30,15 +55,35 @@
   width: 100%;
   @include flex($align: stretch, $justify: center, $direction: column);
   gap: 16px;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    gap: 10px;
+  }
+
+  @media (max-width: 400px) {
+    gap: 8px;
+  }
 }
 
 .asideRight {
   width: 200px;
   @include flex($align: stretch, $justify: flex-start, $direction: column);
   gap: 16px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    gap: 12px;
+  }
 }
 
 .game {
   @include flex($align: center, $justify: center, $direction: column);
   flex: 1 2 auto;
+  width: 100%;
+  min-width: 0;
 }
