@@ -1,0 +1,71 @@
+@use './variables' as *;
+@import './fonts/fonts.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  color: $white;
+}
+
+body {
+  background-color: $white;
+  background: $gradient-dark-green-purple;;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

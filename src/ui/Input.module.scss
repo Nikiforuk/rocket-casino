@@ -1,0 +1,53 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
+.elements {
+  @include flex($align: center, $justify: flex-start);
+  margin-bottom: 7px;
+  gap: 8px;
+
+  @media (max-width: 768px) {
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  @media (max-width: 768px) {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.input {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
+  transition: $transition-fast;
+  box-shadow: none;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: $shadow-soft;
+    filter: brightness(1.06);
+  }
+  
+  &::placeholder {
+    color: $gray-300;
+  }
+}
+
+.label {
+  @extend %text-body-sm-medium-tight;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

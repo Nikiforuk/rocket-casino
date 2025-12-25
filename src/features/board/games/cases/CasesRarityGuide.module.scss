@@ -1,60 +1,75 @@
-@import '../../../../shared/styles/variables';
-@import '../../../../shared/styles/mixins';
-@import '../../../../shared/styles/extends';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
 
 .rarityGuide {
-  border-radius: 10px;
-  background: var(--overlay-dark-a50);
+  border-radius: $radius-lg;
+  background: $overlay-dark-a50;
   padding: 16px;
   transition: $transition-medium;
   box-shadow: $shadow-soft;
 
   &:hover {
     box-shadow: $shadow-strong;
-    border-color: var(--blue-300);
+    border-color: $blue-300;
     filter: brightness(1.04);
   }
 
-  &_title {
-    @extend %i-regular-16-lg;
+  @media (max-width: 600px) { padding: 14px; }
+  @media (max-width: 480px) { padding: 12px; border-radius: $radius-md; }
+  @media (max-width: 400px) { padding: 10px; }
 
-    font-weight: 500;
+  &_title {
+    @extend %text-body-md-medium;
     margin-bottom: 12px;
+
+    @media (max-width: 480px) { font-size: 14px; margin-bottom: 10px; }
+    @media (max-width: 400px) { font-size: 13px; margin-bottom: 8px; }
   }
 
   &_net {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+
     @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    @media (max-width: 480px) { grid-template-columns: 1fr; gap: 8px; }
+    @media (max-width: 480px) { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    @media (max-width: 400px) { gap: 6px; }
   }
 
   &_column {
     @include flex($align: center, $justify: flex-start);
-
     width: 100%;
     max-width: 184px;
     gap: 8px;
+
     @media (max-width: 768px) { max-width: 100%; }
     @media (max-width: 480px) { gap: 6px; }
+    @media (max-width: 400px) { gap: 4px; }
 
     &_circle {
       width: 12px;
       height: 12px;
       border-radius: 50%;
+      flex-shrink: 0;
+
+      @media (max-width: 400px) { width: 10px; height: 10px; }
     }
 
     &_text {
-      @extend %i-regular-14-lg;
+      @extend %text-body-sm;
+      color: $gray-100;
 
-      color: var(--gray-100);
+      @media (max-width: 480px) { font-size: 12px; }
+      @media (max-width: 400px) { font-size: 11px; }
     }
 
     &_percents {
-      @extend %i-regular-14-lg;
+      @extend %text-body-sm;
+      color: $gray-400;
 
-      color: var(--gray-400);
+      @media (max-width: 480px) { font-size: 12px; }
+      @media (max-width: 400px) { font-size: 11px; }
     }
   }
 }

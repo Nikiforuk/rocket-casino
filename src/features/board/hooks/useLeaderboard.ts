@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useLeaderboardStore } from '../leaderboardStore';
+import { useLeaderboardStore } from '../store/leaderboardStore';
 
 export const useLeaderboard = () => {
   const fetchLeaderboard = useLeaderboardStore((state) => state.fetchLeaderboard);

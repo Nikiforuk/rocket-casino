@@ -1,8 +1,8 @@
-import BetForm from './BetForm';
+import { useTruckGameLogic } from './hooks/useTruckGameLogic';
+import TruckBetForm from './TruckBetForm';
 import styles from './TruckGame.module.scss';
 import TruckScreen from './TruckScreen';
-import { EGameState } from '../../../../shared/types/board';
-import { useTruckGameLogic } from '../../hooks/useTruckGameLogic';
+import { EGameState } from './types/truck';
 
 export default function TruckGame() {
   const {
@@ -33,7 +33,7 @@ export default function TruckGame() {
         currentMultiplier={currentMultiplier}
         isActive={isActive}
       />
-      <BetForm
+      <TruckBetForm
         gameState={gameState}
         isBetting={isBetting}
         isCashOutActive={isCashOutActive}

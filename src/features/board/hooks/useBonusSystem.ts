@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { useToast } from '../../../features/toast/useToast';
-import { addBalance } from '../api/boardApi';
-import { useBoardStore } from '../boardStore';
+import { useToast } from '../../toast/hooks/useToast';
+import { addBalance } from '../api/balanceApi';
+import { useBoardStore } from '../store/boardStore';
 
 const BONUS_AMOUNT = 10;
 const BONUS_INTERVAL_MS = 60 * 1000;

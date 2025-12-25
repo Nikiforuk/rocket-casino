@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from '../../../app/routes';
 import { signOut } from '../api/authApi';
-import { useAuthStore } from '../authStore';
+import { useAuthStore } from '../store/authStore';
 
 export const useSignOut = () => {
   const navigate = useNavigate();

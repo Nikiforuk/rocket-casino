@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useBoardStore } from '../boardStore';
+import { useBoardStore } from '../store/boardStore';
 
 export const useRefreshProfile = () => {
   useEffect(() => {

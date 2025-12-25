@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { supabase } from '../../../app/supabaseClient';
-import { useAuthStore } from '../authStore';
+import { useAuthStore } from '../store/authStore';
 
 export const useAuthSession = () => {
   const setSession = useAuthStore((state) => state.setSession);

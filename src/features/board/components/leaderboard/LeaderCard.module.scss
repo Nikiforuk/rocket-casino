@@ -1,0 +1,113 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: space-between);
+  width: 100%;
+  padding: 12px;
+  border-radius: $radius-lg;
+  background: $twilight-veil;
+  border: 1px solid transparent;
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $blue-300;
+    filter: brightness(1.03);
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &_highlighted {
+    background:$gradient-screen-overlay;
+    border: 1px solid $blue-300;
+    box-shadow: $shadow-glow;
+  }
+}
+
+.sumGames {
+  @include flex($align: center);
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+
+  &_icon {
+    width: 20px;
+    height: 20px;
+
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &_title {
+    @extend %text-body-md-bold;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &_sum {
+    @extend %text-body-xs-medium;
+    color: $gray-100;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+
+  &_position {
+    @extend %text-body-md;
+    color: $gray-400;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+
+.sumWin {
+  display: grid;
+  justify-items: flex-end;
+
+  @media (max-width: 768px) {
+    justify-items: flex-start;
+  }
+
+  &_currency {
+    @extend %text-body-md-bold;
+    background: $gradient-blue-to-pink;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &_percents {
+    @extend %text-body-xs-medium;
+    color: $gray-200;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+}

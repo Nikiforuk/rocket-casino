@@ -1,5 +1,5 @@
 import styles from './Auth.module.scss';
-import SignInForm from '../features/auth/components/SignInForm';
+import SignInForm from '../features/auth/components/forms/SigninForm';
 
 export default function SignIn() {
   return (

@@ -1,0 +1,87 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.button {
+  @include flex($align: center);
+  width: 90px;
+  height: 90px;
+  background: $gradient-blue-to-purple;
+  border-radius: $radius-lg;
+  border: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: $shadow-strong;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media (max-width: 600px) {
+    width: 70px;
+    height: 70px;
+    border-radius: $radius-md;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 400px) {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-sm;
+  }
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+
+  @media (max-width: 600px) {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 480px) {
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 400px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes revealCell {
+  0% { transform: scale(0.96); filter: brightness(0.9); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.buttonDiamond {
+  background: $gradient-green-to-green;
+  animation: revealCell 300ms ease;
+}
+
+@keyframes explodeMine {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(0.96); filter: brightness(0.8); }
+}
+
+.buttonDefeat {
+  background: $gradient-red-to-darkRed;
+  animation: explodeMine 500ms ease;
+}

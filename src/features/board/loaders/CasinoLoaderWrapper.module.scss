@@ -1,0 +1,45 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/extends' as *;
+@use '../../../styles/mixins' as *;
+
+.tabListLoader {
+  min-height: 56px;
+  background: $overlay-gray-a35;
+  border-radius: $radius-lg;
+}
+
+.bonusLoader {
+  min-height: 180px;
+  background: $overlay-gray-a35;
+  border-radius: $radius-lg;
+}
+
+.headerLoader {
+  min-height: 64px;
+  background: $overlay-gray-a35;
+  border-radius: $radius-lg;
+}
+
+.leaderboardLoader {
+  min-height: 300px;
+  background: $overlay-gray-a35;
+  border-radius: $radius-lg;
+}
+
+.gameLoader {
+  min-height: 400px;
+  background: $overlay-gray-a35;
+  border-radius: $radius-xl;
+
+  @media (max-width: 768px) {
+    min-height: 300px;
+  }
+}
+
+.modalLoader {
+  @include flex($align: center, $justify: center);
+  position: fixed;
+  inset: 0;
+  background: $overlay-modal;
+  z-index: 1000;
+}

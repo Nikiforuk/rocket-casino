@@ -1,3 +1,7 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
 .container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -15,7 +19,16 @@
   }
 }
 
+.containerMines {
+  max-width: 1500px;
+}
+
+.containerPlinko {
+  max-width: 1500px;
+}
+
 .content {
+  display: flex;
   flex-direction: column;
   gap: 24px;
 

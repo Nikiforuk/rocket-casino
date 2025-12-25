@@ -1,0 +1,37 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
+.button,
+.selected {
+  @extend %text-body-sm-medium;
+  @include flex($align: center, $justify: center, $direction: row);
+  gap: 16px;
+  width: 100%;
+  color: inherit;
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+  border-radius: inherit;
+  padding: 0 16px;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    gap: 12px;
+    padding: 0 12px;
+  }
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+
+  @media (max-width: 768px) {
+    height: 14px;
+    width: 14px;
+  }
+}

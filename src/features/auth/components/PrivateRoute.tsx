@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { ROUTES } from '../../../app/routes';
-import { useAuthStore } from '../authStore';
+import { useAuthStore } from '../store/authStore';
 
 interface PrivateRouteProps {
   children: ReactNode;

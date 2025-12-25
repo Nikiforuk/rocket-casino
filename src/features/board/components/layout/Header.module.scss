@@ -1,0 +1,73 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: space-between);
+  background: $overlay-gray-a80;
+  padding: 18px;
+  margin-bottom: 20px;
+
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $white;
+    filter: brightness(1.06);
+  }
+}
+
+.content {
+  @include flex(_, $justify: space-between);
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.contentMines {
+  max-width: 1500px;
+}
+
+.leftBlock {
+  @include flex($align: flex-start);
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &_text {
+    @extend %text-body-md-bold;
+  }
+}
+
+.gradientBlock {
+  @include flex($align: center, $justify: center);
+  background: $gradient-green-blue-purple;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-lg;
+
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.rightBlock {
+  @include flex($align: center, $justify: center);
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+  }
+}

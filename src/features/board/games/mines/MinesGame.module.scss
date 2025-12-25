@@ -1,0 +1,74 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: space-between);
+  border: 1px solid $blue-600;
+  border-radius: $radius-2xl;
+  padding: 24px;
+  background: $overlay-dark-a50;
+  transition: $transition-medium;
+  max-width: 1000px;
+  box-shadow: $shadow-soft;
+  box-sizing: border-box;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $blue-300;
+    filter: brightness(1.04);
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 14px;
+    border-radius: $radius-xl;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+    border-radius: $radius-lg;
+  }
+}
+
+.compartments {
+  display: grid;
+  grid-template-columns: 1fr 298px;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 280px;
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    gap: 14px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 400px) {
+    gap: 10px;
+  }
+}
