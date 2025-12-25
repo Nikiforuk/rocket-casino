@@ -1,8 +1,21 @@
 $white: #FFFFFF;
 $midnight-navy: #1A1D28;
+$transparent: rgba(0, 0, 0, 0);
+$twilight-veil: rgba(15, 23, 43, 0.5);
+$emerald-mist: rgba(0, 188, 125, 0.3);
+$white-a12: rgba(255, 255, 255, 0.12);
+$black-a30: rgba(0, 0, 0, 0.3);
+
 $gold-200: #edc34e;
 $gold-300: #F0B100;
 $gold-400: #E17100;
+$gold-196-a60: rgba(255, 196, 0, 0.6);
+$gold-196-a50: rgba(255, 196, 0, 0.5);
+$gold-glow-1-a80: rgba(255, 200, 80, 0.8);
+$gold-glow-1-a65: rgba(255, 200, 80, 0.65);
+$gold-glow-1-a60: rgba(255, 200, 80, 0.6);
+$gold-glow-2-a55: rgba(255, 180, 70, 0.55);
+
 $gray-50: rgba(200, 207, 203, 1);
 $gray-25: #E2E8F0;
 $gray-100: #CAD5E2;
@@ -15,6 +28,9 @@ $gray-600: rgba(142, 142, 142, 1);
 $gray-700: #1D293D;
 $gray-800: rgba(29, 41, 61, 0.8);
 $gray-900: #0F172B;
+$gray-neutral-a35: rgba(120, 130, 140, 0.35);
+$green-100-a35: rgba(0, 188, 125, 0.35);
+
 $blue-100: #8EC5FF;
 $blue-200: #51A2FF;
 $blue-300: #2B7FFF;
@@ -26,6 +42,9 @@ $blue-700: rgba(28, 57, 142, 0.3);
 $blue-800: rgba(43, 127, 255, 0.5);
 $blue-900: #0F172B;
 $blue-700-a20: rgba(28, 57, 142, 0.2);
+$blue-info-a15: rgba(59, 130, 246, 0.15);
+$blue-800-a38: rgba(43, 127, 255, 0.38);
+
 $green-100: #00BC7D;
 $green-200: #00D492;
 $green-300: #009966;
@@ -37,6 +56,11 @@ $green-a10: rgba(0, 188, 125, 0.1);
 $green-a20: rgba(0, 188, 125, 0.2);
 $green-a30: rgba(0, 188, 125, 0.4);
 $green-a40: rgba(0, 79, 59, 0.4);
+$green-glow-1-a60: rgba(0, 153, 102, 0.6);
+$green-glow-1-a80: rgba(0, 153, 102, 0.8);
+$green-glow-2-a40: rgba(0, 166, 62, 0.4);
+$green-glow-2-a60: rgba(0, 166, 62, 0.6);
+
 $red-50: rgba(255, 100, 103, 1);
 $red-100: #FF6467;
 $red-200: #D4183D;
@@ -44,17 +68,24 @@ $red-250: #E7000B;
 $red-a20: rgba(251, 44, 54, 0.2);
 $red-a50: rgba(251, 44, 54, 0.5);
 $red-500: #9F0712;
+$red-239-a15: rgba(239, 68, 68, 0.15);
+
 $pink-500: #E60076;
+$pink-variant-a48: rgba(236, 72, 153, 0.48);
+
 $purple-100: #C27AFF;
 $purple-200: #9810FA;
 $purple-250: #8200DB;
 $purple-300: #59168B;
-$purple-450: rgba(173, 70, 255, 0.3);
 $purple-400: rgba(173, 70, 255, 0.3);
+$purple-500: #805AD5;
 $purple-a10: rgba(173, 70, 255, 0.2);
 $purple-a20: rgba(89, 22, 139, 0.2);
 $purple-a30: rgba(89, 22, 139, 0.3);
-$transparent: rgba(0, 0, 0, 0);
+$purple-500-a45: rgba(128, 90, 213, 0.45);
+$purple-500-a35: rgba(128, 90, 213, 0.35);
+$purple-500-a25: rgba(128, 90, 213, 0.25);
+
 $overlay-blue-a10: rgba(43, 127, 255, 0.1);
 $overlay-blue-a20: rgba(43, 127, 255, 0.2);
 $overlay-blue-a50: rgba(43, 127, 255, 0.5);
@@ -62,34 +93,9 @@ $overlay-green-a50: rgba(0, 122, 85, 0.5);
 $overlay-dark-a50: rgba(29, 41, 61, 0.5);
 $overlay-gray-a60: rgba(49, 65, 88, 1);
 $overlay-gray-a80: rgba(15, 23, 43, 0.8);
-$twilight-veil: rgba(15, 23, 43, 0.5);
-$emerald-mist: rgba(0, 188, 125, 0.3);
 $overlay-modal: rgba(0, 0, 0, 0.5);
-$black-a30: rgba(0, 0, 0, 0.3);
 $overlay-black-a15: rgba(0, 0, 0, 0.15);
 $overlay-gray-a35: rgba(15, 23, 43, 0.35);
-$white-a12: rgba(255, 255, 255, 0.12);
-$gray-neutral-a35: rgba(120, 130, 140, 0.35);
-$green-100-a35: rgba(0, 188, 125, 0.35);
-$blue-800-a38: rgba(43, 127, 255, 0.38);
-$purple-500: #805AD5;
-$purple-500-a45: rgba(128, 90, 213, 0.45);
-$purple-500-a35: rgba(128, 90, 213, 0.35);
-$purple-500-a25: rgba(128, 90, 213, 0.25);
-$pink-variant-a48: rgba(236, 72, 153, 0.48);
-$gold-196-a60: rgba(255, 196, 0, 0.6);
-$gold-196-a50: rgba(255, 196, 0, 0.5);
-$gold-glow-1-a80: rgba(255, 200, 80, 0.8);
-$gold-glow-1-a65: rgba(255, 200, 80, 0.65);
-$gold-glow-1-a60: rgba(255, 200, 80, 0.6);
-$gold-glow-2-a55: rgba(255, 180, 70, 0.55);
-$red-239-a15: rgba(239, 68, 68, 0.15);
-$blue-info-a15: rgba(59, 130, 246, 0.15);
-$green-glow-1-a60: rgba(0, 153, 102, 0.6);
-$green-glow-1-a80: rgba(0, 153, 102, 0.8);
-$green-glow-2-a40: rgba(0, 166, 62, 0.4);
-$green-glow-2-a60: rgba(0, 166, 62, 0.6);
-
 
 //GRADIENTS
 $gradient-green-blue-purple: linear-gradient(

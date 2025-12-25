@@ -1,9 +1,13 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
 .container {
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin: 0 auto;
   gap: 24px;
-  max-width: 1000px; 
+  max-width: 1000px;
   width: 100%;
   padding: 16px;
 
@@ -24,6 +28,7 @@
 }
 
 .content {
+  display: flex;
   flex-direction: column;
   gap: 24px;
 

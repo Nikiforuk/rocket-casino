@@ -4,50 +4,31 @@ import { usePlinkoEngine } from './usePlinkoEngine';
 import { usePlinkoHistoryStore } from '../store/historyStore';
 import { generateMultipliers, type Risk } from '../utils/multipliers';
 
-export const usePlinkoGame = () => {
+const useGameState = () => {
   const [winnings, setWinnings] = useState(0);
   const [bet, setBet] = useState(2);
   const [started, setStarted] = useState(false);
+
+  const resetWinnings = useCallback(() => setWinnings(0), []);
+  const addWinnings = useCallback((amount: number) => {
+    setWinnings((prev) => prev + amount);
+  }, []);
+
+  return { winnings, bet, setBet, started, setStarted, resetWinnings, addWinnings };
+};
+
+const useBallSettings = () => {
   const [ballsCount, setBallsCount] = useState(1);
+
+  const setBalls = useCallback((c: number) => {
+    setBallsCount(c);
+  }, []);
+
+  return { ballsCount, setBalls };
+};
+
+const useRiskSettings = () => {
   const [risk, setRisk] = useState<Risk>('Medium');
-  const [lines, setLines] = useState(9);
-  const landedRef = useRef(0);
-  const multipliers = useMemo(() => generateMultipliers(lines, risk), [lines, risk]);
-  const addHistory = usePlinkoHistoryStore((s) => s.add);
-
-  const onBallLanded = useCallback(
-    (index: number) => {
-      const multi = multipliers[index] ?? 1;
-      setWinnings((prev) => prev + bet * multi);
-      addHistory({
-        id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-        ts: Date.now(),
-        risk,
-        lines,
-        ballsCount,
-        landedIndex: index,
-        multiplier: multi,
-        win: bet * multi,
-      });
-      landedRef.current += 1;
-      if (landedRef.current >= ballsCount) setStarted(false);
-    },
-    [bet, multipliers, addHistory, risk, lines, ballsCount],
-  );
-
-  const engine = usePlinkoEngine(onBallLanded, multipliers);
-
-  const drop = useCallback(() => {
-    setStarted(true);
-    landedRef.current = 0;
-    engine.dropBalls(ballsCount);
-  }, [engine, ballsCount]);
-
-  const resetBalance = useCallback(() => {
-    setWinnings(0);
-    engine.reset();
-    setStarted(false);
-  }, [engine]);
 
   const increaseRisk = useCallback(() => {
     setRisk((prev) => (prev === 'Low' ? 'Medium' : prev === 'Medium' ? 'High' : 'High'));
@@ -61,49 +42,89 @@ export const usePlinkoGame = () => {
     setRisk(r);
   }, []);
 
+  return { risk, increaseRisk, decreaseRisk, setRiskLevel };
+};
+
+const useLinesSettings = () => {
+  const [lines, setLines] = useState(9);
+
   const setLinesCount = useCallback((l: number) => {
     setLines(l);
   }, []);
 
-  const setBalls = useCallback((c: number) => {
-    setBallsCount(c);
-  }, []);
+  return { lines, setLinesCount };
+};
 
-  return useMemo(
-    () => ({
-      winnings,
-      bet,
-      setBet,
-      drop,
-      resetBalance,
-      engine,
-      started,
-      ballsCount,
-      setBalls,
-      risk,
-      increaseRisk,
-      decreaseRisk,
-      setRiskLevel,
-      lines,
-      setLines: setLinesCount,
-      multipliers,
-    }),
+export const usePlinkoGame = () => {
+  const gameState = useGameState();
+  const ballSettings = useBallSettings();
+  const riskSettings = useRiskSettings();
+  const linesSettings = useLinesSettings();
+
+  const landedRef = useRef(0);
+  const multipliers = useMemo(
+    () => generateMultipliers(linesSettings.lines, riskSettings.risk),
+    [linesSettings.lines, riskSettings.risk],
+  );
+  const addHistory = usePlinkoHistoryStore((s) => s.add);
+
+  const onBallLanded = useCallback(
+    (index: number) => {
+      const multi = multipliers[index] ?? 1;
+      gameState.addWinnings(gameState.bet * multi);
+      addHistory({
+        id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        ts: Date.now(),
+        risk: riskSettings.risk,
+        lines: linesSettings.lines,
+        ballsCount: ballSettings.ballsCount,
+        landedIndex: index,
+        multiplier: multi,
+        win: gameState.bet * multi,
+      });
+      landedRef.current += 1;
+      if (landedRef.current >= ballSettings.ballsCount) gameState.setStarted(false);
+    },
     [
-      winnings,
-      bet,
-      drop,
-      resetBalance,
-      engine,
-      started,
-      ballsCount,
-      setBalls,
-      risk,
-      increaseRisk,
-      decreaseRisk,
-      setRiskLevel,
-      lines,
-      setLinesCount,
+      gameState,
       multipliers,
+      addHistory,
+      riskSettings.risk,
+      linesSettings.lines,
+      ballSettings.ballsCount,
     ],
   );
+
+  const engine = usePlinkoEngine(onBallLanded, multipliers);
+
+  const drop = useCallback(() => {
+    gameState.setStarted(true);
+    landedRef.current = 0;
+    engine.dropBalls(ballSettings.ballsCount);
+  }, [engine, ballSettings.ballsCount, gameState]);
+
+  const resetBalance = useCallback(() => {
+    gameState.resetWinnings();
+    engine.reset();
+    gameState.setStarted(false);
+  }, [engine, gameState]);
+
+  return {
+    winnings: gameState.winnings,
+    bet: gameState.bet,
+    setBet: gameState.setBet,
+    drop,
+    resetBalance,
+    engine,
+    started: gameState.started,
+    ballsCount: ballSettings.ballsCount,
+    setBalls: ballSettings.setBalls,
+    risk: riskSettings.risk,
+    increaseRisk: riskSettings.increaseRisk,
+    decreaseRisk: riskSettings.decreaseRisk,
+    setRiskLevel: riskSettings.setRiskLevel,
+    lines: linesSettings.lines,
+    setLines: linesSettings.setLinesCount,
+    multipliers,
+  };
 };

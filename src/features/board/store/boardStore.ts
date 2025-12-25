@@ -36,7 +36,7 @@ export const useBoardStore = create<BoardState>()(
           balance: typeof value === 'function' ? value(state.balance) : value,
         })),
       setUiLocked: (value) => set({ uiLocked: value }),
-      setTotalWon: (value) => set({ gamesPlayed: value }),
+      setTotalWon: (value) => set({ totalWon: value }),
       setGamesPlayed: (value) => set({ gamesPlayed: value }),
       setNewUsername: (value) => set({ newUsername: value }),
       setTotalWagered: (value) => set({ totalWagered: value }),
