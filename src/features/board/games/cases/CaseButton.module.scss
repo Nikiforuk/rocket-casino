@@ -1,0 +1,82 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.button,
+.disabled {
+  @include flex($align: center, $justify: center, $direction: column);
+  @extend %text-body-md-bold;
+  max-width: 138px;
+  width: 100%;
+  padding: 18px 18px 10px 18px;
+  background: $twilight-veil;
+  border: 2px solid $overlay-gray-a60;
+  border-radius: $radius-lg;
+  gap: 7px;
+  color: inherit;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  box-sizing: border-box;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $blue-300;
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  &_icon {
+    height: 48px;
+    width: 48px;
+
+    @media (max-width: 600px) { height: 40px; width: 40px; }
+    @media (max-width: 480px) { height: 36px; width: 36px; }
+    @media (max-width: 400px) { height: 32px; width: 32px; }
+  }
+
+  &_text {
+    @media (max-width: 480px) { font-size: 13px; }
+    @media (max-width: 400px) { font-size: 12px; }
+  }
+
+  &_price {
+    @extend %text-body-sm-medium;
+    color: $green-600;
+
+    @media (max-width: 480px) { font-size: 12px; }
+    @media (max-width: 400px) { font-size: 11px; }
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px 12px 8px 12px;
+    max-width: 100%;
+    gap: 5px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px 10px 6px 10px;
+    gap: 4px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 8px 5px 8px;
+    gap: 3px;
+    border-radius: $radius-md;
+  }
+
+  @media (max-width: 400px) {
+    padding: 6px 6px 4px 6px;
+    gap: 2px;
+  }
+}
+
+.disabled {
+  opacity: 50%;
+  pointer-events: none;
+}
+
+.button_active {
+  background: $gradient-screen-overlay;
+  border: 1px solid $blue-300;
+  box-shadow: $shadow-glow;
+}

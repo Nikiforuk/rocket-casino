@@ -1,0 +1,62 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: flex-start);
+  width: 100%;
+  border: 1px solid $blue-600;
+  border-radius: $radius-3xl;
+  padding: 4.5px;
+  background: $overlay-dark-a50;
+  gap: 12.5px;
+  max-width: 653px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $blue-300;
+    filter: brightness(1.04);
+  }
+
+  @media (max-width: 768px) {
+    padding: 4px;
+    gap: 8px;
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    gap: 6px;
+    padding: 3px;
+    border-radius: $radius-2xl;
+  }
+
+  @media (max-width: 480px) {
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 400px) {
+    gap: 3px;
+    margin-bottom: 12px;
+  }
+
+  // Ensure buttons don't shrink
+  > button {
+    flex-shrink: 0;
+  }
+}

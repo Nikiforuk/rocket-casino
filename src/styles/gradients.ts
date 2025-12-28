@@ -1,0 +1,25 @@
+export const GRADIENTS = {
+  darkGreenPurple: 'linear-gradient(135deg, #0F172B 0%, rgba(0,79,59,0.4) 30%, #59168B 100%)',
+  greenBluePurple: 'linear-gradient(135deg, #00BC7D 0%, #2B7FFF 50%, #9810FA 100%)',
+  greenToBlue: 'linear-gradient(90deg, #009966 0%, #155DFC 100%)',
+  screenOverlay: 'linear-gradient(180deg, #1C398E 0%, rgba(173,70,255,0.2) 100%)',
+  blueToPurple: 'linear-gradient(90deg, #155DFC 0%, #9810FA 100%)',
+  greenToGreen: 'linear-gradient(90deg, #009966 0%, #00A63E 100%)',
+  transparentGreenToBlue:
+    'linear-gradient(135deg, rgba(0,188,125,0.1) 0%, rgba(43,127,255,0.1) 100%)',
+  transparentBluePurple: 'linear-gradient(90deg, #51A2FF 0%, #C27AFF 100%)',
+  transparentOverlay: 'linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0))',
+  overlayMix: 'linear-gradient(90deg, rgba(0,79,59,0.4) 0%, #1C398E 50%, rgba(89,22,139,0.3) 100%)',
+  greenMint: 'linear-gradient(90deg, #00D492 0%, #05DF72 100%)',
+  purpleToMint: 'linear-gradient(rgba(43,127,255,0.2), rgba(173,70,255,0.2))',
+  blueToPink: 'linear-gradient(90deg, #51A2FF 0%, #C27AFF 100%)',
+  darkBlueDeepPurple:
+    'linear-gradient(135deg, #0F172B 0%, rgba(28,57,142,0.2) 50%, rgba(173,70,255,0.2) 100%)',
+  greenToDarkGreen: 'linear-gradient(90deg, #00A63E 0%, #009966 100%)',
+  casesCommon: 'linear-gradient(135deg, #45556C 0%, #314158 100%)',
+  casesUncommon: 'linear-gradient(135deg, #00A63E 0%, #008236 100%)',
+  casesRare: 'linear-gradient(135deg, #155DFC 0%, rgba(20,71,230,0.3) 100%)',
+  casesEpic: 'linear-gradient(135deg, #9810FA 0%, #8200DB 100%)',
+  casesLegendary: 'linear-gradient(135deg, #E60076 0%, #E7000B 100%)',
+  casesGold: 'linear-gradient(135deg, #F0B100 0%, #E17100 100%)',
+};

@@ -1,10 +1,10 @@
-import ActiveGameContent from './ActiveGameContent';
-import CrashedContent from './CrashedContent';
-import EscapedContent from './EscapedContent';
-import Multiplier from './Multiplier';
-import SplashScreen from './SplashScreen';
-import styles from './TruckGame.module.scss';
-import { EGameState } from '../../../../shared/types/board';
+import TruckActiveGame from './TruckActiveGame';
+import TruckCrashed from './TruckCrashed';
+import TruckEscaped from './TruckEscaped';
+import TruckMultiplier from './TruckMultiplier';
+import styles from './TruckScreen.module.scss';
+import TruckSplashScreen from './TruckSplashScreen';
+import { EGameState } from './types/truck';
 
 interface TruckScreenProps {
   gameState: EGameState;
@@ -25,14 +25,14 @@ export default function TruckScreen({ gameState, currentMultiplier, isActive }: 
       <div
         className={`${styles.screen} ${gameState === EGameState.Crashed ? styles.screen_crashed : gameState === EGameState.Idle ? styles.screen_idle : ''}`}
       >
-        {gameState === EGameState.Idle && <SplashScreen />}
+        {gameState === EGameState.Idle && <TruckSplashScreen />}
         {gameState !== EGameState.Idle && (
-          <Multiplier gameState={gameState} currentMultiplier={currentMultiplier} />
+          <TruckMultiplier gameState={gameState} currentMultiplier={currentMultiplier} />
         )}
         <div className={styles.gameContent}>
-          {gameState === EGameState.Escaped && <EscapedContent />}
-          {gameState === EGameState.Crashed && <CrashedContent />}
-          {isActive && <ActiveGameContent gameState={gameState} />}
+          {gameState === EGameState.Escaped && <TruckEscaped />}
+          {gameState === EGameState.Crashed && <TruckCrashed />}
+          {isActive && <TruckActiveGame gameState={gameState} />}
         </div>
       </div>
     </>

@@ -1,4 +1,6 @@
-@import '../shared/styles/mixins';
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
 
 .container {
   @include flex($align: center, $justify: center, $direction: column);

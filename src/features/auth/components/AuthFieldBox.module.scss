@@ -1,0 +1,19 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/extends' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: flex-start, $justify: center, $direction: column);
+  width: 100%;
+  margin-bottom: 12.5px;
+  transition: $transition-fast;
+
+  &:hover {
+    filter: brightness(1.03);
+  }
+}
+
+.errorText {
+  @extend %text-body-sm;
+  color: $red-50;
+}

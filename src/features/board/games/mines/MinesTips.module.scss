@@ -1,0 +1,71 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  max-width: 298px;
+  width: 100%;
+  padding: 17px;
+  border-radius: $radius-lg;
+  margin-bottom: 16px;
+  background: $gradient-darkBlueDeepPurple;
+  box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: $radius-md;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+}
+
+.top {
+  @include flex($align: center, $justify: flex-start);
+  margin-bottom: 9px;
+  gap: 5px;
+
+  @media (max-width: 480px) { margin-bottom: 7px; gap: 4px; }
+  @media (max-width: 400px) { margin-bottom: 6px; }
+
+  &_title {
+    @media (max-width: 480px) { font-size: 14px; }
+    @media (max-width: 400px) { font-size: 13px; }
+  }
+
+  &_icon {
+    width: 24px;
+    height: 24px;
+
+    @media (max-width: 480px) { width: 20px; height: 20px; }
+    @media (max-width: 400px) { width: 18px; height: 18px; }
+  }
+}
+
+.list {
+  @include flex($align: flex-start, $justify: center, $direction: column);
+  gap: 4px;
+
+  @media (max-width: 480px) { gap: 3px; }
+  @media (max-width: 400px) { gap: 2px; }
+
+  &_item {
+    @extend %text-body-sm;
+    color: $gray-100;
+
+    @media (max-width: 480px) { font-size: 12px; }
+    @media (max-width: 400px) { font-size: 11px; }
+  }
+}

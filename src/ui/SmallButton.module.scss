@@ -1,0 +1,22 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
+.button {
+  @extend %text-body-md-medium;
+  @include flex($align: center, $justify: center);
+  gap: 10px;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    filter: brightness(1.04);
+  }
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+}

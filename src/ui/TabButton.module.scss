@@ -1,0 +1,88 @@
+@use '../styles/variables' as *;
+@use '../styles/extends' as *;
+@use '../styles/mixins' as *;
+
+.button {
+  @include flex($align: center, $justify: center);
+  @extend %text-body-sm-medium;
+  min-width: 100px;
+  height: 29px;
+  background: $gradient-darkBlueDeepPurple;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  border-radius: $radius-2xl;
+  color: inherit;
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0 12px;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $white;
+    filter: brightness(1.06);
+  }
+
+  @media (max-width: 768px) {
+    min-width: 90px;
+    height: 28px;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 0 10px;
+  }
+
+  @media (max-width: 600px) {
+    min-width: 80px;
+    height: 26px;
+    font-size: 11px;
+    padding: 0 8px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 72px;
+    height: 24px;
+    font-size: 10px;
+    padding: 0 6px;
+  }
+
+  @media (max-width: 400px) {
+    min-width: 68px;
+    font-size: 10px;
+    padding: 0 5px;
+  }
+}
+
+.button_active {
+  border: 1px solid $gray-100;
+  box-shadow: $shadow-glow;
+}
+
+.text {
+  @extend %text-body-sm;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  flex-shrink: 0;
+
+  @media (max-width: 600px) {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+  }
+
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+  }
+
+  @media (max-width: 400px) {
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+  }
+}

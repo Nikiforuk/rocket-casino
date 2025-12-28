@@ -1,0 +1,17 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/extends' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  @include flex($align: center, $justify: flex-start);
+  border-radius: $radius-lg;
+  border: 1px solid $red-50;
+  background: $red-a20;
+  padding: 12.5px;
+  margin-bottom: 16px;
+}
+
+.text {
+  @extend %text-body-sm;
+  color: $red-50;
+}

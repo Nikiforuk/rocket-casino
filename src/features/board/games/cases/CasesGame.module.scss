@@ -1,0 +1,77 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/extends' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  width: 100%;
+  border: 1px solid $blue-600;
+  border-radius: $radius-2xl;
+  padding: 24px;
+  background: $overlay-dark-a50;
+  margin: 0 auto;
+  transition: $transition-medium;
+  box-shadow: $shadow-soft;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow-strong;
+    border-color: $blue-300;
+    filter: brightness(1.04);
+  }
+
+  @media (max-width: 1024px) { max-width: 720px; }
+  @media (max-width: 768px) { max-width: 100%; padding: 20px; }
+  @media (max-width: 600px) { padding: 16px; }
+  @media (max-width: 480px) { padding: 14px; border-radius: $radius-xl; }
+  @media (max-width: 400px) { padding: 10px; border-radius: $radius-lg; }
+}
+
+.title {
+  @extend %text-body-md-medium;
+  margin-bottom: 16px;
+
+  @media (max-width: 480px) { font-size: 15px; margin-bottom: 14px; }
+  @media (max-width: 400px) { font-size: 14px; margin-bottom: 12px; }
+}
+
+.groupButtons {
+  @include flex($align: center, $justify: space-between);
+  gap: 12px;
+  margin-bottom: 24px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 400px) {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: row;
+  }
+}

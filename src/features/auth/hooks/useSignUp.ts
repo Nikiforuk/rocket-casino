@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from '../../../app/routes';
 import { signupUser } from '../api/authApi';
-import { useAuthStore } from '../authStore';
+import { useAuthStore } from '../store/authStore';
 
 export const useSignUp = () => {
   const navigate = useNavigate();
@@ -19,10 +19,7 @@ export const useSignUp = () => {
     try {
       const result = await signupUser(username, email, password);
       if (result.success && result.data) {
-        setUser({
-          username,
-          email,
-        });
+        setUser({ username, email });
         navigate(ROUTES.BOARD);
       } else if (result.error) {
         setErrorMessage(result.error.message);
