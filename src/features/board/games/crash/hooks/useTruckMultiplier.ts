@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { useClearIntervalOnUnmount } from './useClearIntervalOnUnmount';
+import { safeNumber } from '../../../utils/numberHelpers';
 
 export const useMultiplier = () => {
   const [multiplier, setMultiplier] = useState(1);
@@ -10,7 +11,7 @@ export const useMultiplier = () => {
   const start = (target: number, step = 0.01, interval = 30, onCrash?: () => void) => {
     const id = setInterval(() => {
       setMultiplier((prev) => {
-        const next = +(prev + step).toFixed(2);
+        const next = safeNumber(prev + step, 2);
         if (next >= target) {
           clearInterval(id);
           setIntervalId(null);

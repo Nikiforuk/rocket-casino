@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 
 import { BALL_RADIUS, BOARD_HEIGHT, BOARD_WIDTH } from '../constants/plinko';
@@ -7,6 +7,7 @@ import { snapBallToMultiplier } from '../utils/landing';
 import { createPegLayout, type Peg } from '../utils/pegLayout';
 import { type Ball, stepBall } from '../utils/physics';
 import { renderFrame } from '../utils/renderer';
+import { renderSimpleBall } from '../utils/rendering';
 
 export interface PlinkoEngineState {
   pegs: Peg[];
@@ -25,14 +26,53 @@ export interface PlinkoEngineApi {
 export const usePlinkoEngine = (
   onBallLanded: (index: number) => void,
   multipliers: number[],
+  lines: number = 9,
 ): PlinkoEngineApi => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastTsRef = useRef<number | null>(null);
   const scoredRef = useRef<WeakSet<Ball>>(new WeakSet());
-  const [pegs] = useState<Peg[]>(() => createPegLayout(BOARD_HEIGHT));
+
+  const pegs = useMemo(() => createPegLayout(BOARD_HEIGHT, lines), [lines]);
+
   const [balls, setBalls] = useState<Ball[]>([]);
   const [activeMultiplierIndex, setActiveMultiplierIndex] = useState<number | null>(null);
+
+  const [multiplierPressOffset, setMultiplierPressOffset] = useState(0);
+  const pressAnimationRef = useRef<number | null>(null);
+
+  const animateMultiplierPress = useCallback(() => {
+    const startTime = performance.now();
+    const duration = 200;
+    const maxPress = 8;
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      let offset: number;
+      if (progress < 0.4) {
+        offset = maxPress * (progress / 0.4);
+      } else {
+        const springProgress = (progress - 0.4) / 0.6;
+        offset = maxPress * (1 - springProgress) * Math.cos(springProgress * Math.PI * 0.5);
+      }
+
+      setMultiplierPressOffset(Math.max(0, offset));
+
+      if (progress < 1) {
+        pressAnimationRef.current = requestAnimationFrame(animate);
+      } else {
+        setMultiplierPressOffset(0);
+        pressAnimationRef.current = null;
+      }
+    };
+
+    if (pressAnimationRef.current) {
+      cancelAnimationFrame(pressAnimationRef.current);
+    }
+    pressAnimationRef.current = requestAnimationFrame(animate);
+  }, []);
 
   const draw = useCallback(() => {
     const canvasElement = canvasRef.current;
@@ -43,16 +83,12 @@ export const usePlinkoEngine = (
       balls.length ? balls[balls.length - 1] : null,
       activeMultiplierIndex,
       multipliers,
+      multiplierPressOffset,
     );
     const ctx = canvasElement.getContext('2d');
     if (!ctx) return;
-    balls.slice(0, -1).forEach((b) => {
-      ctx.fillStyle = '#fbbf24';
-      ctx.beginPath();
-      ctx.arc(b.x, b.y, BALL_RADIUS, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  }, [pegs, balls, activeMultiplierIndex, multipliers]);
+    balls.slice(0, -1).forEach((b) => renderSimpleBall(ctx, b));
+  }, [pegs, balls, activeMultiplierIndex, multipliers, multiplierPressOffset]);
 
   const step = useCallback(
     (dt: number) => {
@@ -71,11 +107,12 @@ export const usePlinkoEngine = (
       });
       if (idxLanded !== null) {
         setActiveMultiplierIndex(idxLanded);
+        animateMultiplierPress();
         onBallLanded(idxLanded);
       }
       setBalls(nextBalls);
     },
-    [balls, pegs, onBallLanded, multipliers],
+    [balls, pegs, onBallLanded, multipliers, animateMultiplierPress],
   );
 
   useEffect(() => {

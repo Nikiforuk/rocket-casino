@@ -1,6 +1,7 @@
 import styles from './PlinkoLaunch.module.scss';
 import { GRADIENTS } from '../../../../styles/gradients';
 import Button from '../../../../ui/Button';
+import { formatNumber } from '../../utils/numberHelpers';
 
 interface Props {
   onDrop: () => void;
@@ -45,7 +46,7 @@ export default function PlinkoLaunch({
               disabled={controlsLocked}
             >
               <div className={styles.gridItem_primary}>{c}</div>
-              <div className={styles.gridItem_secondary}>{`$${(bet * c).toFixed(2)}`}</div>
+              <div className={styles.gridItem_secondary}>{`$${formatNumber(bet * c, 2)}`}</div>
             </button>
           ))}
         </div>
@@ -71,7 +72,7 @@ export default function PlinkoLaunch({
         <div className={styles.row}>
           <Button
             type="button"
-            width="100px"
+            width="100%"
             border="none"
             borderRadius="6px"
             height="30px"
@@ -83,7 +84,7 @@ export default function PlinkoLaunch({
           <div className={styles.value}>{risk}</div>
           <Button
             type="button"
-            width="100px"
+            width="100%"
             border="none"
             borderRadius="6px"
             height="30px"
@@ -100,7 +101,7 @@ export default function PlinkoLaunch({
         height="44px"
         background={GRADIENTS.casesGold}
         borderRadius="8px"
-        text={`Drop ${ballsCount} Ball${ballsCount > 1 ? 's' : ''} ($${(bet * ballsCount).toFixed(2)})`}
+        text={`Drop ${ballsCount} Ball${ballsCount > 1 ? 's' : ''} ($${formatNumber(bet * ballsCount, 2)})`}
         textStyle={{ color: 'black' }}
         onClick={onDrop}
         disabled={disabledDrop}

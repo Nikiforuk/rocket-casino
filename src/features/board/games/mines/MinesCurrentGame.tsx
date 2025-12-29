@@ -14,7 +14,7 @@ export default function MinesCurrentGame() {
       <div className={styles.rows}>
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Bet Amount:</p>
-          <b className={styles.rows_row_sum}>${betAmount.toFixed(2)}</b>
+          <b className={styles.rows_row_sum}>${formatNumber(betAmount, 2)}</b>
         </div>
         <div className={styles.rows_row}>
           <p className={styles.rows_row_text}>Current Value:</p>

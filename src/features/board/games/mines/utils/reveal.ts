@@ -1,6 +1,7 @@
 import { revealTile, calcSafeTilesLeft, countRevealedSafe } from './grid';
 import { computeTotalMultiplier } from './multiplier';
 import { revealAll } from './revealAll';
+import { safeNumber } from '../../../utils/numberHelpers';
 import { minesReveal } from '../api/minesApi';
 import { useMinesStore } from '../store/minesStore';
 import { EMinesState, EMinesTileStatus } from '../types/mines';
@@ -52,6 +53,6 @@ export const reveal = async (tileIndex: number) => {
 
   const mult = computeTotalMultiplier(minesCount, countRevealedSafe(nextGrid));
   setMultiplier(mult);
-  setCurrentValue(Number((betAmount * mult).toFixed(6)));
+  setCurrentValue(safeNumber(betAmount * mult, 6));
   setSafeTilesLeft(calcSafeTilesLeft(minesCount, countRevealedSafe(nextGrid)));
 };
