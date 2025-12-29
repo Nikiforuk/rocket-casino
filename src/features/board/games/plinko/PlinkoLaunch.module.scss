@@ -11,7 +11,6 @@
   @media (max-width: 600px) { gap: 8px; }
   @media (max-width: 400px) { gap: 6px; }
 
-  // Override button styles at the container level
   > button {
     @media (max-width: 600px) {
       height: 40px !important;
@@ -31,12 +30,12 @@
 .panel {
   @include flex($align: flex-start, $justify: center, $direction: column);
   gap: 5px;
-  padding: 12px;
+  padding: 7px;
   border: 1px solid $blue-600;
   border-radius: $radius-xl;
   background: $overlay-dark-a50;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 
   @media (max-width: 768px) { padding: 10px; gap: 4px; }
   @media (max-width: 600px) { padding: 10px; border-radius: $radius-lg; }
@@ -61,7 +60,6 @@
   @media (max-width: 480px) { gap: 5px; }
   @media (max-width: 400px) { gap: 4px; }
 
-  // Override button styles for risk controls
   button {
     @media (max-width: 600px) {
       width: 80px !important;
@@ -148,7 +146,7 @@
 
 .gridItem_secondary {
   @extend %text-body-xs;
-  color: $gray-200;
+  color: $white;
 
   @media (max-width: 600px) { font-size: 10px; }
   @media (max-width: 480px) { font-size: 9px; }

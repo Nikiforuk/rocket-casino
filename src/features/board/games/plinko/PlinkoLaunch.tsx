@@ -71,7 +71,7 @@ export default function PlinkoLaunch({
         <div className={styles.row}>
           <Button
             type="button"
-            width="100px"
+            width="100%"
             border="none"
             borderRadius="6px"
             height="30px"
@@ -83,7 +83,7 @@ export default function PlinkoLaunch({
           <div className={styles.value}>{risk}</div>
           <Button
             type="button"
-            width="100px"
+            width="100%"
             border="none"
             borderRadius="6px"
             height="30px"
