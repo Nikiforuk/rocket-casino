@@ -7,3 +7,8 @@ export const formatNumber = (value: number | string | null | undefined, decimals
 
   return num.toFixed(decimals);
 };
+
+export const safeNumber = (value: number | null | undefined, decimals = 2): number => {
+  if (value === null || value === undefined || isNaN(value)) return 0;
+  return Number(value.toFixed(decimals));
+};

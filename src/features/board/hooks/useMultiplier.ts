@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { MINES_CONFIG } from '../games/mines/constants/mines';
 import { useMinesStore } from '../games/mines/store/minesStore';
+import { safeNumber } from '../utils/numberHelpers';
 
 export const useMultiplier = () => {
   const target = useMinesStore((state) => state.currentMultiplier);
@@ -19,7 +20,7 @@ export const useMultiplier = () => {
       if (startRef.current == null) startRef.current = timestamp;
       const progress = Math.min(1, (timestamp - startRef.current) / duration);
       const next = fromRef.current + (target - fromRef.current) * progress;
-      setAnimated(Number(next.toFixed(6)));
+      setAnimated(safeNumber(next, 6));
       if (progress < 1) rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);

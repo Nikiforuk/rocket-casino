@@ -1,3 +1,5 @@
+import { safeNumber } from '../../../utils/numberHelpers';
+
 export type Risk = 'Low' | 'Medium' | 'High';
 
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
@@ -20,13 +22,13 @@ export const generateMultipliers = (lines: number, risk: Risk): number[] => {
 
     if (dist === 0 || (length % 2 === 0 && dist <= 1)) {
       const [minC, maxC] = centerMultipliers;
-      arr[i] = +(minC + Math.random() * (maxC - minC)).toFixed(2);
+      arr[i] = safeNumber(minC + Math.random() * (maxC - minC), 2);
     } else if (t > 0.85) {
       if (Math.random() < loseChance) {
         arr[i] = 0;
       } else {
         const [minE, maxE] = extremeMultipliers;
-        arr[i] = +Math.round(minE + Math.random() * (maxE - minE));
+        arr[i] = Math.round(minE + Math.random() * (maxE - minE));
       }
     } else if (t > 0.6) {
       if (Math.random() < loseChance * 0.5) {
@@ -34,15 +36,15 @@ export const generateMultipliers = (lines: number, risk: Risk): number[] => {
       } else {
         const [minM, maxM] = midMultipliers;
         const val = minM + Math.random() * (maxM - minM);
-        arr[i] = +val.toFixed(1);
+        arr[i] = safeNumber(val, 1);
       }
     } else if (t > 0.3) {
       const val = 0.8 + Math.random() * 1.2;
-      arr[i] = +val.toFixed(1);
+      arr[i] = safeNumber(val, 1);
     } else {
       const [minC, maxC] = centerMultipliers;
       const val = minC + Math.random() * (maxC - minC) * 1.5;
-      arr[i] = +Math.min(val, 1).toFixed(2);
+      arr[i] = safeNumber(Math.min(val, 1), 2);
     }
   }
 

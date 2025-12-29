@@ -1,3 +1,4 @@
+import { safeNumber } from '../../../utils/numberHelpers';
 import { MINES_CONFIG } from '../constants/mines';
 
 export const computeTotalMultiplier = (
@@ -13,7 +14,7 @@ export const computeTotalMultiplier = (
     const safeRemaining = N - M - i;
     mult *= totalRemaining / safeRemaining;
   }
-  return Number((mult * rtp).toFixed(6));
+  return safeNumber(mult * rtp, 6);
 };
 
 export const computeStepMultiplier = (minesCount: number, revealedSafeCount: number): number => {

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { usePlinkoEngine } from './usePlinkoEngine';
-import { usePlinkoHistoryStore } from '../store/historyStore';
+import { usePlinkoHistoryStore, type BallResult } from '../store/historyStore';
 import { generateMultipliers, type Risk } from '../utils/multipliers';
 
 const useGameState = () => {
@@ -62,6 +62,9 @@ export const usePlinkoGame = () => {
   const linesSettings = useLinesSettings();
 
   const landedRef = useRef(0);
+  const ballResultsRef = useRef<BallResult[]>([]);
+  const sessionBetRef = useRef(0);
+
   const multipliers = useMemo(
     () => generateMultipliers(linesSettings.lines, riskSettings.risk),
     [linesSettings.lines, riskSettings.risk],
@@ -71,19 +74,34 @@ export const usePlinkoGame = () => {
   const onBallLanded = useCallback(
     (index: number) => {
       const multi = multipliers[index] ?? 1;
-      gameState.addWinnings(gameState.bet * multi);
-      addHistory({
-        id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-        ts: Date.now(),
-        risk: riskSettings.risk,
-        lines: linesSettings.lines,
-        ballsCount: ballSettings.ballsCount,
+
+      ballResultsRef.current.push({
         landedIndex: index,
         multiplier: multi,
-        win: gameState.bet * multi,
       });
+
+      gameState.addWinnings(sessionBetRef.current * multi);
+
       landedRef.current += 1;
-      if (landedRef.current >= ballSettings.ballsCount) gameState.setStarted(false);
+
+      if (landedRef.current >= ballSettings.ballsCount) {
+        const totalMultiplier = ballResultsRef.current.reduce((sum, r) => sum + r.multiplier, 0);
+        const totalWin = sessionBetRef.current * totalMultiplier;
+
+        addHistory({
+          id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+          ts: Date.now(),
+          risk: riskSettings.risk,
+          lines: linesSettings.lines,
+          ballsCount: ballSettings.ballsCount,
+          betAmount: sessionBetRef.current,
+          ballResults: [...ballResultsRef.current],
+          totalMultiplier,
+          totalWin,
+        });
+
+        gameState.setStarted(false);
+      }
     },
     [
       gameState,
@@ -100,6 +118,8 @@ export const usePlinkoGame = () => {
   const drop = useCallback(() => {
     gameState.setStarted(true);
     landedRef.current = 0;
+    ballResultsRef.current = [];
+    sessionBetRef.current = gameState.bet;
     engine.dropBalls(ballSettings.ballsCount);
   }, [engine, ballSettings.ballsCount, gameState]);
 
