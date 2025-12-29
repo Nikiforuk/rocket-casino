@@ -1,12 +1,26 @@
-import { BOARD_WIDTH, PEG_ROWS } from '../constants/plinko';
+import { BOARD_WIDTH } from '../constants/plinko';
 
 export interface Peg {
   x: number;
   y: number;
 }
 
-export const createPegLayout = (height: number): Peg[] => {
-  const rows = PEG_ROWS;
+/**
+ * Creates a peg layout that matches the number of multipliers.
+ * The pyramid structure ensures the bottom row has (lines) pegs,
+ * which creates (lines) slots for multipliers.
+ *
+ * @param height - Board height
+ * @param lines - Number of multipliers/bottom row pegs (3-16)
+ */
+export const createPegLayout = (height: number, lines: number = 9): Peg[] => {
+  const numLines = Math.max(3, Math.min(16, lines));
+
+  const rows: number[] = [];
+  for (let i = 3; i <= numLines; i++) {
+    rows.push(i);
+  }
+
   const verticalPadding = 30;
   const topOffset = 60;
   const rowGap = (height - verticalPadding - topOffset) / (rows.length + 2);

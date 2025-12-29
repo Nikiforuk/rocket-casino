@@ -95,7 +95,7 @@ export const usePlinkoGame = () => {
     ],
   );
 
-  const engine = usePlinkoEngine(onBallLanded, multipliers);
+  const engine = usePlinkoEngine(onBallLanded, multipliers, linesSettings.lines);
 
   const drop = useCallback(() => {
     gameState.setStarted(true);
